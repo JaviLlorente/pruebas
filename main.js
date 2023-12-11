@@ -241,7 +241,7 @@ function addPoints(data) {
 
 //NUEVO
 	function estiloSelect() {
-		var miSelect = document.getElementById("estilo").value;
+		var miSelect = document.getElementById("Clase").value;
 			
 		var monumentos = L.geoJSON(geojson, {
 							pointToLayer: function (feature, latlng) {
