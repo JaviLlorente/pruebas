@@ -243,13 +243,13 @@ function addPoints(data) {
 	function estiloSelect() {
 		var miSelect = document.getElementById("Clase").value;
 			
-		var monumentos = L.geoJSON(geojson, {
+		var momnumentos = L.geoJSON(geojson, {
 							pointToLayer: function (feature, latlng) {
 									return L.circleMarker(latlng, MarkerOptions);
 								},
 							filter: function(feature, layer) {								
 								 if(miSelect != "TODOS")		
-									return (feature.properties.Estilo == miSelect );
+									return (feature.properties.Clase == miSelect );
 								else
 									return true;
 							},	
@@ -262,6 +262,7 @@ function addPoints(data) {
 
 	}
 // FIN NUEVO
+
 
 
 
