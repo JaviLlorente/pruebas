@@ -240,6 +240,21 @@ function addPoints(data) {
 
 
 //NUEVO
+
+var monumentos = L.geoJSON(geojson, {
+							pointToLayer: function (feature, latlng) {
+									return L.circleMarker(L.circleMarker([data[row].lat, data[row].lon], {
+        radius: markerRadius,
+      }));
+								},	
+							style:estilo_monumentos,
+							onEachFeature: popup_monumentos	
+					});		
+
+			 	pointGroupLayer.addLayer(monumentos);
+
+
+
 	function estiloSelect() {
 		var miSelect = document.getElementById("Clase").value;
 			
@@ -261,6 +276,7 @@ function addPoints(data) {
 		pointGroupLayer.addLayer(monumentos);
 
 	}
+
 // FIN NUEVO
 
 
