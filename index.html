@@ -24,6 +24,20 @@ html, body, #map {
         </style>
     </head>
     <body>
+	
+	<!--NUEVO-->
+		<div id="panel" style = "margin-left:0px; background-color:#D3D3D3;">
+					<label>Clase animal</label>
+					<select id="estilo" onchange="estiloSelect()">
+					  <option value="Todas">Todas</option>
+					  <option value="MAMIFERO">Mamíferos</option>
+					  <option value="AVE">Aves</option>
+					  <option value="REPTIL">Reptiles</option>
+					  <option value="ANFIBIO">Anfibios</option>					  
+					</select>
+		</div>	  
+	<!--FIN DE NUEVO-->
+		
         <div id="map"></div>
         <script src="js/leaflet.js"></script>
         <script src="js/leaflet-sidebar.js"></script>
