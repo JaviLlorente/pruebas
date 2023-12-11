@@ -133,7 +133,7 @@ function addGeoms(data) {
  */
 function addPoints(data) {
   data = data.data;
-  //let pointGroupLayer = L.layerGroup().addTo(map);
+  let pointGroupLayer = L.layerGroup().addTo(map);
 
   // Choose marker type. Options are:
   // (these are case-sensitive, defaults to marker!)
@@ -241,41 +241,7 @@ function addPoints(data) {
 
 //NUEVO
 
-var monumentos = L.geoJSON(geojson, {
-							pointToLayer: function (feature, latlng) {
-									return L.circleMarker(L.circleMarker([data[row].lat, data[row].lon], {
-        radius: markerRadius,
-      }));
-								},	
-							style:estilo_monumentos,
-							onEachFeature: popup_monumentos	
-					});		
 
-			 	pointGroupLayer.addLayer(monumentos);
-
-
-
-	function estiloSelect() {
-		var miSelect = document.getElementById("Clase").value;
-			
-		var momnumentos = L.geoJSON(geojson, {
-							pointToLayer: function (feature, latlng) {
-									return L.circleMarker(latlng, MarkerOptions);
-								},
-							filter: function(feature, layer) {								
-								 if(miSelect != "TODOS")		
-									return (feature.properties.Clase == miSelect );
-								else
-									return true;
-							},	
-							style:estilo_monumentos,
-							onEachFeature: popup_monumentos	
-					});		
-
-		pointGroupLayer.clearLayers();
-		pointGroupLayer.addLayer(monumentos);
-
-	}
 
 // FIN NUEVO
 
