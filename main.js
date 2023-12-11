@@ -239,6 +239,32 @@ function addPoints(data) {
 
 
 
+//NUEVO
+	function estiloSelect() {
+		var miSelect = document.getElementById("estilo").value;
+			
+		var monumentos = L.geoJSON(geojson, {
+							pointToLayer: function (feature, latlng) {
+									return L.circleMarker(latlng, MarkerOptions);
+								},
+							filter: function(feature, layer) {								
+								 if(miSelect != "TODOS")		
+									return (feature.properties.Estilo == miSelect );
+								else
+									return true;
+							},	
+							style:estilo_monumentos,
+							onEachFeature: popup_monumentos	
+					});		
+
+		pointGroupLayer.clearLayers();
+		pointGroupLayer.addLayer(monumentos);
+
+	}
+// FIN NUEVO
+
+
+
 /*
  * Accepts any GeoJSON-ish object and returns an Array of
  * GeoJSON Features. Attempts to guess the geometry type
