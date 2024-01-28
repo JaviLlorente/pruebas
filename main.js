@@ -78,7 +78,7 @@ function init() {
 			var claseSeleccionada = claseXs.value
 			
 			// Se limpian los especies
-			especieXs.innerHTML = '<option value="-"></option>'
+			especieXs.innerHTML = '<option value="-">...</option>'
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
