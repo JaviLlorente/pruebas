@@ -72,7 +72,7 @@ function init() {
 		
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 		
-		function addPoints_lista(data) {
+		function addPoints_lista (data) {
 			data = data.data;
 			console.log
 		}
