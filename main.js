@@ -28,6 +28,10 @@ function init() {
 	attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
 	maxZoom: 18,
   }).addTo(map);
+  
+	map.spin(true, {
+		lines: 13, length: 30
+	}); //on spin
 
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 
@@ -212,7 +216,8 @@ function addPoints(data) {
 			marker.setIcon(icon);
 			
 			pointGroupLayer.addLayer(marker);
-						
+			
+			map.spin(false);  // spinoff
 		} //Fin iteracion		
 		
 	console.log(data);
@@ -238,7 +243,7 @@ function addPoints(data) {
         if (prescValue == "-") { filteredData = simdFilteredData;  }
         for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
-		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
+		alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		//alert("2.filteredData");		
 		//console.log (filteredData);
