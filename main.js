@@ -155,9 +155,7 @@ function addPoints(data) {
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
-		map.spin(true, {
-			//lines: 13, length: 40
-			}); //on spin
+		
 		pointGroupLayer.clearLayers();
 	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
@@ -214,8 +212,7 @@ function addPoints(data) {
 			marker.setIcon(icon);
 			
 			pointGroupLayer.addLayer(marker);
-			
-			map.spin(false);  // spinoff
+						
 		} //Fin iteracion		
 		
 	console.log(data);
