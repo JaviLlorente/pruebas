@@ -2,8 +2,7 @@
 /*
  * Script to display two tables from Google Sheets as point and geometry layers using Leaflet
  * The Sheets are then imported using PapaParse and overwrite the initially laded layers
- * Mixing leaflet-gsheets by Chris Arderne + https://creating-with-data.glitch.me/leaflet-filtering/complete.html + others
- */
+ * Mixing leaflet-gsheets by Chris Arderne + https://creating-with-data.glitch.me/leaflet-filtering/complete.html + others */
 
 // PASTE YOUR URLs HERE
 // these URLs come from Google Sheets 'shareable link' form // the first is the geometry layer and the second the points
@@ -98,8 +97,7 @@ function init() {
 	} /////FIN ESPECIE
 
 /* ADDGEOM
- * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom()
- */
+ * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
 function addGeoms(data) {
   data = data.data;
   // Need to convert the PapaParse JSON into a GeoJSON // Start with an empty GeoJSON of type FeatureCollection // All the rows will be inserted into a single GeoJSON
@@ -152,15 +150,15 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	window.data = data; //Si hace falta	
+	//window.data = data; //Si hace falta	
 
-	document.getElementById("claseX").addEventListener("click", filterData);
+	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
 		
-		//map.spin(true, { lines: 13, length: 30 }); //on_spin
+		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
@@ -214,14 +212,12 @@ function addPoints(data) {
 			let icon = L.icon({ iconUrl: getIcon(data[row].Clase), iconSize: [15, 25], iconAnchor: [9, 28],	popupAnchor: [0, -28],
 				//shadowUrl: 'css/images/markers-shadow.png', //shadowSize: [30, 10], //shadowAnchor: [5, 5]
 			});
-			marker.setIcon(icon);
-			
-			pointGroupLayer.addLayer(marker);		
-			
+			marker.setIcon(icon);			
+			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-	console.log(data);
-	document.getElementById("Narray").value = data.length;	
+	//console.log(data);
+	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
     } //Fin Render
 	
@@ -234,10 +230,8 @@ function addPoints(data) {
 		
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = window.data;  }		
-        for (const d of window.data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }
-		//alert("1.simfileterddata");
-		//console.log (simdFilteredData);
+        if (simdValue == "-") { simdFilteredData = data;  }		
+        for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }
 		
         let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //INMPORTANTE!!!
@@ -246,15 +240,11 @@ function addPoints(data) {
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		//alert("2.filteredData");		
-		//console.log (filteredData);
-		//document.getElementById('Narray').value = filteredData.length;
+		/*let filteredData = [];
+		let prescValue = document.getElementById("presc-filter").value;
+		if (prescValue === "-") {  filteredData = simdFilteredData; }
+		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
-			/*let filteredData = [];
-			let prescValue = document.getElementById("presc-filter").value;
-			if (prescValue === "-") {  filteredData = simdFilteredData; }
-			for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
-			
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
 		
     }; //FinFiltro
@@ -275,10 +265,8 @@ function addPoints(data) {
   }
 }
 
-/*
- * Accepts any GeoJSON-ish object and returns an Array of
- * GeoJSON Features. Attempts to guess the geometry type * when a bare coordinates Array is supplied.
- */
+/* Accepts any GeoJSON-ish object and returns an Array of
+ * GeoJSON Features. Attempts to guess the geometry type * when a bare coordinates Array is supplied. */
 function parseGeom(gj) {
   // FeatureCollection
   if (gj.type == "FeatureCollection") { return gj.features; }
