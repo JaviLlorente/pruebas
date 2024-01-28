@@ -1,6 +1,5 @@
 /* global L Papa */
-/*
- * Script to display two tables from Google Sheets as point and geometry layers using Leaflet
+/* Script to display two tables from Google Sheets as point and geometry layers using Leaflet
  * The Sheets are then imported using PapaParse and overwrite the initially laded layers
  * Mixing leaflet-gsheets by Chris Arderne + https://creating-with-data.glitch.me/leaflet-filtering/complete.html + others */
 
