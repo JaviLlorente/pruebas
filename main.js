@@ -69,7 +69,7 @@ function init() {
 
 function addPoints_lista (data) {
 	data = data.data;
-	console.log
+	console.log (data);
 }
 
 /////SeleccionandoESPECIE  	
@@ -77,8 +77,6 @@ function addPoints_lista (data) {
 		
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 		
-		
-
 		function cargarEspecies() {
 			// Objeto de clases con especies
 			var listaEspecies = {
