@@ -67,15 +67,17 @@ function init() {
   });    
 }//FinInit
 
+function addPoints_lista (data) {
+	data = data.data;
+	console.log
+}
+
 /////SeleccionandoESPECIE  	
 	window.onload = function () {
 		
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 		
-		function addPoints_lista (data) {
-			data = data.data;
-			console.log
-		}
+		
 
 		function cargarEspecies() {
 			// Objeto de clases con especies
