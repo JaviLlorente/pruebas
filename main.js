@@ -31,7 +31,7 @@ function init() {
   
 	map.spin(true, {
 		lines: 13, length: 30
-	}); //on spin
+	}); //on_spin
 
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 
@@ -215,13 +215,13 @@ function addPoints(data) {
 			});
 			marker.setIcon(icon);
 			
-			pointGroupLayer.addLayer(marker);
+			pointGroupLayer.addLayer(marker);		
 			
-			map.spin(false);  // spinoff
 		} //Fin iteracion		
 		
 	console.log(data);
 	document.getElementById("Narray").value = data.length;	
+	map.spin(false);  // spinoff
     } //Fin Render
 	
 	//FILTERING LOGIC
