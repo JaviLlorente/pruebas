@@ -224,7 +224,7 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-	//console.log(data);
+	console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
     } //Fin Render
