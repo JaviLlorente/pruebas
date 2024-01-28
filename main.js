@@ -154,7 +154,7 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	window.data = data; //Si hace falta	
 
-	document.getElementById("claseX").addEventListener("change", filterData);
+	document.getElementById("claseX").addEventListener("click", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
