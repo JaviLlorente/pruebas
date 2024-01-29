@@ -81,16 +81,13 @@ function addPoints_lista (data) {
 	console.log (ANFIBIOlist);
 	
 	let fcSps = { type: "FeatureCollection", features: [], };	
-	for (let row in data) {
-		let features = "MAMIFERO";
-		features.forEach((el) => {
+		forEach((el) => {
 			el.properties = {
 				"MAMIFERO" : el.Especie,
 			};
         fcSps.features.push(el);
 		});
-    }
-	console.log (fcSps);	
+   	console.log (fcSps);	
 	
 	var listaEspecies = {
 		"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
