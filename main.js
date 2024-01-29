@@ -10,7 +10,9 @@ let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0y
 	// Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
 	//"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
 
-let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
+let pointsURL_lista = //"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
+	
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -71,26 +73,37 @@ function init() {
 function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
+	
+	var clasesp = data.map(data => data.Clase, data.Especie); //saca Especie y clase
+	console.log(clasesp);
+	const unique = [...new Set(clasesp.map(item => item.Especie))];
+	console.log('unique => ', unique);
+
+
+
+	
+	
+	
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie); //saca solo la Especie
 	fcmam.sort();	
-	console.log (fcmam);
+	//console.log (fcmam);
 
 	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
 	var fcave = AVElist.map(AVElist => AVElist.Especie);
 	fcave.sort();
-	console.log (fcave);
+	//console.log (fcave);
 
 	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
 	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
 	fcrep.sort();
-	console.log (fcrep);
+	//console.log (fcrep);
 
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
 	fcanf.sort();
-	console.log (fcanf);
+	//console.log (fcanf);
 
 
 
