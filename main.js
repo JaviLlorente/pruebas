@@ -119,7 +119,7 @@ function addPoints_lista (data) {
 /////SeleccionandoESPECIE  	
 	window.onload = function () {
 		
-		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+		document.getElementById("claseX").addEventListener("change", addPoints_lista); //mio
 
 		function cargarEspecies() {
 			
