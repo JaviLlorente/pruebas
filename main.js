@@ -73,19 +73,23 @@ function addPoints_lista (data) {
 	console.log (data);
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie);  //saca solo la Especie
+	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie); //saca solo la Especie
+	fcmam.sort();	
 	console.log (fcmam);
-		
+
 	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
 	var fcave = AVElist.map(AVElist => AVElist.Especie);
+	fcave.sort();
 	console.log (fcave);
-		
+
 	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
 	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
+	fcrep.sort();
 	console.log (fcrep);
-		
+
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
+	fcanf.sort();
 	console.log (fcanf);
 
 
