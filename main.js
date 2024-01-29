@@ -85,7 +85,7 @@ function addPoints_lista (data) {
       let features;
       features.forEach((el) => {
         el.properties = {
-          MAMIFERO: data[row].Especie,
+          data[row].Clase: data[row].Especie,
         };
         fcMAM.features.push(el);
       });
