@@ -74,12 +74,14 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 	
-	var clasesp = data.map(data => data.Clase, data.Especie); //saca Especie y clase
+	
+	
+	var clasesp = data.map(data => data.Clase: [data.Especie]); //saca Especie y clase
 	console.log(clasesp);
-	const unique = [...new Set(clasesp.map(item => item.Especie))];
-	console.log('unique => ', unique);
+	//const unique = [...new Set(clasesp.map(clasesp => clasesp.Especie))];
+	//console.log('unique => ', unique);
 
-
+	//const result = data.filter(checkAdult);
 
 	
 	
