@@ -63,30 +63,13 @@ function init() {
   Papa.parse(pointsURL_lista, {
     download: true,
     header: true,
-    complete: addPoints_lista,
+    complete: cargarEspecies,
   });     
 }//FinInit
 
 
 function addPoints_lista (data) {
-	data = data.data;
-	console.log (data);
-
-	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie);  //saca solo la Especie
-	console.log (fcmam);
-		
-	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
-	var fcave = AVElist.map(AVElist => AVElist.Especie);
-	console.log (fcave);
-		
-	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
-	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
-	console.log (fcrep);
-		
-	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
-	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
-	console.log (fcanf);
+	
 }
 
 
@@ -96,6 +79,26 @@ function addPoints_lista (data) {
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 		function cargarEspecies() {
+			data = data.data;
+			console.log (data);
+			
+			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
+			var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie);  //saca solo la Especie
+			console.log (fcmam);
+				
+			var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
+			var fcave = AVElist.map(AVElist => AVElist.Especie);
+			console.log (fcave);
+				
+			var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
+			var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
+			console.log (fcrep);
+				
+			var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
+			var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
+			console.log (fcanf);
+			
+			
 			// Objeto de clases con especies
 			var listaEspecies = {
 			"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
@@ -104,16 +107,19 @@ function addPoints_lista (data) {
 			"ANFIBIO": [ "Gallipato","Rana Común","Rana Patilarga","Ranita de San Antonio","Salamandra Común","Sapillo Pintojo Ibérico","Sapillo Pintojo Ibérico","Sapo Común","Sapo Corredor","Sapo de Espuelas","Sapo Partero Común","Tritón Ibérico","Tritón Jaspeado","ANFIBIO no identificado con seguridad" ]
 			}
 			
-			var claseXs = document.getElementById('claseX');
-			var especieXs = document.getElementById('especieX');
-			var claseSeleccionada = [];
+			var claseXs = document.getElementById('claseX')
+			var especieXs = document.getElementById('especieX')
+			var claseSeleccionada = claseXs.value
 			
 			// Se limpian los especies
 			especieXs.innerHTML = '<option value="-">...</option>'
 			
-			if(claseXs !== "-"){
+			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = listaEspecies[claseSeleccionada]
+			  if (claseSeleccionada = "MAMIFERO")  { claseSeleccionada = MAMIFEROlist }
+			  else if (claseSeleccionada = "AVE")  { claseSeleccionada = AVElist }
+			  else if (claseSeleccionada = "REPTIL")  { claseSeleccionada = REPTILlist }
+			  else if (claseSeleccionada = "ANFIBIO")  { claseSeleccionada = ANFIBIOlist }
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
