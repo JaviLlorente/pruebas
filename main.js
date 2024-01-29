@@ -6,9 +6,9 @@
 // PASTE YOUR URLs HERE
 // these URLs come from Google Sheets 'shareable link' form // the first is the geometry layer and the second the points
 let geomURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1on0SyoQQfTL0lsTJTuZGotL3IRWj7raYbbnYy5WT83TiQUshrby-SHIducbO7j5T4H3t8x63OKQy/pub?output=csv";
-let pointsURL =  //"https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
+let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
 	// Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
-	"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
+	//"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
 
 let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
 
@@ -87,45 +87,15 @@ function addPoints_lista (data) {
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
 	console.log (fcanf);
-	
-	
-	var claseXs = document.getElementById('claseX')
-	var especieXs = document.getElementById('especieX')
-	var claseSeleccionada = claseXs.value
 
-	// Se limpian los especies
-	especieXs.innerHTML = '<option value="-">...</option>'
-
-	if(claseSeleccionada !== "-"){
-		// Se seleccionan los especies y se ordenan
-		if (claseSeleccionada = "MAMIFERO")  { claseSeleccionada = [MAMIFEROlist] }
-		else if (claseSeleccionada = "AVE")  { claseSeleccionada = [AVElist] }
-		else if (claseSeleccionada = "REPTIL")  { claseSeleccionada = [REPTILlist] }
-		else if (claseSeleccionada = "ANFIBIO")  { claseSeleccionada = [ANFIBIOlist] }
-		console.log (claseSeleccionada);
-		//claseSeleccionada.sort()
-
-		// Insertamos los especies
-		claseSeleccionada.forEach(function(especieX){
-			let opcion = document.createElement('option')
-			opcion.value = especieX
-			opcion.text = especieX
-			especieXs.add(opcion)
-		});
-	}		
-}
 
 
 /////SeleccionandoESPECIE  	
-	window.onload = function () {
+
 		
-		document.getElementById("claseX").addEventListener("change", addPoints_lista); //mio
+		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 		function cargarEspecies() {
-			
-			
-			
-			
 			// Objeto de clases con especies
 			var listaEspecies = {
 			"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
@@ -134,8 +104,32 @@ function addPoints_lista (data) {
 			"ANFIBIO": [ "Gallipato","Rana Común","Rana Patilarga","Ranita de San Antonio","Salamandra Común","Sapillo Pintojo Ibérico","Sapillo Pintojo Ibérico","Sapo Común","Sapo Corredor","Sapo de Espuelas","Sapo Partero Común","Tritón Ibérico","Tritón Jaspeado","ANFIBIO no identificado con seguridad" ]
 			}
 			
-		} //Fin cargaespecies			
-	} /////FIN ESPECIE
+			var claseXs = document.getElementById('claseX')
+			var especieXs = document.getElementById('especieX')
+			var claseSeleccionada = claseXs.value
+			
+			// Se limpian los especies
+			especieXs.innerHTML = '<option value="-">...</option>'
+			
+			if(claseSeleccionada !== "-"){
+			  // Se seleccionan los especies y se ordenan
+			  if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = [fcmam] }
+			  if(claseSeleccionada == "AVE") { claseSeleccionada = [fcave] }
+			  if(claseSeleccionada == "REPTIL") { claseSeleccionada = [fcrep] }
+			  if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = [fcanf] }
+			  //claseSeleccionada.sort()
+			
+			  // Insertamos los especies
+			  claseSeleccionada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = especieX
+				opcion.text = especieX
+				especieXs.add(opcion)
+			  });
+			}			
+		} // Iniciar la carga de clases solo para comprobar que funciona			
+}
+
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
