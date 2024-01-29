@@ -62,7 +62,7 @@ function init() {
     header: true,
     complete: addPoints,
   });
-  Papa.parse(pointsURL_lista, {
+  Papa.parse(pointsURL, {
     download: true,
     header: true,
     complete: addPoints_lista,
@@ -78,8 +78,8 @@ function addPoints_lista (data) {
 	
 	var clasesp = data.map(data => data.Clase: [data.Especie]); //saca Especie y clase
 	console.log(clasesp);
-	//const unique = [...new Set(clasesp.map(clasesp => clasesp.Especie))];
-	//console.log('unique => ', unique);
+	const uniquesp = [...new Set(clasesp.map(clasesp => clasesp.Especie))];
+	console.log('uniquesp => ', uniquesp);
 
 	//const result = data.filter(checkAdult);
 
