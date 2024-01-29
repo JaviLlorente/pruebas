@@ -75,11 +75,11 @@ function addPoints_lista (data) {
 	console.log (data);
 	
 	
-	
+	//partiendo de la tabla original sin otro sheet
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];
-	fcmam.sort();	
+	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
+	fcmam.sort(); //ordena especies	
 	console.log (fcmam);
 
 	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
@@ -123,9 +123,9 @@ function addPoints_lista (data) {
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
 			  if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
-			  if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
-			  if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
-			  if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
+			  else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
+			  else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
+			  else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
