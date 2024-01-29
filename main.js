@@ -71,37 +71,10 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
-	var lista_MAMIFERO = { type: "FeatureCollection", features: [], };
-	var lista_AVE = { type: "FeatureCollection", features: [], };
-	var lista_REPTIL = { type: "FeatureCollection", features: [], };
-	var lista_ANFIBIO = { type: "FeatureCollection", features: [], };
-    
-	for (const d of data) {
-		if (d.Clase == "MAMIFERO") { let features;
-			features.forEach((el) => {
-				el.properties = { d.Especie, };
-				lista_MAMIFERO.features.push(el);
-			}); }
-		console.log (lista_MAMIFERO);
-		else if (d.Clase == "AVE") { let features;
-			features.forEach((el) => {
-				el.properties = { d.Especie, };
-				lista_AVE.features.push(el);
-			}); }
-		console.log (lista_AVE);
-		else if (d.Clase == "REPTIL") { let features;
-			features.forEach((el) => {
-				el.properties = { d.Especie, };
-				lista_REPTIL.features.push(el);
-			}); }
-		console.log (lista_REPTIL);
-		else if (d.Clase == "ANFIBIO") { let features;
-			features.forEach((el) => {
-				el.properties = { d.Especie, };
-				lista_ANFIBIO.features.push(el);
-			}); }
-		console.log (lista_ANFIBIO);
-	}
+	let MAMIFEROlist = data.map(data => { if (data.Clase == "MAMIFERO")  { return data.Especie; } });  console.log (MAMIFEROlist);
+	let AVElist = data.map(data => { if (data.Clase == "MAMIFERO")  { return data.Especie; } });  console.log (AVElist);
+	let REPTILlist = data.map(data => { if (data.Clase == "MAMIFERO")  { return data.Especie; } });  console.log (REPTILlist);
+	let ANFIBIOlist = data.map(data => { if (data.Clase == "MAMIFERO")  { return data.Especie; } });  console.log (ANFIBIOlist);
 
 }
 
