@@ -69,7 +69,7 @@ function init() {
 
 function addPoints_lista (data) {
 	data = data.data;
-	console.log (data);
+	//console.log (data);
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });
 	console.log (MAMIFEROlist);	
@@ -80,17 +80,17 @@ function addPoints_lista (data) {
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	console.log (ANFIBIOlist);
 	
-	let fcMAM = { type: "FeatureCollection", features: [], };	
+	let fcSps = { type: "FeatureCollection", features: [], };	
 	for (let row in data) {
-      let features;
-      features.forEach((el) => {
-        el.properties = {
-          data[row].Clase: data[row].Especie,
-        };
-        fcMAM.features.push(el);
-      });
+		let features;
+		features.forEach((el) => {
+			el.properties = {
+				"MAMIFERO" : data[row].Especie,
+			};
+        fcSps.features.push(el);
+		});
     }
-	console.log (fcMAM);	
+	console.log (fcSps);	
 	
 	var listaEspecies = {
 		"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
