@@ -72,7 +72,15 @@ function addPoints_lista (data) {
 	console.log (data);
 
 	let MAMIFEROlist =  {"MAMIFERO": [] };
-	for (const d of data) { if (d.Clase == "MAMIFERO") { MAMIFEROlist.push(d); } } 
+	
+	for (let row in data) {    
+		data.forEach((el) => {
+			el.properties = {
+			  MAMIFERO: data[row].Especie,			  
+			};
+			MAMIFEROlist.features.push(el);
+		});
+    }
 	console.log (MAMIFEROlist);
 
 
