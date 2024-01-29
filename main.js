@@ -81,11 +81,13 @@ function addPoints_lista (data) {
 	console.log (MAMIFEROlist);
 	
 	var MAMIFEROlist2 = MAMIFEROlist2.filter(function(MAMIFEROlist2) {
-    return MAMIFEROlist2.Clase == "MAMIFERO";
+		return MAMIFEROlist2.Clase == "MAMIFERO";
 	});
 	console.log (MAMIFEROlist2);
 
-
+	var MAMIFEROlist3 = MAMIFEROlist3.filter(function (MAMIFEROlist3) { return MAMIFEROlist3.Clase == 'MAMIFERO'; });
+	var firstObj = (results.length > 0) ? results[0] : null;
+	console.log (MAMIFEROlist3);
 
 
 	var listaEspecies = {
