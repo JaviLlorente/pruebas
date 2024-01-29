@@ -61,50 +61,41 @@ function init() {
     download: true,
     header: true,
     complete: addPoints,
-  });
-  Papa.parse(pointsURL, {
-    download: true,
-    header: true,
-    complete: addPoints_lista,
-  });     
+  });  
 }//FinInit
-
-
-function addPoints_lista (data) {
-	data = data.data;
-	console.log (data);
 	
-	
-	//partiendo de la tabla original sin otro sheet
-
-	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-	fcmam.sort(); //ordena especies	
-	console.log (fcmam);
-
-	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
-	var fcave = AVElist.map(AVElist => AVElist.Especie);
-	fcave.sort();
-	console.log (fcave);
-
-	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
-	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
-	fcrep.sort();
-	console.log (fcrep);
-
-	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
-	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
-	fcanf.sort();
-	console.log (fcanf);
-
 
 
 /////SeleccionandoESPECIE  	
-
 		
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 		function cargarEspecies() {
+			data = data.data;
+			console.log (data);
+			
+			//partiendo de la tabla original sin otro sheet
+			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
+			var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
+			fcmam.sort(); //ordena especies	
+			console.log (fcmam);
+
+			var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
+			var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
+			fcave.sort(); //ordena especies	
+			console.log (fcave);
+
+			var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
+			var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
+			fcrep.sort(); //ordena especies	
+			console.log (fcrep);
+
+			var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
+			var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
+			fcanf.sort(); //ordena especies	
+			console.log (fcanf);
+
+			
 			// Objeto de clases con especies
 			var listaEspecies = {
 			"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
@@ -137,7 +128,7 @@ function addPoints_lista (data) {
 			  });
 			}			
 		} // Iniciar la carga de clases solo para comprobar que funciona			
-}
+
 
 
 /* ADDGEOM
@@ -194,7 +185,7 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	window.data = data; //Creo que no hace falta	
+	//window.data = data; //Creo que no hace falta	
 
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -274,8 +265,8 @@ function addPoints(data) {
 		
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = window.data;  }   //en origen data era window.data, cambiar si no funciona
-        for (const d of window.data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
+        if (simdValue == "-") { simdFilteredData = data;  }   //en origen data era window.data, cambiar si no funciona
+        for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
         let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //INMPORTANTE!!!
