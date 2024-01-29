@@ -194,7 +194,7 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	//window.data = data; //Creo que no hace falta	
+	window.data = data; //Creo que no hace falta	
 
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -274,8 +274,8 @@ function addPoints(data) {
 		
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data;  }   //en origen data era window.data, cambiar si no funciona
-        for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
+        if (simdValue == "-") { simdFilteredData = window.data;  }   //en origen data era window.data, cambiar si no funciona
+        for (const d of window.data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
         let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //INMPORTANTE!!!
