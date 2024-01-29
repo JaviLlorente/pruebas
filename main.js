@@ -98,10 +98,10 @@ function addPoints_lista (data) {
 
 	if(claseSeleccionada !== "-"){
 		// Se seleccionan los especies y se ordenan
-		if (claseSeleccionada = "MAMIFERO")  { claseSeleccionada = MAMIFEROlist }
-		else if (claseSeleccionada = "AVE")  { claseSeleccionada = AVElist }
-		else if (claseSeleccionada = "REPTIL")  { claseSeleccionada = REPTILlist }
-		else if (claseSeleccionada = "ANFIBIO")  { claseSeleccionada = ANFIBIOlist }
+		if (claseSeleccionada = "MAMIFERO")  { claseSeleccionada = [MAMIFEROlist] }
+		else if (claseSeleccionada = "AVE")  { claseSeleccionada = [AVElist] }
+		else if (claseSeleccionada = "REPTIL")  { claseSeleccionada = [REPTILlist] }
+		else if (claseSeleccionada = "ANFIBIO")  { claseSeleccionada = [ANFIBIOlist] }
 		console.log (claseSeleccionada);
 		//claseSeleccionada.sort()
 
