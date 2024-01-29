@@ -70,7 +70,39 @@ function init() {
 function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
-	var listaEspecies = data;
+
+	var lista_MAMIFERO = { type: "FeatureCollection", features: [], };
+	var lista_AVE = { type: "FeatureCollection", features: [], };
+	var lista_REPTIL = { type: "FeatureCollection", features: [], };
+	var lista_ANFIBIO = { type: "FeatureCollection", features: [], };
+    
+	for (let row in data) {
+		if (data[row].Clase == "MAMIFERO") { let features;
+			features.forEach((el) => {
+				el.properties = { data[row].Especie, };
+				lista_MAMIFERO.features.push(el);
+			}); }
+		console.log (lista_MAMIFERO);
+		else if (data[row].Clase == "AVE") { let features;
+			features.forEach((el) => {
+				el.properties = { data[row].Especie, };
+				lista_AVE.features.push(el);
+			}); }
+		console.log (lista_AVE);
+		else if (data[row].Clase == "REPTIL") {	let features;
+			features.forEach((el) => {
+				el.properties = { data[row].Especie, };
+				lista_REPTIL.features.push(el);
+			}); }
+		console.log (lista_REPTIL);
+		else if (data[row].Clase == "ANFIBIO") { let features;
+			features.forEach((el) => {
+				el.properties = { data[row].Especie, };
+				lista_ANFIBIO.features.push(el);
+			}); }
+		console.log (lista_ANFIBIO);
+	}
+
 }
 
 /////SeleccionandoESPECIE  	
