@@ -76,7 +76,7 @@ function addPoints_lista (data) {
 	
 	
 	
-	var clasesp = data.map(data => data.Clase: [data.Especie]); //saca Especie y clase
+	var clasesp = data.map(data => { data.Clase: [data.Especie]) }; //saca Especie y clase
 	console.log(clasesp);
 	const uniquesp = [...new Set(clasesp.map(clasesp => clasesp.Especie))];
 	console.log('uniquesp => ', uniquesp);
