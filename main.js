@@ -71,7 +71,7 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
-	let MAMIFEROlist = { [] };
+	let MAMIFEROlist =  {"MAMIFERO": [] };
 	for (const d of data) { if (d.Clase == "MAMIFERO") { MAMIFEROlist.push(d); } } 
 	console.log (MAMIFEROlist);
 
