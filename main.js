@@ -71,14 +71,7 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
-	let MAMIFEROlist =  [] ;	 
-	data.forEach((el) => {
-		if (data.Clase == "MAMIFERO")  {
-			el.properties = { data.Especie, };
-			MAMIFEROlist.push(el); 
-		} 
-	} ) ;
-	console.log (MAMIFEROlist);
+	
 	
 	var MAMIFEROlist2 = MAMIFEROlist2.filter(function(MAMIFEROlist2) {
 		return MAMIFEROlist2.Clase == "MAMIFERO";
