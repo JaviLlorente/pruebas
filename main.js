@@ -104,14 +104,14 @@ function addPoints_lista (data) {
 			"ANFIBIO": [ "Gallipato","Rana Común","Rana Patilarga","Ranita de San Antonio","Salamandra Común","Sapillo Pintojo Ibérico","Sapillo Pintojo Ibérico","Sapo Común","Sapo Corredor","Sapo de Espuelas","Sapo Partero Común","Tritón Ibérico","Tritón Jaspeado","ANFIBIO no identificado con seguridad" ]
 			}
 			
-			var claseXs = document.getElementById('claseX')
-			var especieXs = document.getElementById('especieX')
-			var claseSeleccionada = claseXs.value
+			var claseXs = document.getElementById('claseX');
+			var especieXs = document.getElementById('especieX');
+			var claseSeleccionada = [];
 			
 			// Se limpian los especies
 			especieXs.innerHTML = '<option value="-">...</option>'
 			
-			if(claseSeleccionada !== "-"){
+			if(claseXs !== "-"){
 			  // Se seleccionan los especies y se ordenan
 			  claseSeleccionada = listaEspecies[claseSeleccionada]
 			  //claseSeleccionada.sort()
