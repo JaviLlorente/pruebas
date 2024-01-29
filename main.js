@@ -71,7 +71,7 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
-	let MAMIFEROlist =  {"MAMIFERO": [] };
+	let MAMIFEROlist =  [] ;
 	
 	for (let row in data) {    
 		data.forEach((el) => {
