@@ -72,7 +72,13 @@ function addPoints_lista (data) {
 	console.log (data);
 
 	var MAMIFEROlist = data.filter(function(data) {	return data.Clase == "MAMIFERO"; });
-	console.log (MAMIFEROlist);
+	console.log (MAMIFEROlist);	
+	var AVElist = data.filter(function(data) {	return data.Clase == "AVE"; });
+	console.log (AVElist);	
+	var REPTILlist = data.filter(function(data) {	return data.Clase == "REPTIL"; });
+	console.log (REPTILlist);	
+	var ANFIBIOlist = data.filter(function(data) {	return data.Clase == "ANFIBIO"; });
+	console.log (ANFIBIOlist);
 	
 
 	var listaEspecies = {
