@@ -74,7 +74,7 @@ function init() {
 			data = data.data;
 			console.log (data);
 			
-			//partiendo de la tabla original sin otro sheet
+			//partiendo de la tabla original sin otro sheet. NO VA POR DATA
 			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 			var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
 			fcmam.sort(); //ordena especies	
@@ -251,7 +251,7 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-	//console.log(data);
+	console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
     } //Fin Render
