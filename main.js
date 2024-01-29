@@ -71,11 +71,13 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
-	let MAMIFEROlist = MAM.map(data => { if (data.Clase == "MAMIFERO")  { return data.Especie; } });  console.log (MAMIFEROlist);
-	let AVElist = AVE.map(data => { if (data.Clase == "AVE")  { return data.Especie; } });  console.log (AVElist);
-	let REPTILlist = REP.map(data => { if (data.Clase == "REPTIL")  { return data.Especie; } });  console.log (REPTILlist);
-	let ANFIBIOlist = ANF.map(data => { if (data.Clase == "ANFIBIO")  { return data.Especie; } });  console.log (ANFIBIOlist);
+	let MAMIFEROlist = { [] };
+	for (const d of data) { if (d.Clase == "MAMIFERO") { MAMIFEROlist.push(d); } } 
+	console.log (MAMIFEROlist);
 
+
+
+	
 }
 
 /////SeleccionandoESPECIE  	
