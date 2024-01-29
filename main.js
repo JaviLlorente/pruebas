@@ -90,7 +90,8 @@ function addPoints_lista (data) {
 	const lista = ['MAMIFEROlist', 'AVElist', 'REPTILlist', 'ANFIBIOlist'];
 	console.log(lista.join('], ['));
 	// Expected output: "Fire-Air-Water"
-		
+	
+	
 	var listaEspecies = {
 		"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
 		"AVE": [ "Abejaruco","Abubilla","Acentor Común","Agateador Común","Águila Calzada","Águila Imperial Ibérica","Águila Real","Aguilucho Cenizo","Aguilucho Lagunero","Aguilucho Pálido","Alcaraván","Alcaudón Común","Alcaudón Dorsirrojo","Alcaudón Real","Alcotán","Alondra Común","Alondra Totovía","Ánade Azulón","Andarríos Chico","Arrendajo","Autillo","Avefría Europea","Avión Común","Avión Roquero","Azor","Bisbita Pratense","Búho Campestre","Búho Chico","Búho Real","Buitre Leonado","Buitre Negro","Calandria","Cárabo","Carbonero Común","Carbonero Garrapinos","Carricero Común","Cerceta Común","Cernícalo Primilla","Cernícalo Vulgar","Chochín","Chotacabras Europeo (Gris)","Chova Piquirroja","Cigüeña Blanca","Cigüeña Negra","Cigüeñuela Común","Codorniz Común","Cogujada Común","Colirrojo Real","Colirrojo Tizón","Collalba Gris","Collalba Rubia","Cormorán Grande","Corneja","Críalo","Cuco","Cuervo","Culebrera Europea","Curruca Capirotada","Curruca Carrasqueña","Curruca Mirlona","Curruca Mosquitera","Curruca Rabilarga","Curruca Zarcera","Escribano Hortelano","Escribano Montesino","Escribano Soteño","Esmerejón","Estornino Negro","Estornino Pinto","Faisán","Focha Común","Gallineta Común","Garza Real","Gavilán","Gaviota Reidora ","Golondrina Común","Gorrión Chillón","Gorrión Común","Gorrión Molinero","Grajilla","Halcón Peregrino","Herrerillo Común","Jilguero","Lavandera Blanca","Lechuza","Martin Pescador","Milano Negro","Milano Real","Mirlo Común","Mito","Mochuelo","Mosquitero Común","Mosquitero Papialbo","Oropéndola","Paloma cimarrona","Paloma Torcaz","Papamoscas Cerrojillo","Pardillo","Pato Cuchara","Perdiz Roja","Petirrojo","Pico Picapinos","Picogordo","Pinzón Vulgar","Piquituerto","Pito Real","Rabilargo","Ratonero Común","Reyezuelo Listado","Ruiseñor Común","Tarabilla Común","Torcecuello","Tórtola Europea","Tórtola Turca","Trepador Azul","Triguero","Urraca","Vencejo","Verdecillo","Verderón","Zarcero Común","Zorzal Alirrojo","Zorzal Charlo","Zorzal Común","Zorzal Real","AVE no identificada con seguridad" ],
@@ -110,12 +111,12 @@ function addPoints_lista (data) {
 			
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
-			var claseSeleccionada = claseXs.value
+			var claseSeleccionada = [];
 			
 			// Se limpian los especies
 			especieXs.innerHTML = '<option value="-">...</option>'
 			
-			if(claseSeleccionada !== "-"){
+			if(claseXs !== "-"){
 			  // Se seleccionan los especies y se ordenan
 			  claseSeleccionada = listaEspecies[claseSeleccionada]
 			  //claseSeleccionada.sort()
