@@ -72,16 +72,20 @@ function addPoints_lista (data) {
 	//console.log (data);
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });
-	console.log (MAMIFEROlist);	
-	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
-	console.log (AVElist);	
-	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
-	console.log (REPTILlist);	
-	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
-	console.log (ANFIBIOlist);
-	
-	var fcmam = data.map(data => data.Especie);
+	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie);
 	console.log (fcmam);
+	
+	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
+	var fcave = AVElist.map(AVElist => AVElist.Especie);
+	console.log (fcave);
+	
+	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
+	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
+	console.log (fcrep);
+	
+	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
+	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
+	console.log (fcanf);
 	
 	var listaEspecies = {
 		"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
