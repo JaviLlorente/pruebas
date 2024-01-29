@@ -78,7 +78,7 @@ function addPoints_lista (data) {
 			el.properties = {
 			  MAMIFERO: data[row].Especie,			  
 			};
-			MAMIFEROlist.features.push(el);
+			MAMIFEROlist.push(el);
 		});
     }
 	console.log (MAMIFEROlist);
