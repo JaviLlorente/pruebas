@@ -69,7 +69,7 @@ function init() {
 
 function addPoints_lista (data) {
 	data = data.data;
-	//console.log (data);
+	console.log (data);
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie);  //saca solo la Especie
