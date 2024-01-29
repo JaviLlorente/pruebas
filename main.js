@@ -71,17 +71,9 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
+	var MAMIFEROlist = data.filter(function(data) {	return data.Clase == "MAMIFERO"; });
+	console.log (MAMIFEROlist);
 	
-	
-	var MAMIFEROlist2 = MAMIFEROlist2.filter(function(MAMIFEROlist2) {
-		return MAMIFEROlist2.Clase == "MAMIFERO";
-	});
-	console.log (MAMIFEROlist2);
-
-	var MAMIFEROlist3 = MAMIFEROlist3.filter(function (MAMIFEROlist3) { return MAMIFEROlist3.Clase == 'MAMIFERO'; });
-	var firstObj = (results.length > 0) ? results[0] : null;
-	console.log (MAMIFEROlist3);
-
 
 	var listaEspecies = {
 		"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
