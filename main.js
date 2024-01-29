@@ -282,7 +282,7 @@ function addPoints(data) {
         if (prescValue == "-") { filteredData = simdFilteredData;  }
         for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
-		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
+		alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		/*let filteredData = [];
 		let prescValue = document.getElementById("presc-filter").value;
