@@ -76,36 +76,26 @@ function addPoints_lista (data) {
 	
 	
 	
-	//var clasesp = data.map(data => { data.Clase, data.Especie }; //saca Especie y clase
-	//console.log(clasesp);
-	//const uniquesp = [...new Set(clasesp.map(clasesp => clasesp.Especie))];
-	//console.log('uniquesp => ', uniquesp);
-
-	//const result = data.filter(checkAdult);
-
-	
-	
-	
 
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];
 	fcmam.sort();	
-	//console.log (fcmam);
+	console.log (fcmam);
 
 	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
 	var fcave = AVElist.map(AVElist => AVElist.Especie);
 	fcave.sort();
-	//console.log (fcave);
+	console.log (fcave);
 
 	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
 	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
 	fcrep.sort();
-	//console.log (fcrep);
+	console.log (fcrep);
 
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
 	fcanf.sort();
-	//console.log (fcanf);
+	console.log (fcanf);
 
 
 
