@@ -82,10 +82,10 @@ function addPoints_lista (data) {
 	
 	let fcSps = { type: "FeatureCollection", features: [], };	
 	for (let row in data) {
-		let features;
+		let features = "MAMIFERO";
 		features.forEach((el) => {
 			el.properties = {
-				"MAMIFERO" : data[row].Especie,
+				"MAMIFERO" : el.Especie,
 			};
         fcSps.features.push(el);
 		});
