@@ -76,28 +76,28 @@ function addPoints_lista (data) {
 	var lista_REPTIL = { type: "FeatureCollection", features: [], };
 	var lista_ANFIBIO = { type: "FeatureCollection", features: [], };
     
-	for (let row in data) {
-		if (data[row].Clase == "MAMIFERO") { let features;
+	for (const d of data) {
+		if (d.Clase == "MAMIFERO") { let features;
 			features.forEach((el) => {
-				el.properties = { data[row].Especie, };
+				el.properties = { d.Especie, };
 				lista_MAMIFERO.features.push(el);
 			}); }
 		console.log (lista_MAMIFERO);
-		else if (data[row].Clase == "AVE") { let features;
+		else if (d.Clase == "AVE") { let features;
 			features.forEach((el) => {
-				el.properties = { data[row].Especie, };
+				el.properties = { d.Especie, };
 				lista_AVE.features.push(el);
 			}); }
 		console.log (lista_AVE);
-		else if (data[row].Clase == "REPTIL") {	let features;
+		else if (d.Clase == "REPTIL") { let features;
 			features.forEach((el) => {
-				el.properties = { data[row].Especie, };
+				el.properties = { d.Especie, };
 				lista_REPTIL.features.push(el);
 			}); }
 		console.log (lista_REPTIL);
-		else if (data[row].Clase == "ANFIBIO") { let features;
+		else if (d.Clase == "ANFIBIO") { let features;
 			features.forEach((el) => {
-				el.properties = { data[row].Especie, };
+				el.properties = { d.Especie, };
 				lista_ANFIBIO.features.push(el);
 			}); }
 		console.log (lista_ANFIBIO);
