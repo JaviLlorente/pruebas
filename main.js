@@ -86,14 +86,7 @@ function addPoints_lista (data) {
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
 	console.log (fcanf);
-	
-	const lista = ['MAMIFEROlist', 'AVElist', 'REPTILlist', 'ANFIBIOlist'];
-	console.log(lista.join('], ['));
-	// Expected output: "Fire-Air-Water"
-	
-	
-	
-	
+		
 }
 
 /////SeleccionandoESPECIE  	
@@ -120,7 +113,10 @@ function addPoints_lista (data) {
 			
 			if(claseXs !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = listaEspecies[claseSeleccionada]
+				if (claseXs == "MAMIFERO") { claseSeleccionada = MAMIFEROlist }
+				else if (claseXs == "AVE") { claseSeleccionada = AVElist }
+				else if (claseXs == "REPTIL") { claseSeleccionada = REPTILlist }
+				else if (claseXs == "ANFIBIO") { claseSeleccionada = ANFIBIOlist }
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
