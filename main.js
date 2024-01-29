@@ -102,6 +102,7 @@ function addPoints_lista (data) {
 		else if (claseSeleccionada = "AVE")  { claseSeleccionada = AVElist }
 		else if (claseSeleccionada = "REPTIL")  { claseSeleccionada = REPTILlist }
 		else if (claseSeleccionada = "ANFIBIO")  { claseSeleccionada = ANFIBIOlist }
+		console.log (claseSeleccionada);
 		//claseSeleccionada.sort()
 
 		// Insertamos los especies
