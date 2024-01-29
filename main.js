@@ -71,16 +71,27 @@ function addPoints_lista (data) {
 	data = data.data;
 	console.log (data);
 
-	var MAMIFEROlist = data.filter(function(data) {	return data.Clase == "MAMIFERO"; });
+	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });
 	console.log (MAMIFEROlist);	
-	var AVElist = data.filter(function(data) {	return data.Clase == "AVE"; });
+	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
 	console.log (AVElist);	
-	var REPTILlist = data.filter(function(data) {	return data.Clase == "REPTIL"; });
+	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
 	console.log (REPTILlist);	
-	var ANFIBIOlist = data.filter(function(data) {	return data.Clase == "ANFIBIO"; });
+	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
 	console.log (ANFIBIOlist);
 	
-
+	let fcMAM = { type: "FeatureCollection", features: [], };	
+	for (let row in data) {
+      let features;
+      features.forEach((el) => {
+        el.properties = {
+          MAMIFERO: data[row].Especie,
+        };
+        fcMAM.features.push(el);
+      });
+    }
+	console.log (fcMAM);	
+	
 	var listaEspecies = {
 		"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
 		"AVE": [ "Abejaruco","Abubilla","Acentor Común","Agateador Común","Águila Calzada","Águila Imperial Ibérica","Águila Real","Aguilucho Cenizo","Aguilucho Lagunero","Aguilucho Pálido","Alcaraván","Alcaudón Común","Alcaudón Dorsirrojo","Alcaudón Real","Alcotán","Alondra Común","Alondra Totovía","Ánade Azulón","Andarríos Chico","Arrendajo","Autillo","Avefría Europea","Avión Común","Avión Roquero","Azor","Bisbita Pratense","Búho Campestre","Búho Chico","Búho Real","Buitre Leonado","Buitre Negro","Calandria","Cárabo","Carbonero Común","Carbonero Garrapinos","Carricero Común","Cerceta Común","Cernícalo Primilla","Cernícalo Vulgar","Chochín","Chotacabras Europeo (Gris)","Chova Piquirroja","Cigüeña Blanca","Cigüeña Negra","Cigüeñuela Común","Codorniz Común","Cogujada Común","Colirrojo Real","Colirrojo Tizón","Collalba Gris","Collalba Rubia","Cormorán Grande","Corneja","Críalo","Cuco","Cuervo","Culebrera Europea","Curruca Capirotada","Curruca Carrasqueña","Curruca Mirlona","Curruca Mosquitera","Curruca Rabilarga","Curruca Zarcera","Escribano Hortelano","Escribano Montesino","Escribano Soteño","Esmerejón","Estornino Negro","Estornino Pinto","Faisán","Focha Común","Gallineta Común","Garza Real","Gavilán","Gaviota Reidora ","Golondrina Común","Gorrión Chillón","Gorrión Común","Gorrión Molinero","Grajilla","Halcón Peregrino","Herrerillo Común","Jilguero","Lavandera Blanca","Lechuza","Martin Pescador","Milano Negro","Milano Real","Mirlo Común","Mito","Mochuelo","Mosquitero Común","Mosquitero Papialbo","Oropéndola","Paloma cimarrona","Paloma Torcaz","Papamoscas Cerrojillo","Pardillo","Pato Cuchara","Perdiz Roja","Petirrojo","Pico Picapinos","Picogordo","Pinzón Vulgar","Piquituerto","Pito Real","Rabilargo","Ratonero Común","Reyezuelo Listado","Ruiseñor Común","Tarabilla Común","Torcecuello","Tórtola Europea","Tórtola Turca","Trepador Azul","Triguero","Urraca","Vencejo","Verdecillo","Verderón","Zarcero Común","Zorzal Alirrojo","Zorzal Charlo","Zorzal Común","Zorzal Real","AVE no identificada con seguridad" ],
