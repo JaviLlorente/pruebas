@@ -18,7 +18,7 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-var result2;
+var agruparPorTipo;
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
@@ -102,11 +102,11 @@ function init() {
 			} ;  //saca especies únicas
 			//todo.sort(); //ordena especies	
 			console.log (todo);*/
-		}//fin de geralista
+		}//fin de generalista
  
 
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-		function cargarEspecies(result2) {
+		function cargarEspecies(agruparPorTipo) {
 						
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
@@ -117,7 +117,7 @@ function init() {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = result2[claseSeleccionada]
+			  claseSeleccionada = agruparPorTipo[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
