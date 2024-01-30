@@ -10,9 +10,7 @@ let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0y
 	// Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
 	//"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
 
-let pointsURL_lista = //"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
- "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
-	
+let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -61,41 +59,47 @@ function init() {
     download: true,
     header: true,
     complete: addPoints,
-  });  
+  });
+  Papa.parse(pointsURL_lista, {
+    download: true,
+    header: true,
+    complete: addPoints_lista,
+  });     
 }//FinInit
-	
+
+//funciona partiendo del spreadsheet con dos sheets (el segundo calcula valores únicos y ordena)
+function addPoints_lista (data) {
+	data = data.data;
+	console.log (data);
+
+	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
+	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie); //saca solo la Especie
+	fcmam.sort();	
+	console.log (fcmam);
+
+	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
+	var fcave = AVElist.map(AVElist => AVElist.Especie);
+	fcave.sort();
+	console.log (fcave);
+
+	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
+	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
+	fcrep.sort();
+	console.log (fcrep);
+
+	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
+	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
+	fcanf.sort();
+	console.log (fcanf);
+
 
 
 /////SeleccionandoESPECIE  	
+
 		
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 		function cargarEspecies() {
-			data = data.data;
-			console.log (data);
-			
-			//partiendo de la tabla original sin otro sheet. NO VA POR DATA
-			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-			var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-			fcmam.sort(); //ordena especies	
-			console.log (fcmam);
-
-			var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
-			var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-			fcave.sort(); //ordena especies	
-			console.log (fcave);
-
-			var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
-			var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-			fcrep.sort(); //ordena especies	
-			console.log (fcrep);
-
-			var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
-			var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-			fcanf.sort(); //ordena especies	
-			console.log (fcanf);
-
-			
 			// Objeto de clases con especies
 			var listaEspecies = {
 			"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
@@ -128,7 +132,7 @@ function init() {
 			  });
 			}			
 		} // Iniciar la carga de clases solo para comprobar que funciona			
-
+}
 
 
 /* ADDGEOM
@@ -251,7 +255,7 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-	console.log(data);
+	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
     } //Fin Render
@@ -273,7 +277,7 @@ function addPoints(data) {
         if (prescValue == "-") { filteredData = simdFilteredData;  }
         for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
-		alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
+		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		/*let filteredData = [];
 		let prescValue = document.getElementById("presc-filter").value;
