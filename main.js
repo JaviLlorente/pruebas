@@ -107,7 +107,7 @@ function init() {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = newArr[claseSeleccionada]
+			  claseSeleccionada = result[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
