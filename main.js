@@ -59,54 +59,39 @@ function init() {
     download: true,
     header: true,
     complete: addPoints,
-  });
+  });   
   Papa.parse(pointsURL_lista, {
     download: true,
-    header: true,
-    complete: addPoints_lista,
-  });     
-}//FinInit
-
-//funciona partiendo del spreadsheet con dos sheets (el segundo calcula valores únicos y ordena)
-function addPoints_lista (data) {
-	data = data.data;
-	console.log (data);
-
-	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie); //saca solo la Especie
-	fcmam.sort();	
-	console.log (fcmam);
-
-	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });
-	var fcave = AVElist.map(AVElist => AVElist.Especie);
-	fcave.sort();
-	console.log (fcave);
-
-	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });
-	var fcrep = REPTILlist.map(REPTILlist => REPTILlist.Especie);
-	fcrep.sort();
-	console.log (fcrep);
-
-	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });
-	var fcanf = ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie);
-	fcanf.sort();
-	console.log (fcanf);
-
-
-
-/////SeleccionandoESPECIE  	
-
-		
+    header: false,
+    complete: cargarEspecies,
+  });   
+    
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 		function cargarEspecies() {
-			// Objeto de clases con especies
-			var listaEspecies = {
-			"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
-			"AVE": [ "Abejaruco","Abubilla","Acentor Común","Agateador Común","Águila Calzada","Águila Imperial Ibérica","Águila Real","Aguilucho Cenizo","Aguilucho Lagunero","Aguilucho Pálido","Alcaraván","Alcaudón Común","Alcaudón Dorsirrojo","Alcaudón Real","Alcotán","Alondra Común","Alondra Totovía","Ánade Azulón","Andarríos Chico","Arrendajo","Autillo","Avefría Europea","Avión Común","Avión Roquero","Azor","Bisbita Pratense","Búho Campestre","Búho Chico","Búho Real","Buitre Leonado","Buitre Negro","Calandria","Cárabo","Carbonero Común","Carbonero Garrapinos","Carricero Común","Cerceta Común","Cernícalo Primilla","Cernícalo Vulgar","Chochín","Chotacabras Europeo (Gris)","Chova Piquirroja","Cigüeña Blanca","Cigüeña Negra","Cigüeñuela Común","Codorniz Común","Cogujada Común","Colirrojo Real","Colirrojo Tizón","Collalba Gris","Collalba Rubia","Cormorán Grande","Corneja","Críalo","Cuco","Cuervo","Culebrera Europea","Curruca Capirotada","Curruca Carrasqueña","Curruca Mirlona","Curruca Mosquitera","Curruca Rabilarga","Curruca Zarcera","Escribano Hortelano","Escribano Montesino","Escribano Soteño","Esmerejón","Estornino Negro","Estornino Pinto","Faisán","Focha Común","Gallineta Común","Garza Real","Gavilán","Gaviota Reidora ","Golondrina Común","Gorrión Chillón","Gorrión Común","Gorrión Molinero","Grajilla","Halcón Peregrino","Herrerillo Común","Jilguero","Lavandera Blanca","Lechuza","Martin Pescador","Milano Negro","Milano Real","Mirlo Común","Mito","Mochuelo","Mosquitero Común","Mosquitero Papialbo","Oropéndola","Paloma cimarrona","Paloma Torcaz","Papamoscas Cerrojillo","Pardillo","Pato Cuchara","Perdiz Roja","Petirrojo","Pico Picapinos","Picogordo","Pinzón Vulgar","Piquituerto","Pito Real","Rabilargo","Ratonero Común","Reyezuelo Listado","Ruiseñor Común","Tarabilla Común","Torcecuello","Tórtola Europea","Tórtola Turca","Trepador Azul","Triguero","Urraca","Vencejo","Verdecillo","Verderón","Zarcero Común","Zorzal Alirrojo","Zorzal Charlo","Zorzal Común","Zorzal Real","AVE no identificada con seguridad" ],
-			"REPTIL": [ "Culebra Bastarda","Culebra de Collar","Culebra de Escalera","Culebra Lisa Europea","Culebra Lisa Meridional","Culebra Viperina","Culebrilla ciega","Eslizón Tridáctilo Ibérico","Galápago de florida","Galápago Europeo","Galápago Leproso","Lagartija Carpetana","Lagartija Cenicienta","Lagartija Colilarga","Lagartija Ibérica","Lagartija Roquera","Lagarto Ocelado","Lagarto Verdinegro","Víbora Hocicuda","REPTIL no identificado con seguridad" ],
-			"ANFIBIO": [ "Gallipato","Rana Común","Rana Patilarga","Ranita de San Antonio","Salamandra Común","Sapillo Pintojo Ibérico","Sapillo Pintojo Ibérico","Sapo Común","Sapo Corredor","Sapo de Espuelas","Sapo Partero Común","Tritón Ibérico","Tritón Jaspeado","ANFIBIO no identificado con seguridad" ]
-			}
+			data = data.data;
+			console.log (data);
+			
+			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
+			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
+			var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
+			fcmam.sort(); //ordena especies	
+			console.log (fcmam);
+
+			var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
+			var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
+			fcave.sort(); //ordena especies	
+			console.log (fcave);
+
+			var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
+			var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
+			fcrep.sort(); //ordena especies	
+			console.log (fcrep);
+
+			var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
+			var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
+			fcanf.sort(); //ordena especies	
+			console.log (fcanf);
 			
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
@@ -131,8 +116,9 @@ function addPoints_lista (data) {
 				especieXs.add(opcion)
 			  });
 			}			
-		} // Iniciar la carga de clases solo para comprobar que funciona			
-}
+		} // Iniciar la carga de clases solo para comprobar que funciona	
+  
+  }//FinInit
 
 
 /* ADDGEOM
