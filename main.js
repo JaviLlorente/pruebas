@@ -75,7 +75,7 @@ function init() {
 			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 			
 			
-			var todo = [...new Set(data.map(data => ["data.Clase"+" : [", data.Especie " ]"  ]))];  //saca especies únicas
+			var todo = [...new Set(data.map(data => ["data.Clase"+" : ["+, data.Especie +" ]"  ]))];  //saca especies únicas
 			todo.sort(); //ordena especies	
 			console.log (todo);
 			
