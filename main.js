@@ -76,7 +76,7 @@ function init() {
 			
 			
 			var todo = [...new Set(data.map(data => data.Especie))];  //saca especies únicas
-			fcmam.sort(); //ordena especies	
+			todo.sort(); //ordena especies	
 			console.log (todo);
 			
 			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
