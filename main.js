@@ -80,7 +80,7 @@ function init() {
 			newArray = myfunction(datospuntos);
 			console.log(newArray);
 		
-			result = newArray.filter(function (a) {  //valoresunicos
+			var result = newArray.filter(function (a) {  //valoresunicos
 				var key = a.Clase + '|' + a.Especie;
 				if (!this[key]) {
 					this[key] = true;
@@ -89,7 +89,8 @@ function init() {
 			}, Object.create(null));
 			console.log(result);
 			
-			console.log( result.map(i => { return { [i.Clase]: i.Especie } }) )
+			var result2 = result.map(i => { return { [i.Clase]: i.Especie } }) );
+			console.log(result2);
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
 				Especie: e.Especie,
@@ -101,7 +102,7 @@ function init() {
  
 
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-		function cargarEspecies(result) {
+		function cargarEspecies(result2) {
 						
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
@@ -112,7 +113,7 @@ function init() {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = result[claseSeleccionada]
+			  claseSeleccionada = result2[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
