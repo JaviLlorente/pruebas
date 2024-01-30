@@ -58,13 +58,9 @@ function init() {
   Papa.parse(pointsURL, {
     download: true,
     header: true,
-    complete: addPoints,
+    complete: cargarEspecies, addPoints,
   });   
-  Papa.parse(pointsURL, {
-    download: true,
-    header: true,
-    complete: cargarEspecies,
-  });   
+  
     
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
