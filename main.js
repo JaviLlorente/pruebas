@@ -86,8 +86,17 @@ function init() {
 			newArray = myfunction(data);
 			console.log(newArray);
 			
-			const newArr = unique(newArray, ['Clase', 'Especie']);
-			console.log(newArr)
+			var newArray = [{ class: "second", fare: "a" }, { class: "second", fare: "b" }, { class: "first", fare: "a" }, { class: "first", fare: "a" }, { class: "second", fare: "a" }, { class: "first", fare: "c" }],
+			
+			result = newArray.filter(function (a) {
+				var key = a.Clase + '|' + a.Especie;
+				if (!this[key]) {
+					this[key] = true;
+					return true;
+				}
+			}, Object.create(null));
+
+			console.log(result);
 			
 			/*var todo = [...new Set(data.map(data => { 
 				Especie: e.Especie,
