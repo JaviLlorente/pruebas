@@ -68,7 +68,7 @@ function init() {
     
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
-		function cargarEspecies() {
+		function cargarEspecies(data) {
 			data = data.data;
 			console.log (data);
 			
