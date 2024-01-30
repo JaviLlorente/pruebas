@@ -60,26 +60,24 @@ function init() {
   Papa.parse(pointsURL, {
     download: true,
     header: true,
-    complete: cargarEspecies, addPoints,
+    complete: addPoints,
   });   
+ 
+ }//FinInit			
   
-    
-		
-
-			data = data.data;
-			console.log (data);
-			
+ 
+		function generalista (datospuntos) {
 			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 			
-			function myfunction(data) {  //extraeClaseyEspecie
-			  return data.map(function(e) {
+			function myfunction(datospuntos) {  //extraeClaseyEspecie
+			  return datospuntos.map(function(e) {
 				return {
 				  Clase: e.Clase,
 				  Especie: e.Especie
 				};
 			  });
 			}
-			newArray = myfunction(data);
+			newArray = myfunction(datospuntos);
 			console.log(newArray);
 		
 			result = newArray.filter(function (a) {  //valoresunicos
@@ -91,18 +89,16 @@ function init() {
 			}, Object.create(null));
 			console.log(result);
 			
-			/*var todo = [...new Set(data.map(data => { 
+			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
 				Especie: e.Especie,
 				Clase: e.Clase
 			} ;  //saca especies únicas
 			//todo.sort(); //ordena especies	
 			console.log (todo);*/
+		}//fin de geralista
+ 
 
- }//FinInit			
-			
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-						
-			
 		function cargarEspecies(result) {
 						
 			var claseXs = document.getElementById('claseX')
@@ -188,6 +184,9 @@ function addPoints(data) {
 
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
+	
+	var datospuntos = data;
+	generalista (datospuntos);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
