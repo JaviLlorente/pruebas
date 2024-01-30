@@ -89,7 +89,7 @@ function init() {
 			}, Object.create(null));
 			console.log(result);
 			
-			var result2 = result.map(i => { return { [i.Clase]: i.Especie } }) );
+			var result2 = result.map(i => { return { [i.Clase]: i.Especie } });
 			console.log(result2);
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
