@@ -75,29 +75,10 @@ function init() {
 			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 			
 			
-			var todo = [...new Set(data.map(data => [data.Clase, data.Especie]))];  //saca especies únicas
+			var todo = [...new Set(data.map(data => ["data.Clase"+" : [", data.Especie " ]"  ]))];  //saca especies únicas
 			todo.sort(); //ordena especies	
 			console.log (todo);
 			
-			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-			var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-			fcmam.sort(); //ordena especies	
-			console.log (fcmam);
-
-			var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
-			var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-			fcave.sort(); //ordena especies	
-			console.log (fcave);
-
-			var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
-			var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-			fcrep.sort(); //ordena especies	
-			console.log (fcrep);
-
-			var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
-			var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-			fcanf.sort(); //ordena especies	
-			console.log (fcanf);
 			
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
