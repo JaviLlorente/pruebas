@@ -86,12 +86,12 @@ function init() {
 			newArray = myfunction(objArray);
 			console.log(newArray);
 			
-			var todo = [...new Set(data.map(data => { 
+			/*var todo = [...new Set(data.map(data => { 
 				Especie: e.Especie,
 				Clase: e.Clase
 			} ;  //saca especies únicas
 			//todo.sort(); //ordena especies	
-			console.log (todo);
+			console.log (todo);*/
 			
 			
 			var claseXs = document.getElementById('claseX')
