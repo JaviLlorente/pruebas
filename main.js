@@ -62,7 +62,7 @@ function init() {
   });   
   Papa.parse(pointsURL_lista, {
     download: true,
-    header: false,
+    header: true,
     complete: cargarEspecies,
   });   
     
