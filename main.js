@@ -74,28 +74,24 @@ function init() {
 			
 			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 			
-			function myfunction(data) {
+			function myfunction(data) {  //extraeClaseyEspecie
 			  return data.map(function(e) {
 				return {
-				  Especie: e.Especie,
-				  Clase: e.Clase
+				  Clase: e.Clase,
+				  Especie: e.Especie
 				};
 			  });
 			}
-
 			newArray = myfunction(data);
 			console.log(newArray);
-			
-			var newArray = [{ class: "second", fare: "a" }, { class: "second", fare: "b" }, { class: "first", fare: "a" }, { class: "first", fare: "a" }, { class: "second", fare: "a" }, { class: "first", fare: "c" }],
-			
-			result = newArray.filter(function (a) {
+		
+			result = newArray.filter(function (a) {  //valoresunicos
 				var key = a.Clase + '|' + a.Especie;
 				if (!this[key]) {
 					this[key] = true;
 					return true;
 				}
 			}, Object.create(null));
-
 			console.log(result);
 			
 			/*var todo = [...new Set(data.map(data => { 
