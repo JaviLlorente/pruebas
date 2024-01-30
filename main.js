@@ -18,7 +18,7 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-var result;
+var result2;
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
