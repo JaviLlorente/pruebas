@@ -86,6 +86,9 @@ function init() {
 			newArray = myfunction(objArray);
 			console.log(newArray);
 			
+			const newArr = unique(newArray, ['Clase', 'Especie']);
+			console.log(newArr)
+			
 			/*var todo = [...new Set(data.map(data => { 
 				Especie: e.Especie,
 				Clase: e.Clase
