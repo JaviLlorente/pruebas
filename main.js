@@ -83,7 +83,7 @@ function init() {
 			  });
 			}
 
-			newArray = myfunction(objArray);
+			newArray = myfunction(data);
 			console.log(newArray);
 			
 			const newArr = unique(newArray, ['Clase', 'Especie']);
