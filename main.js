@@ -18,6 +18,8 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
+var result;
+
 /* FUNCIONINIT
  * init() is called when the page has loaded
  */
@@ -62,9 +64,8 @@ function init() {
   });   
   
     
-		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+		
 
-		function cargarEspecies(data) {
 			data = data.data;
 			console.log (data);
 			
@@ -96,8 +97,14 @@ function init() {
 			} ;  //saca especies únicas
 			//todo.sort(); //ordena especies	
 			console.log (todo);*/
+
+ }//FinInit			
 			
+		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+						
 			
+		function cargarEspecies(result) {
+						
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
 			var claseSeleccionada = claseXs.value
@@ -120,7 +127,7 @@ function init() {
 			}			
 		} // Iniciar la carga de clases solo para comprobar que funciona	
   
-  }//FinInit
+ 
 
 
 /* ADDGEOM
