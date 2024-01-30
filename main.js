@@ -89,12 +89,12 @@ function init() {
 			}, Object.create(null));
 			console.log(result);
 			
-			//var result2 = result.map(i => { return { [i.Clase]: i.Especie } });
-			//console.log(result2);
+			var result2 = result.map(i => { return { [i.Clase]: i.Especie } });
+			console.log(result2);
 			
-			const agruparPorTipo = Object.groupBy(result, (product) => product.Clase);
+			const agruparPorTipo = Object.groupBy(result2, (product) => product.Clase);
 			console.log(agruparPorTipo);
-			result2 = agruparPorTipo;
+
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
 				Especie: e.Especie,
