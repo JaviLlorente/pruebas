@@ -73,6 +73,12 @@ function init() {
 			console.log (data);
 			
 			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
+			
+			
+			var todo = [...new Set(data.map(data => data.Especie))];  //saca especies únicas
+			fcmam.sort(); //ordena especies	
+			console.log (todo);
+			
 			var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 			var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
 			fcmam.sort(); //ordena especies	
