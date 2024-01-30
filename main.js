@@ -108,10 +108,7 @@ function init() {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
-			  else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
-			  else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
-			  else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
+			  claseSeleccionada = todo[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
