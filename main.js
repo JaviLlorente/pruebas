@@ -92,8 +92,14 @@ function init() {
 			//var result2 = result.map(i => { return { [i.Clase]: i.Especie } });
 			//console.log(result2);
 			
-			const agruparPorTipo = Object.groupBy(result, (product) => product.Clase);
-			console.log(agruparPorTipo);
+			//const agruparPorTipo = Object.groupBy(result, (product) => product.Clase);
+			//console.log(agruparPorTipo);
+			
+			const result2 = Map.groupBy(result, product => { return product.Clase; });
+			console.log(result2); 
+			
+			var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
+			console.log(result3);
 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
@@ -106,7 +112,7 @@ function init() {
  
 
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-		function cargarEspecies(agruparPorTipo) {
+		function cargarEspecies(result3) {
 						
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
@@ -117,7 +123,7 @@ function init() {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = agruparPorTipo[claseSeleccionada]
+			  claseSeleccionada = result3[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
