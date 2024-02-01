@@ -246,9 +246,9 @@ function addPoints(data) {
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
 					'<a href="' + e.target.feature.properties.Foto + '"  target="iframe_a">Enlace a la foto</a><br/>' +
-					'<iframe src="pagina.html" name="iframe_a"></iframe>'
+					'<iframe src="pagina.html" name="iframe_a" width="270"></iframe>' + '<br/>' +
 					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
-					'<img src="https://drive.google.com/uc?export=download&id=1dZso5mQgD-23brF4io58BxRp418RtOCL" width="270">' 
+					'<img src="' + e.target.feature.properties.Foto + '" width="270">' 
 					);					
 				sidebar.open(panelID);
 			    },
