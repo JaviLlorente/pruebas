@@ -98,8 +98,8 @@ function init() {
 			const result2 = Map.groupBy(result, product => { return product.Clase; });
 			console.log(result2); 
 			
-			//var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
-			//console.log(result3);
+			var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
+			console.log(result3);
 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
@@ -244,24 +244,22 @@ function addPoints(data) {
 					'Seguridad_id: ' + e.target.feature.properties.Seguridad_id + '<br/>' +
 					'Frecuencia_paso: ' + e.target.feature.properties.Frecuencia_paso + '<br/>' +
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
-					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
-					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +	
+					'Pk: ' + e.target.feature.properties.Pk + '<br/>' 
+					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' 	
 					);	
 					if "e.target.feature.properties.Foto".includes("drive.google.com")  {
 						document.getElementById('sidebar-content').innerHTML = (
-						'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' +  );
-						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +	
-					}
-					else if "e.target.feature.properties.Foto".includes("jotform")  {
+						'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>'  );
+						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' 	
+					} else if "e.target.feature.properties.Foto".includes("jotform")  {
 						document.getElementById('sidebar-content').innerHTML = (
-						'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>' +  ); //Esto funciona con las de Jotform
-						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
-					} 
-					else {}
+						'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>'  ); //Esto funciona con las de Jotform
+						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' 
+					} else {}
 					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
 					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="250"></iframe>' + '<br/>' +									
-				
-				  sidebar.open(panelID);
+					
+				sidebar.open(panelID);
 			    },
 			});
 			// COMMENT UNTIL HERE TO DISABLE SIDEBAR FOR THE MARKERS
