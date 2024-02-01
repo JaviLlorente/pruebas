@@ -98,8 +98,8 @@ function init() {
 			const result2 = Map.groupBy(result, product => { return product.Clase; });
 			console.log(result2); 
 			
-			var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
-			console.log(result3);
+			//var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
+			//console.log(result3);
 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
