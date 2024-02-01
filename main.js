@@ -233,10 +233,10 @@ function addPoints(data) {
 			  }	};
 			marker.on({
 			 click: function (e) {
-				let fotografia = "e.target.feature.properties.Foto";
-				console.log(fotografia);
 				L.DomEvent.stopPropagation(e);
 				document.getElementById('sidebar-title').innerHTML = e.target.feature.properties.Especie;
+				let fotografia = e.target.feature.properties.Foto;
+				console.log(fotografia);
 				if (fotografia.includes("drive.google.com") == true)  {
 					document.getElementById('sidebar-content').innerHTML = (
 					'N: ' + e.target.feature.properties.N + '<br/>' +
