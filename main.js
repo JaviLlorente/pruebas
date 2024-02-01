@@ -245,8 +245,9 @@ function addPoints(data) {
 					'Frecuencia_paso: ' + e.target.feature.properties.Frecuencia_paso + '<br/>' +
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
-					'<a href="' + e.target.feature.properties.Foto + '"  target="iframe_a">Enlace a la foto</a><br/>' +
-					'<iframe src="pagina.html" name="iframe_a" width="270"></iframe>' + '<br/>' +
+					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +
+					'<a href="' + e.target.feature.properties.Foto + '">Enlace a la foto</a><br/>' +
+					'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="270"></iframe>' + '<br/>' +
 					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
 					'<img src="' + e.target.feature.properties.Foto + '" width="270">' 
 					);					
