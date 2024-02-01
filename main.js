@@ -254,7 +254,7 @@ function addPoints(data) {
 					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
 					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="250"></iframe>' + '<br/>' +						
 					);
-				} else if (fotografia.includes("jotform") == true)  {
+				} else {
 					document.getElementById('sidebar-content').innerHTML = (
 					'N: ' + e.target.feature.properties.N + '<br/>' +
 					'Usuario: ' + e.target.feature.properties.Usuario + '<br/>' +
