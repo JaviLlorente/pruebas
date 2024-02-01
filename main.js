@@ -246,10 +246,11 @@ function addPoints(data) {
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
 					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +
-					'<a href="' + e.target.feature.properties.Foto + '">Enlace a la foto</a><br/>' +
-					'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="270"></iframe>' + '<br/>' +
+					'<a href="' + e.target.feature.properties.Foto + '">Descarga a la foto</a><br/>' +
+					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
+					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="270"></iframe>' + '<br/>' +
 					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
-					'<img src="' + e.target.feature.properties.Foto + '" width="270">' 
+					'<img src="' + e.target.feature.properties.Foto + '" width="270">' //Esto funciona con las de Jotform 
 					);					
 				sidebar.open(panelID);
 			    },
