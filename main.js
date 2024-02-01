@@ -249,11 +249,11 @@ function addPoints(data) {
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' 
 					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' 	
 					);	
-					if fotografia.includes("drive.google.com")  {
+					if (fotografia.includes("drive.google.com") == true)  {
 						document.getElementById('sidebar-content').innerHTML = (
 						'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>'  );
 						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' 	
-					} else if fotografia.includes("jotform")  {
+					} else if (fotografia.includes("jotform") == true)  {
 						document.getElementById('sidebar-content').innerHTML = (
 						'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>'  ); //Esto funciona con las de Jotform
 						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' 
