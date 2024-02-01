@@ -234,6 +234,7 @@ function addPoints(data) {
 			marker.on({
 			  click: function (e) {
 				let fotografia = "e.target.feature.properties.Foto";
+				console.log(fotografia);
 				L.DomEvent.stopPropagation(e);
 				document.getElementById('sidebar-title').innerHTML = e.target.feature.properties.Especie;
 				document.getElementById('sidebar-content').innerHTML = (
@@ -256,8 +257,7 @@ function addPoints(data) {
 						document.getElementById('sidebar-content').innerHTML = (
 						'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>'  ); //Esto funciona con las de Jotform
 						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' 
-					} else {}
-				document.getElementById('sidebar-content').innerHTML = (
+					document.getElementById('sidebar-content').innerHTML = (
 					'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>'  
 					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
 					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="250"></iframe>' + '<br/>' +									
