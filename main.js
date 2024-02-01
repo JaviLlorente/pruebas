@@ -98,8 +98,8 @@ function init() {
 			const result2 = Map.groupBy(result, product => { return product.Clase; });
 			console.log(result2); 
 			
-			var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
-			console.log(result3);
+			//var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
+			//console.log(result3);
 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
@@ -112,7 +112,7 @@ function init() {
  
 
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-		function cargarEspecies(result3) {
+		function cargarEspecies(result2) {
 						
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
@@ -123,7 +123,7 @@ function init() {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
-			  claseSeleccionada = result3[claseSeleccionada]
+			  claseSeleccionada = result2[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
 			  // Insertamos los especies
