@@ -249,19 +249,19 @@ function addPoints(data) {
 					);	
 					if "e.target.feature.properties.Foto".includes("drive.google.com")  {
 						document.getElementById('sidebar-content').innerHTML = (
-						'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' +  ) 
+						'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' +  );
 						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +	
 					}
 					else if "e.target.feature.properties.Foto".includes("jotform")  {
 						document.getElementById('sidebar-content').innerHTML = (
-						'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>' +  ) //Esto funciona con las de Jotform
+						'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>' +  ); //Esto funciona con las de Jotform
 						//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
 					} 
 					else {}
 					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
 					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="250"></iframe>' + '<br/>' +									
-					);						
-				sidebar.open(panelID);
+				
+				  sidebar.open(panelID);
 			    },
 			});
 			// COMMENT UNTIL HERE TO DISABLE SIDEBAR FOR THE MARKERS
