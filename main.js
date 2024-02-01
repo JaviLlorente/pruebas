@@ -263,7 +263,7 @@ function addPoints(data) {
 					'Frecuencia_paso: ' + e.target.feature.properties.Frecuencia_paso + '<br/>' +
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
-					'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' + 
+					//'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' + 
 					'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>'  //Esto funciona con las de Jotform
 					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
 					);
