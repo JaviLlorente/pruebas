@@ -247,7 +247,7 @@ function addPoints(data) {
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
 					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +
 					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
-					'<img src="' + e.target.feature.properties.Foto + '" width="270">' 
+					'<img src="https://https://drive.google.com/uc?export=download&id=1dZso5mQgD-23brF4io58BxRp418RtOCL" width="270">' 
 					);					
 				sidebar.open(panelID);
 			    },
