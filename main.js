@@ -19,7 +19,6 @@ let sidebar;
 let panelID = "my-info-panel";
 
 var datospuntos = [];
-var fcmam, fcave, fcrep, fcanf; //inicializo las funciones para que estén disponibles
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
@@ -69,24 +68,52 @@ function init() {
 function generalista (datospuntos) {
 	//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 
-	
-	var TOTAList = [...new Set(datospuntos.map(datospuntos => [datospuntos.Especie, datospuntos.Clase]))];  //saca especies únicas
-	console.log (TOTAList);
-
-	var MAMIFEROlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "MAMIFERO"; });  //filtra mamiferos
+	var MAMIFEROlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "MAMIFERO"; });  //filtra mamiferos
+	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
 	console.log (fcmam);
 	
-	var AVElist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "AVE"; });  //filtra aves
+	var AVElist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "AVE"; });  //filtra aves
+	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
 	console.log (fcave);
 	
-	var REPTILlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "REPTIL"; });  //filtra reptiles
+	var REPTILlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "REPTIL"; });  //filtra reptiles
+	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
 	console.log (fcrep);
 	
-	var ANFIBIOlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "ANFIBIO"; });  //filtra anfibios
+	var ANFIBIOlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "ANFIBIO"; });  //filtra anfibios
+	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	console.log (fcanf);
 
 /////SeleccionandoESPECIE  	
-		//document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+
+		function cargarEspecies() {
+			// Objeto de clases con especies
+			
+			var claseXs = document.getElementById('claseX')
+			var especieXs = document.getElementById('especieX')
+			var claseSeleccionada = claseXs.value
+			
+			// Se limpian los especies
+			especieXs.innerHTML = '<option value="-">...</option>'
+			
+			if(claseSeleccionada !== "-"){
+			  // Se seleccionan los especies y se ordenan
+			  if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
+			  else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
+			  else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
+			  else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
+			  claseSeleccionada.sort();
+			
+			  // Insertamos los especies
+			  claseSeleccionada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = especieX
+				opcion.text = especieX
+				especieXs.add(opcion)
+			  });
+			}			
+		} // Iniciar la carga de clases solo para comprobar que funciona		
 }//fin de generalista
 
 
@@ -151,35 +178,6 @@ function addPoints(data) {
 
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	
-	//CARGAR SPS
-	function cargarEspecies(fcman, fcave, fcrep, fcanf) {
-		// Objeto de clases con especies
-
-		var claseXs = document.getElementById('claseX')
-		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada = claseXs.value
-			
-		// Se limpian los especies
-		especieXs.innerHTML = '<option value="-">...</option>'
-
-		if(claseSeleccionada !== "-"){
-			// Se seleccionan los especies y se ordenan
-			if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
-			else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
-			else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
-			else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
-			claseSeleccionada.sort();
-
-			// Insertamos los especies
-			claseSeleccionada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = especieX
-				opcion.text = especieX
-				especieXs.add(opcion)
-			});
-		}			
-	} //FinCargarSps
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -291,7 +289,6 @@ function addPoints(data) {
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		cargarEspecies(fcman, fcave, fcrep, fcanf);
 		
     }; //FinFiltro
 
