@@ -97,18 +97,18 @@ function cargarEspecies(result2) {
 	
 	var claseXs = document.getElementById('claseX')
 	var especieXs = document.getElementById('especieX')
-	var claseSeleccionada = claseXs.value
+	var claseSeleccionada = [];
 	
 	// Se limpian los especies
 	especieXs.innerHTML = '<option value="-">...</option>'
 	
 	if(claseSeleccionada !== "-"){
 		// Se seleccionan los especies y se ordenan
-		if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
-		else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
-		else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
-		else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
-		claseSeleccionada.sort();
+		if(claseXs == "MAMIFERO") { claseSeleccionada = fcmam }
+		else if(claseXs == "AVE") { claseSeleccionada = fcave }
+		else if(claseXs == "REPTIL") { claseSeleccionada = fcrep }
+		else if(claseXs == "ANFIBIO") { claseSeleccionada = fcanf }
+		//claseSeleccionada.sort();
 		
 		// Insertamos los especies
 		claseSeleccionada.forEach(function(especieX){
