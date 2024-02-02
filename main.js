@@ -291,7 +291,7 @@ function addPoints(data) {
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		cargarEspecies(fcman, fcave, fcrep, fcanf);
+		cargarEspecies(fcmam, fcave, fcrep, fcanf);
 		
     }; //FinFiltro
 
