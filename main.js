@@ -18,7 +18,9 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-var datospuntos, fcmam, fcave, fcrep, fcanf; //inicializo las funciones para que estén disponibles
+var datospuntos = [];
+var fcmam, fcave, fcrep, fcanf; //inicializo las funciones para que estén disponibles
+var claseSeleccionada = [];
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
@@ -89,6 +91,9 @@ function generalista (datospuntos) {
 	//fcanf.sort(); //ordena especies	
 	console.log (fcanf);
 	
+	var claseSeleccionada = fcmam.concat(fcave[, fcrep[, fcanf]]);
+	console.log(claseSeleccionada);	
+	
 }//fin de generalista
  
 document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
@@ -97,7 +102,7 @@ function cargarEspecies() {
 	
 	var claseXs = document.getElementById('claseX')
 	var especieXs = document.getElementById('especieX')
-	var claseSeleccionada = [];
+	
 	
 	// Se limpian los especies
 	especieXs.innerHTML = '<option value="-">...</option>'
