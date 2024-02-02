@@ -141,18 +141,18 @@ function addPoints(data) {
 	console.log (fcanf);
 
 	/////SeleccionandoESPECIE  	
-	//document.getElementById("claseX").addEventListener("click", cargarEspecies); //mio
+	document.getElementById("claseX").addEventListener("click", cargarEspecies); //mio
 
 	function cargarEspecies() {
 		// Objeto de clases con especies
-			
+		
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
 		var claseSeleccionada = claseXs.value
-			
+		
 		// Se limpian los especies
 		especieXs.innerHTML = '<option value="-">...</option>'
-			
+		
 		if(claseSeleccionada !== "-"){
 			// Se seleccionan los especies y se ordenan
 			if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
@@ -284,7 +284,7 @@ function addPoints(data) {
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		cargarEspecies();
+		//cargarEspecies();
 		
     }; //FinFiltro
 
