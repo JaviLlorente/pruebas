@@ -101,10 +101,11 @@ function init() {
 			//var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
 			//console.log(result3);
 			
+			var result3 = function () {
 			for (const item of result2) {
 				result[item.Clase] = item.Especie;
 			}
-			return result3;
+			return result3 }
 			console.log(result3); 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
