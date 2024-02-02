@@ -18,7 +18,7 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-var datospuntos, fmam, fave, frep, fanf; //inicializo las funciones para que estén disponibles
+var datospuntos, fcmam, fcave, fcrep, fcanf; //inicializo las funciones para que estén disponibles
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
@@ -117,7 +117,8 @@ function cargarEspecies(result2) {
 			opcion.text = especieX
 			especieXs.add(opcion)
 		});
-	}			
+	}		
+	
 } // Iniciar la carga de clases solo para comprobar que funciona	
   
  
