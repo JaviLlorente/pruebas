@@ -18,8 +18,6 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-var datospuntos, fcmam, fcave, fcrep, fcanf; //inicializo las funciones para que estén disponibles
-
 /* FUNCIONINIT
  * init() is called when the page has loaded
  */
@@ -62,36 +60,44 @@ function init() {
     header: true,
     complete: addPoints,
   });   
- 
- }//FinInit			
-  
- 
-function generalista (datospuntos) {
-	//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
+}//FinInit
 
-	var MAMIFEROlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-	//fcmam.sort(); //ordena especies	
-	console.log (fcmam);
-	
-	var AVElist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "AVE"; });  //filtra aves
-	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-	//fcave.sort(); //ordena especies	
-	console.log (fcave);
-	
-	var REPTILlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "REPTIL"; });  //filtra reptiles
-	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-	//fcrep.sort(); //ordena especies	
-	console.log (fcrep);
-	
-	var ANFIBIOlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "ANFIBIO"; });  //filtra anfibios
-	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-	//fcanf.sort(); //ordena especies	
-	console.log (fcanf);	
-}//fin de generalista
- 
-//document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio mejor quitar por tener 2 listeners claseX
+/////SeleccionandoESPECIE  	
+	window.onload = function () {
+		
+		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
+		function cargarEspecies() {
+			// Objeto de clases con especies
+			var listaEspecies = {
+			"MAMIFERO": [ "Ardilla Roja","Armiño","Cabra Montés","Ciervo rojo","Comadreja","Conejo","Corzo","Erizo Europeo","Garduña","Gato Montés","Gineta","Jabalí","Liebre ibérica","Lirón careto","Lobo","Meloncillo","Murciélago sp","Nutria","Rata de Agua","Rata sp","Ratón sp","Tejón","Topillo sp","Topo Ibérico","Turón","Visón Americano","Zorro Rojo","MAMÍFERO no identificado con seguridad" ],
+			"AVE": [ "Abejaruco","Abubilla","Acentor Común","Agateador Común","Águila Calzada","Águila Imperial Ibérica","Águila Real","Aguilucho Cenizo","Aguilucho Lagunero","Aguilucho Pálido","Alcaraván","Alcaudón Común","Alcaudón Dorsirrojo","Alcaudón Real","Alcotán","Alondra Común","Alondra Totovía","Ánade Azulón","Andarríos Chico","Arrendajo","Autillo","Avefría Europea","Avión Común","Avión Roquero","Azor","Bisbita Pratense","Búho Campestre","Búho Chico","Búho Real","Buitre Leonado","Buitre Negro","Calandria","Cárabo","Carbonero Común","Carbonero Garrapinos","Carricero Común","Cerceta Común","Cernícalo Primilla","Cernícalo Vulgar","Chochín","Chotacabras Europeo (Gris)","Chova Piquirroja","Cigüeña Blanca","Cigüeña Negra","Cigüeñuela Común","Codorniz Común","Cogujada Común","Colirrojo Real","Colirrojo Tizón","Collalba Gris","Collalba Rubia","Cormorán Grande","Corneja","Críalo","Cuco","Cuervo","Culebrera Europea","Curruca Capirotada","Curruca Carrasqueña","Curruca Mirlona","Curruca Mosquitera","Curruca Rabilarga","Curruca Zarcera","Escribano Hortelano","Escribano Montesino","Escribano Soteño","Esmerejón","Estornino Negro","Estornino Pinto","Faisán","Focha Común","Gallineta Común","Garza Real","Gavilán","Gaviota Reidora ","Golondrina Común","Gorrión Chillón","Gorrión Común","Gorrión Molinero","Grajilla","Halcón Peregrino","Herrerillo Común","Jilguero","Lavandera Blanca","Lechuza","Martin Pescador","Milano Negro","Milano Real","Mirlo Común","Mito","Mochuelo","Mosquitero Común","Mosquitero Papialbo","Oropéndola","Paloma cimarrona","Paloma Torcaz","Papamoscas Cerrojillo","Pardillo","Pato Cuchara","Perdiz Roja","Petirrojo","Pico Picapinos","Picogordo","Pinzón Vulgar","Piquituerto","Pito Real","Rabilargo","Ratonero Común","Reyezuelo Listado","Ruiseñor Común","Tarabilla Común","Torcecuello","Tórtola Europea","Tórtola Turca","Trepador Azul","Triguero","Urraca","Vencejo","Verdecillo","Verderón","Zarcero Común","Zorzal Alirrojo","Zorzal Charlo","Zorzal Común","Zorzal Real","AVE no identificada con seguridad" ],
+			"REPTIL": [ "Culebra Bastarda","Culebra de Collar","Culebra de Escalera","Culebra Lisa Europea","Culebra Lisa Meridional","Culebra Viperina","Culebrilla ciega","Eslizón Tridáctilo Ibérico","Galápago de florida","Galápago Europeo","Galápago Leproso","Lagartija Carpetana","Lagartija Cenicienta","Lagartija Colilarga","Lagartija Ibérica","Lagartija Roquera","Lagarto Ocelado","Lagarto Verdinegro","Víbora Hocicuda","REPTIL no identificado con seguridad" ],
+			"ANFIBIO": [ "Gallipato","Rana Común","Rana Patilarga","Ranita de San Antonio","Salamandra Común","Sapillo Pintojo Ibérico","Sapillo Pintojo Ibérico","Sapo Común","Sapo Corredor","Sapo de Espuelas","Sapo Partero Común","Tritón Ibérico","Tritón Jaspeado","ANFIBIO no identificado con seguridad" ]
+			}
+			
+			var claseXs = document.getElementById('claseX')
+			var especieXs = document.getElementById('especieX')
+			var claseSeleccionada = claseXs.value
+			
+			// Se limpian los especies
+			especieXs.innerHTML = '<option value="-">...</option>'
+			
+			if(claseSeleccionada !== "-"){
+			  // Se seleccionan los especies y se ordenan
+			  claseSeleccionada = listaEspecies[claseSeleccionada]
+			  //claseSeleccionada.sort()
+			
+			  // Insertamos los especies
+			  claseSeleccionada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = especieX
+				opcion.text = especieX
+				especieXs.add(opcion)
+			  });
+			}			
+		} // Iniciar la carga de clases solo para comprobar que funciona			
+	} /////FIN ESPECIE
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
@@ -152,36 +158,6 @@ function addPoints(data) {
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
-	var datospuntos = data;
-	generalista (datospuntos);
-	
-	//CARGA DE SPS
-	function cargarEspecies() {	
-		var claseXs = document.getElementById('claseX')
-		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada = [];
-		
-		// Se limpian los especies
-		especieXs.innerHTML = '<option value="-">...</option>'
-		
-		if(claseSeleccionada !== "-"){
-			// Se seleccionan los especies y se ordenan
-			if(claseXs == "MAMIFERO") { claseSeleccionada = fcmam }
-			else if(claseXs == "AVE") { claseSeleccionada = fcave }
-			else if(claseXs == "REPTIL") { claseSeleccionada = fcrep }
-			else if(claseXs == "ANFIBIO") { claseSeleccionada = fcanf }
-			//claseSeleccionada.sort();
-			
-			// Insertamos los especies
-			//claseSeleccionada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = claseSeleccionada
-				opcion.text = claseSeleccionada
-				especieXs.add(opcion)
-			//});
-		}			
-	} // FinCargaEspecies	
-	
 	// RENDERING METHOD
 	function renderMarkers (data) {
 		
@@ -213,13 +189,10 @@ function addPoints(data) {
 				Carretera: data[row].Carretera,	Pk: data[row].Pk, Foto: data[row].Foto,	Observaciones: data[row].Observaciones,
 			  }	};
 			marker.on({
-			 click: function (e) {
+			  click: function (e) {
 				L.DomEvent.stopPropagation(e);
 				document.getElementById('sidebar-title').innerHTML = e.target.feature.properties.Especie;
-				let fotografia = e.target.feature.properties.Foto;
-				console.log(fotografia);
-				if (fotografia.includes("drive.google.com") == true)  {
-					document.getElementById('sidebar-content').innerHTML = (
+				document.getElementById('sidebar-content').innerHTML = (
 					'N: ' + e.target.feature.properties.N + '<br/>' +
 					'Usuario: ' + e.target.feature.properties.Usuario + '<br/>' +
 					'Fecha: ' + e.target.feature.properties.Fecha + '<br/>' +
@@ -229,28 +202,12 @@ function addPoints(data) {
 					'Frecuencia_paso: ' + e.target.feature.properties.Frecuencia_paso + '<br/>' +
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
-					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +	
-					'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>'  
-					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
-					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
-					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="250"></iframe>' + '<br/>' +						
-					);
-				} else {
-					document.getElementById('sidebar-content').innerHTML = (
-					'N: ' + e.target.feature.properties.N + '<br/>' +
-					'Usuario: ' + e.target.feature.properties.Usuario + '<br/>' +
-					'Fecha: ' + e.target.feature.properties.Fecha + '<br/>' +
-					'Seguridad_id: ' + e.target.feature.properties.Seguridad_id + '<br/>' +
-					'Frecuencia_paso: ' + e.target.feature.properties.Frecuencia_paso + '<br/>' +
-					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
-					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
-					//'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' + 
-					'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>'  //Esto funciona con las de Jotform
-					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
-					);
-				}	
+					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +
+					'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
+					'<img src="' + e.target.feature.properties.Foto + '" width="270">' 
+					);					
 				sidebar.open(panelID);
-			 },
+			    },
 			});
 			// COMMENT UNTIL HERE TO DISABLE SIDEBAR FOR THE MARKERS
 		  
@@ -262,10 +219,9 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-		//console.log(data);
-		document.getElementById("Narray").value = data.length;	//nºregistros
-		cargarEspecies (); //Carga de especies en desplegable
-		map.spin(false);  // spinoff
+	//console.log(data);
+	document.getElementById("Narray").value = data.length;	//nºregistros
+	map.spin(false);  // spinoff
     } //Fin Render
 	
 	//FILTERING LOGIC
@@ -296,7 +252,7 @@ function addPoints(data) {
 		
     }; //FinFiltro
 
-	renderMarkers(data); //Renderizado desde el conjunto de datos (cuando inicia, no entra en las funciones)
+	renderMarkers(data); //Renderizado desde el conjunto de datos
 	
 }; //FINADDPOINTS
    	
