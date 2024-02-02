@@ -19,6 +19,7 @@ let sidebar;
 let panelID = "my-info-panel";
 
 var datospuntos = [];
+var fcmam, fcave, fcrep, fcanf;
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
@@ -84,6 +85,9 @@ function generalista (datospuntos) {
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	console.log (fcanf);
 
+}//fin de generalista
+
+
 /////SeleccionandoESPECIE  	
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
@@ -114,7 +118,7 @@ function generalista (datospuntos) {
 			  });
 			}			
 		} // Iniciar la carga de clases solo para comprobar que funciona		
-}//fin de generalista
+
 
 
 /* ADDGEOM
