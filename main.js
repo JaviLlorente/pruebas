@@ -69,20 +69,20 @@ function init() {
 function generalista (datospuntos) {
 	//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 
-	var MAMIFEROlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
+	
+	var TOTAList = [...new Set(datospuntos.map(datospuntos => [datospuntos.Clase, datospuntos.Especie]))];  //saca especies únicas
+	console.log (TOTAList);
+
+	var MAMIFEROlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "MAMIFERO"; });  //filtra mamiferos
 	console.log (fcmam);
 	
-	var AVElist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "AVE"; });  //filtra aves
-	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
+	var AVElist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "AVE"; });  //filtra aves
 	console.log (fcave);
 	
-	var REPTILlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "REPTIL"; });  //filtra reptiles
-	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
+	var REPTILlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "REPTIL"; });  //filtra reptiles
 	console.log (fcrep);
 	
-	var ANFIBIOlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "ANFIBIO"; });  //filtra anfibios
-	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
+	var ANFIBIOlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "ANFIBIO"; });  //filtra anfibios
 	console.log (fcanf);
 
 /////SeleccionandoESPECIE  	
@@ -291,7 +291,7 @@ function addPoints(data) {
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		cargarEspecies(fcmam, fcave, fcrep, fcanf);
+		cargarEspecies(fcman, fcave, fcrep, fcanf);
 		
     }; //FinFiltro
 
