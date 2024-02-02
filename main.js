@@ -105,12 +105,12 @@ function init() {
 			  claseSeleccionada.sort(); //ordena especies
 			
 			  // Insertamos los especies
-			  claseSeleccionada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = especieX
-				opcion.text = especieX
-				especieXs.add(opcion)
-			  });
+			  //claseSeleccionada.forEach(function(especieX){
+			//	let opcion = document.createElement('option')
+			//	opcion.value = especieX
+			//	opcion.text = especieX
+			//	especieXs.add(opcion)
+			//  });
 			}			
 		}//fin de generalista
  
