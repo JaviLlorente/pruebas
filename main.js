@@ -128,16 +128,16 @@ function addPoints(data) {
 	//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-	console.log (fcmam);	
+	//console.log (fcmam);	
 	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
 	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-	console.log (fcave);	
+	//console.log (fcave);	
 	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
 	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-	console.log (fcrep);	
+	//console.log (fcrep);	
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-	console.log (fcanf);
+	//console.log (fcanf);
 
 	document.getElementById("claseX").addEventListener("click", filterData);
 	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
@@ -157,25 +157,15 @@ function addPoints(data) {
 		if(claseSeleccionada !== "-"){
 			// Se seleccionan los especies y se ordenan
 			switch (claseSeleccionada) {
-			  case "MAMIFERO":
-				claseSeleccionada = fcmam;
-				break;
-			  case "AVE":
-				claseSeleccionada = fcave;
-				break;
-			  case "REPTIL":
-				claseSeleccionada = fcrep;
-				break;
-			  case "ANFIBIO":
-				claseSeleccionada = fcanf;
-				break;
-			  default:
-				claseSeleccionada = "...");
-			}
-			
+			  case "MAMIFERO": claseSeleccionada = fcmam; break;
+			  case "AVE": claseSeleccionada = fcave; break;
+			  case "REPTIL": claseSeleccionada = fcrep; break;
+			  case "ANFIBIO": claseSeleccionada = fcanf; break;
+			  default: claseSeleccionada = "...");
+			}			
 			claseSeleccionada.sort(Intl.Collator().compare);
 
-			// Insertamos los especies
+			// Insertamos las especies
 			claseSeleccionada.forEach(function(especieX){
 				let opcion = document.createElement('option')
 				opcion.value = especieX
