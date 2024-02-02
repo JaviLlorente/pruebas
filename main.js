@@ -69,15 +69,11 @@ function init() {
 		function generalista (datospuntos) {
 			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 			
-			//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
-			
-	
-			
 			var claseXs = document.getElementById('claseX')
 			var especieXs = document.getElementById('especieX')
 			var claseSeleccionada = claseXs.value
 			
-			// Se limpian los especies
+			// Se limpian las especies
 			especieXs.innerHTML = '<option value="-">...</option>'
 			
 			if(claseSeleccionada !== "-"){
@@ -85,29 +81,28 @@ function init() {
 			  if(claseSeleccionada == "MAMIFERO") { 
 				var MAMIFEROlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "MAMIFERO"; });  //filtra mamiferos
 				var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-				fcmam.sort(); //ordena especies	
+				claseSeleccionada = fcmam
 				console.log (fcmam);
-				claseSeleccionada = fcmam 
 				}
-			  else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave 
+			  else if(claseSeleccionada == "AVE") { 
 				var AVElist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "AVE"; });  //filtra aves
 				var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-				fcave.sort(); //ordena especies	
+				claseSeleccionada = fcave;
 				console.log (fcave);
 				}
-			  else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep 
+			  else if(claseSeleccionada == "REPTIL") {  
 				var REPTILlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "REPTIL"; });  //filtra reptiles
 				var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-				fcrep.sort(); //ordena especies	
+				claseSeleccionada = fcrep;
 				console.log (fcrep);
 				}
-			  else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf 
+			  else if(claseSeleccionada == "ANFIBIO") { 
 				var ANFIBIOlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "ANFIBIO"; });  //filtra anfibios
 				var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-				fcanf.sort(); //ordena especies	
+				claseSeleccionada = fcanf;
 				console.log (fcanf);
 				}
-			  //claseSeleccionada.sort()
+			  claseSeleccionada.sort(); //ordena especies
 			
 			  // Insertamos los especies
 			  claseSeleccionada.forEach(function(especieX){
