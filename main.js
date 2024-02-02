@@ -65,8 +65,7 @@ function init() {
 }//FinInit
 
 	
-//function generalista (datospuntos) {			
-}//fin de generalista
+//function generalista (datospuntos) {	}//fin de generalista
 
 
 /* ADDGEOM
