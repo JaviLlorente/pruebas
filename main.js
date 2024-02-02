@@ -65,8 +65,7 @@ function init() {
 }//FinInit
 
 	
-function generalista (datospuntos) {
-			
+//function generalista (datospuntos) {			
 }//fin de generalista
 
 
@@ -157,12 +156,25 @@ function addPoints(data) {
 		
 		if(claseSeleccionada !== "-"){
 			// Se seleccionan los especies y se ordenan
-			if(claseSeleccionada == "MAMIFERO") { claseSeleccionada = fcmam }
-			else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
-			else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
-			else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
+			switch (claseSeleccionada) {
+			  case "MAMIFERO":
+				claseSeleccionada = fcmam;
+				break;
+			  case "AVE":
+				claseSeleccionada = fcave;
+				break;
+			  case "REPTIL":
+				claseSeleccionada = fcrep;
+				break;
+			  case "ANFIBIO":
+				claseSeleccionada = fcanf;
+				break;
+			  default:
+				claseSeleccionada = "...");
+			}
+			
 			claseSeleccionada.sort(Intl.Collator().compare);
-						
+
 			// Insertamos los especies
 			claseSeleccionada.forEach(function(especieX){
 				let opcion = document.createElement('option')
