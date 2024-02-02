@@ -18,6 +18,8 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
+var datospuntos = [];
+
 /* FUNCIONINIT
  * init() is called when the page has loaded
  */
@@ -105,7 +107,7 @@ function generalista (datospuntos) {
 			  else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
 			  else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
 			  else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
-			  //claseSeleccionada.sort()
+			  claseSeleccionada.sort()
 			
 			  // Insertamos los especies
 			  claseSeleccionada.forEach(function(especieX){
