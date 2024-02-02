@@ -37,7 +37,7 @@ function init() {
 		lines: 13, length: 30
 	}); //on_spin
 
-  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  width: 900px; }).addTo(map);
+  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 
   let panelContent = {
     id: panelID,
