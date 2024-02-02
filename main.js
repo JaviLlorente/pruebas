@@ -108,7 +108,7 @@ function cargarEspecies(result2) {
 		else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
 		else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
 		else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
-		claseSeleccionada.sort()
+		claseSeleccionada.sort();
 		
 		// Insertamos los especies
 		claseSeleccionada.forEach(function(especieX){
