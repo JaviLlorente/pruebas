@@ -138,8 +138,8 @@ function addPoints(data) {
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	//console.log (fcanf);
 
-	document.getElementById("claseX").addEventListener("change", filterData);
 	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
+	document.getElementById("claseX").addEventListener("click", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 
 	/////SeleccionandoESPECIE  	
