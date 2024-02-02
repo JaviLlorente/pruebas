@@ -70,22 +70,18 @@ function generalista (datospuntos) {
 
 	var MAMIFEROlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "MAMIFERO"; });  //filtra mamiferos
 	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-	//fcmam.sort(); //ordena especies	
 	console.log (fcmam);
 	
 	var AVElist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "AVE"; });  //filtra aves
 	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-	//fcave.sort(); //ordena especies	
 	console.log (fcave);
 	
 	var REPTILlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "REPTIL"; });  //filtra reptiles
 	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-	//fcrep.sort(); //ordena especies	
 	console.log (fcrep);
 	
 	var ANFIBIOlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "ANFIBIO"; });  //filtra anfibios
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-	//fcanf.sort(); //ordena especies	
 	console.log (fcanf);
 
 /////SeleccionandoESPECIE  	
@@ -107,7 +103,7 @@ function generalista (datospuntos) {
 			  else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
 			  else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
 			  else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
-			  claseSeleccionada.sort()
+			  claseSeleccionada.sort();
 			
 			  // Insertamos los especies
 			  claseSeleccionada.forEach(function(especieX){
