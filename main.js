@@ -110,7 +110,7 @@ function init() {
 				opcion.value = claseSeleccionada
 				opcion.text = claseSeleccionada
 				especieXs.add(opcion)
-			  });
+			  //});
 			}			
 		}//fin de generalista
  
