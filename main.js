@@ -140,9 +140,11 @@ function addPoints(data) {
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	console.log (fcanf);
 
-	/////SeleccionandoESPECIE  	
-	document.getElementById("claseX").addEventListener("click", cargarEspecies); //mio
+	document.getElementById("claseX").addEventListener("click", filterData);
+	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
+    document.getElementById("especieX").addEventListener("change", filterData);
 
+	/////SeleccionandoESPECIE  	
 	function cargarEspecies() {
 		// Objeto de clases con especies
 		
@@ -159,8 +161,8 @@ function addPoints(data) {
 			else if(claseSeleccionada == "AVE") { claseSeleccionada = fcave }
 			else if(claseSeleccionada == "REPTIL") { claseSeleccionada = fcrep }
 			else if(claseSeleccionada == "ANFIBIO") { claseSeleccionada = fcanf }
-			claseSeleccionada.sort();
-			
+			claseSeleccionada.sort(Intl.Collator().compare);
+						
 			// Insertamos los especies
 			claseSeleccionada.forEach(function(especieX){
 				let opcion = document.createElement('option')
@@ -170,9 +172,6 @@ function addPoints(data) {
 			});
 		}			
 	} // Iniciar la carga de clases solo para comprobar que funciona
-
-	document.getElementById("claseX").addEventListener("change", filterData);
-    document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
