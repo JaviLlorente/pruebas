@@ -7,9 +7,10 @@
 // these URLs come from Google Sheets 'shareable link' form // the first is the geometry layer and the second the points
 let geomURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1on0SyoQQfTL0lsTJTuZGotL3IRWj7raYbbnYy5WT83TiQUshrby-SHIducbO7j5T4H3t8x63OKQy/pub?output=csv";
 let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
-	//Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
+	// Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
 	//"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
-	//let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
+
+let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -17,7 +18,11 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-/* FUNCIONINIT * init() is called when the page has loaded */
+//var datospuntos = [];
+
+/* FUNCIONINIT
+ * init() is called when the page has loaded
+ */
 function init() {
   // Create a new Leaflet map centered on the continental US
   map = L.map('map').setView([41.10, -4.00], 9.4);
@@ -28,7 +33,9 @@ function init() {
 	maxZoom: 18,
   }).addTo(map);
   
-	map.spin(true, { lines: 13, length: 30	}); //on_spin
+	map.spin(true, {
+		lines: 13, length: 30
+	}); //on_spin
 
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 
@@ -40,7 +47,9 @@ function init() {
   };
   sidebar.addPanel(panelContent);
 
-  map.on("click", function () {  sidebar.close(panelID);  });
+  map.on("click", function () {
+    sidebar.close(panelID);
+  });
 
   // Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
   Papa.parse(geomURL, {
@@ -55,13 +64,19 @@ function init() {
   });   
 }//FinInit
 
+	
+//function generalista (datospuntos) {	}//fin de generalista
+
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
 function addGeoms(data) {
   data = data.data;
   // Need to convert the PapaParse JSON into a GeoJSON // Start with an empty GeoJSON of type FeatureCollection // All the rows will be inserted into a single GeoJSON
-  let fc = { type: "FeatureCollection", features: [], };
+  let fc = {
+    type: "FeatureCollection",
+    features: [],
+  };
 
   for (let row in data) {
     // The Sheets data has a column 'include' that specifies if that row should be mapped
@@ -73,7 +88,7 @@ function addGeoms(data) {
           description: data[row].description,
         };
         fc.features.push(el);
-		});
+      });
     }}
 
   // The geometries are styled slightly differently on mouse hovers
@@ -123,7 +138,7 @@ function addPoints(data) {
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	//console.log (fcanf);
 
-	document.getElementById("claseX").addEventListener("click", filterData);
+	document.getElementById("claseX").addEventListener("change", filterData);
 	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
     document.getElementById("especieX").addEventListener("change", filterData);
 
@@ -133,14 +148,14 @@ function addPoints(data) {
 		
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada =[]; // = claseXs.value
+		var claseSeleccionada = claseXs.value
 		
 		// Se limpian los especies
 		especieXs.innerHTML = '<option value="-">...</option>'
 		
-		if(claseXs !== "-"){
+		if(claseSeleccionada !== "-"){
 			// Se seleccionan los especies y se ordenan
-			switch (claseXs) {
+			switch (claseSeleccionada) {
 			  case "MAMIFERO": claseSeleccionada = fcmam; break;
 			  case "AVE": claseSeleccionada = fcave; break;
 			  case "REPTIL": claseSeleccionada = fcrep; break;
@@ -159,13 +174,15 @@ function addPoints(data) {
 	} // Iniciar la carga de clases solo para comprobar que funciona
 	
 	// RENDERING METHOD
-	function renderMarkers (data) {		
-		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
-		pointGroupLayer.clearLayers();	 
+	function renderMarkers (data) {
 		
+		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
+		pointGroupLayer.clearLayers();
+	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
 	    // marker: standard point with an icon // circleMarker: a circle with a radius set in pixels // circle: a circle with a radius set in meters
 	    let markerType = "marker";
+
 	    // Marker radius // Wil be in pixels for circleMarker, metres for circle  // Ignore for point
 	    let markerRadius = 100;
 
@@ -236,9 +253,9 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-		//console.log(data);
-		document.getElementById("Narray").value = data.length;	//nºregistros
-		map.spin(false);  // spinoff
+	//console.log(data);
+	document.getElementById("Narray").value = data.length;	//nºregistros
+	map.spin(false);  // spinoff
     } //Fin Render
 	
 	//FILTERING LOGIC
@@ -265,10 +282,13 @@ function addPoints(data) {
 		if (prescValue === "-") {  filteredData = simdFilteredData; }
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados		
+		renderMarkers(filteredData); //Renderizado desde los datos filtrados
+		//cargarEspecies();
+		
     }; //FinFiltro
 
-	renderMarkers(data); //Renderizado desde el conjunto de datos	
+	renderMarkers(data); //Renderizado desde el conjunto de datos
+	
 }; //FINADDPOINTS
    	
 	
