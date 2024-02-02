@@ -100,6 +100,8 @@ function init() {
 			
 			//var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
 			//console.log(result3);
+			
+			console.log(Object.values(result2));
 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
