@@ -159,8 +159,7 @@ function addPoints(data) {
 			  case "MAMIFERO": claseSeleccionada = fcmam; break;
 			  case "AVE": claseSeleccionada = fcave; break;
 			  case "REPTIL": claseSeleccionada = fcrep; break;
-			  case "ANFIBIO": claseSeleccionada = fcanf; break;
-			  default: claseSeleccionada = []);
+			  case "ANFIBIO": claseSeleccionada = fcanf; break;			  
 			}			
 			claseSeleccionada.sort(Intl.Collator().compare);
 
