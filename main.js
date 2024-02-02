@@ -160,7 +160,7 @@ function addPoints(data) {
 			  case "AVE": claseSeleccionada = fcave; break;
 			  case "REPTIL": claseSeleccionada = fcrep; break;
 			  case "ANFIBIO": claseSeleccionada = fcanf; break;
-			  default: claseSeleccionada = "...");
+			  default: claseSeleccionada = []);
 			}			
 			claseSeleccionada.sort(Intl.Collator().compare);
 
