@@ -70,7 +70,7 @@ function generalista (datospuntos) {
 	//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
 
 	
-	var TOTAList = [...new Set(datospuntos.map(datospuntos => [datospuntos.Clase, datospuntos.Especie]))];  //saca especies únicas
+	var TOTAList = [...new Set(datospuntos.map(datospuntos => [datospuntos.Especie, datospuntos.Clase]))];  //saca especies únicas
 	console.log (TOTAList);
 
 	var MAMIFEROlist = TOTAList.filter(function(TOTAList)  { return TOTAList.Clase == "MAMIFERO"; });  //filtra mamiferos
