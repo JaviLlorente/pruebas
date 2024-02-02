@@ -101,7 +101,7 @@ function init() {
 			//var result3 = result2.map(i => { return { [i.Clase]: i.Especie } });
 			//console.log(result3);
 			
-			const result3 = Object.values(result1);
+			const result3 = Object.values(result);
 			console.log(result3); 
 			
 			/*var todo = [...new Set(datospuntos.map(datospuntos => { 
