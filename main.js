@@ -106,11 +106,11 @@ function init() {
 			
 			  // Insertamos los especies
 			  //claseSeleccionada.forEach(function(especieX){
-			//	let opcion = document.createElement('option')
-			//	opcion.value = especieX
-			//	opcion.text = especieX
-			//	especieXs.add(opcion)
-			//  });
+				let opcion = document.createElement('option')
+				opcion.value = claseSeleccionada
+				opcion.text = claseSeleccionada
+				especieXs.add(opcion)
+			  });
 			}			
 		}//fin de generalista
  
