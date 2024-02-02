@@ -93,7 +93,7 @@ function generalista (datospuntos) {
  
 document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
-function cargarEspecies(result2) {
+function cargarEspecies() {
 	
 	var claseXs = document.getElementById('claseX')
 	var especieXs = document.getElementById('especieX')
