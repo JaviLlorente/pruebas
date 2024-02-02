@@ -87,11 +87,10 @@ function generalista (datospuntos) {
 	var ANFIBIOlist = datospuntos.filter(function(datospuntos)  { return datospuntos.Clase == "ANFIBIO"; });  //filtra anfibios
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	//fcanf.sort(); //ordena especies	
-	console.log (fcanf);
-	
+	console.log (fcanf);	
 }//fin de generalista
  
-//document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+//document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio mejor quitar por tener 2 listeners claseX
 
 
 /* ADDGEOM
@@ -155,6 +154,33 @@ function addPoints(data) {
 	
 	var datospuntos = data;
 	generalista (datospuntos);
+	
+	//CARGA DE SPS
+	function cargarEspecies() {	
+		var claseXs = document.getElementById('claseX')
+		var especieXs = document.getElementById('especieX')
+		var claseSeleccionada = [];
+		
+		// Se limpian los especies
+		especieXs.innerHTML = '<option value="-">...</option>'
+		
+		if(claseSeleccionada !== "-"){
+			// Se seleccionan los especies y se ordenan
+			if(claseXs == "MAMIFERO") { claseSeleccionada = fcmam }
+			else if(claseXs == "AVE") { claseSeleccionada = fcave }
+			else if(claseXs == "REPTIL") { claseSeleccionada = fcrep }
+			else if(claseXs == "ANFIBIO") { claseSeleccionada = fcanf }
+			//claseSeleccionada.sort();
+			
+			// Insertamos los especies
+			//claseSeleccionada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = claseSeleccionada
+				opcion.text = claseSeleccionada
+				especieXs.add(opcion)
+			//});
+		}			
+	} // FinCargaEspecies	
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -270,33 +296,7 @@ function addPoints(data) {
 		
     }; //FinFiltro
 
-	renderMarkers(data); //Renderizado desde el conjunto de datos
-	
-	function cargarEspecies() {	
-		var claseXs = document.getElementById('claseX')
-		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada = [];
-		
-		// Se limpian los especies
-		especieXs.innerHTML = '<option value="-">...</option>'
-		
-		if(claseSeleccionada !== "-"){
-			// Se seleccionan los especies y se ordenan
-			if(claseXs == "MAMIFERO") { claseSeleccionada = fcmam }
-			else if(claseXs == "AVE") { claseSeleccionada = fcave }
-			else if(claseXs == "REPTIL") { claseSeleccionada = fcrep }
-			else if(claseXs == "ANFIBIO") { claseSeleccionada = fcanf }
-			//claseSeleccionada.sort();
-			
-			// Insertamos los especies
-			claseSeleccionada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = especieX
-				opcion.text = especieX
-				especieXs.add(opcion)
-			});
-		}			
-	} // Iniciar la carga de clases solo para comprobar que funciona	
+	renderMarkers(data); //Renderizado desde el conjunto de datos (cuando inicia, no entra en las funciones)
 	
 }; //FINADDPOINTS
    	
