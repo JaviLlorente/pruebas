@@ -159,15 +159,13 @@ function addPoints(data) {
 	} // Iniciar la carga de clases solo para comprobar que funciona
 	
 	// RENDERING METHOD
-	function renderMarkers (data) {
-		
+	function renderMarkers (data) {		
 		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
-		pointGroupLayer.clearLayers();
-	 
+		pointGroupLayer.clearLayers();	 
+		
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
 	    // marker: standard point with an icon // circleMarker: a circle with a radius set in pixels // circle: a circle with a radius set in meters
 	    let markerType = "marker";
-
 	    // Marker radius // Wil be in pixels for circleMarker, metres for circle  // Ignore for point
 	    let markerRadius = 100;
 
@@ -238,9 +236,9 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-	//console.log(data);
-	document.getElementById("Narray").value = data.length;	//nºregistros
-	map.spin(false);  // spinoff
+		//console.log(data);
+		document.getElementById("Narray").value = data.length;	//nºregistros
+		map.spin(false);  // spinoff
     } //Fin Render
 	
 	//FILTERING LOGIC
@@ -267,13 +265,10 @@ function addPoints(data) {
 		if (prescValue === "-") {  filteredData = simdFilteredData; }
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		//cargarEspecies();
-		
+		renderMarkers(filteredData); //Renderizado desde los datos filtrados		
     }; //FinFiltro
 
-	renderMarkers(data); //Renderizado desde el conjunto de datos
-	
+	renderMarkers(data); //Renderizado desde el conjunto de datos	
 }; //FINADDPOINTS
    	
 	
