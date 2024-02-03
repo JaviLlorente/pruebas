@@ -17,8 +17,6 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-//var datospuntos = [];
-
 /* FUNCIONINIT
  * init() is called when the page has loaded
  */
@@ -62,10 +60,6 @@ function init() {
     complete: addPoints,
   });   
 }//FinInit
-
-	
-//function generalista (datospuntos) {	}//fin de generalista
-
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
@@ -121,9 +115,10 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	//window.data = data; //Creo que no hace falta	
+	window.data = data; //Para generar la lista de especies. En teoria lo calcula una vez
+	console.log	(window.data);
 	
-	document.getElementById("claseX").addEventListener("change", cargarEspecies); //con click no va bien en Android
+	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -272,24 +267,25 @@ function addPoints(data) {
 			});
 		}			
 	} //FinCargaEspecies
-	
-	//CALCULA LA LISTA DE ESPECIES
-	//partiendo de la tabla original sin otro sheet. NO VA POR DATA (SI LO SACAS DE AKI FUNCIONA PEOR EL SELECTOR ANIDADO
-	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-	//console.log (fcmam);	
-	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
-	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-	//console.log (fcave);	
-	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
-	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-	//console.log (fcrep);	
-	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
-	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-	//console.log (fcanf);
-	
+		
 }; //FINADDPOINTS
-   	
+
+
+//CALCULA LA LISTA DE ESPECIES (creo que la calcula lo último, que sería lo suyo)
+//partiendo de la tabla original sin otro sheet. 
+var MAMIFEROlist = window.data.filter(function(window.data)  { return window.data.Clase == "MAMIFERO"; });  //filtra mamiferos
+var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
+console.log (fcmam);	
+var AVElist = window.data.filter(function(window.data)  { return window.data.Clase == "AVE"; });  //filtra aves
+var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
+console.log (fcave);	
+var REPTILlist = window.data.filter(function(window.data)  { return window.data.Clase == "REPTIL"; });  //filtra reptiles
+var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
+console.log (fcrep);	
+var ANFIBIOlist = window.data.filter(function(window.data)  { return window.data.Clase == "ANFIBIO"; });  //filtra anfibios
+var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
+console.log (fcanf);
+  	
 	
 // Returns different colors depending on the string passed // Used for the points layer
   function getIcon(type) {
