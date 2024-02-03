@@ -117,9 +117,10 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//window.data = data; 
 
-	//document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
 	document.getElementById("claseX").addEventListener("change", filterData);
-    document.getElementById("especieX").addEventListener("change", filterData);
+	document.getElementById("especieX").addEventListener("change", filterData);
+	//document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
+	//document.getElementById("especieX").addEventListener("change", cargarEspecies);
 	
 	// RENDERING METHOD
 	function renderMarkers () {
@@ -229,9 +230,9 @@ function addPoints(data) {
 		if (prescValue === "-") {  filteredData = simdFilteredData; }
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
+		cargarEspecies();	
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados	
-		cargarEspecies();		
-		
+	
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos
