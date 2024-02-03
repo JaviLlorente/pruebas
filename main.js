@@ -116,8 +116,8 @@ function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//window.data = data; 
-		
-	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
+
+	document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -231,40 +231,42 @@ function addPoints(data) {
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
 		
-		/////SELECCIONANDOESPECIE  	
-		function cargarEspecies() {
-			// Objeto de clases con especies		
-			var claseXs = document.getElementById('claseX')
-			var especieXs = document.getElementById('especieX')
-			var claseSeleccionada = claseXs.value
-			
-			// Se limpian los especies
-			especieXs.innerHTML = '<option value="-">...</option>'
-			
-			if(claseSeleccionada !== "-"){
-				// Se seleccionan los especies y se ordenan
-				switch (claseSeleccionada) {
-				  case "MAMIFERO": claseSeleccionada = fcmam; break;
-				  case "AVE": claseSeleccionada = fcave; break;
-				  case "REPTIL": claseSeleccionada = fcrep; break;
-				  case "ANFIBIO": claseSeleccionada = fcanf; break;			  
-				}			
-				claseSeleccionada.sort(Intl.Collator().compare);
-
-				// Insertamos las especies
-				claseSeleccionada.forEach(function(especieX){
-					let opcion = document.createElement('option')
-					opcion.value = especieX
-					opcion.text = especieX
-					especieXs.add(opcion)
-				});
-			}			
-		} //FinCargaEspecies
+		CargaEspecies();
 		
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos
 	
+	/////CARGANDOESPECIES	
+	function cargarEspecies() {
+		// Objeto de clases con especies		
+		var claseXs = document.getElementById('claseX')
+		var especieXs = document.getElementById('especieX')
+		var claseSeleccionada = claseXs.value
+			
+		// Se limpian los especies
+		especieXs.innerHTML = '<option value="-">...</option>'
+			
+		if(claseSeleccionada !== "-"){
+			// Se seleccionan los especies y se ordenan
+			switch (claseSeleccionada) {
+				case "MAMIFERO": claseSeleccionada = fcmam; break;
+				case "AVE": claseSeleccionada = fcave; break;
+				case "REPTIL": claseSeleccionada = fcrep; break;
+				case "ANFIBIO": claseSeleccionada = fcanf; break;			  
+			}			
+			claseSeleccionada.sort(Intl.Collator().compare);
+
+			// Insertamos las especies
+			claseSeleccionada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = especieX
+				opcion.text = especieX
+				especieXs.add(opcion)
+			});
+		}			
+	} //FinCargaEspecies
+
 	//CALCULA LA LISTA DE ESPECIES (creo que la calcula lo último, que sería lo suyo. Y lo hace solo la primera carga)
 	//partiendo de la tabla original sin otro sheet. 	
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
