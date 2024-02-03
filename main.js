@@ -115,9 +115,8 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	window.data = data; //Para generar la lista de especies. En teoria lo calcula una vez
-	console.log	(window.data);
-	
+	//window.data = data; 
+		
 	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -267,15 +266,9 @@ function addPoints(data) {
 			});
 		}			
 	} //FinCargaEspecies
-	
-	Generalista();
-	
-}; //FINADDPOINTS
 
-//CALCULA LA LISTA DE ESPECIES (creo que la calcula lo último, que sería lo suyo)
-//partiendo de la tabla original sin otro sheet. 
-function Generalista(window.data) {
-	data = window.data;
+	//CALCULA LA LISTA DE ESPECIES (creo que la calcula lo último, que sería lo suyo. Y lo hace solo la primera carga)
+	//partiendo de la tabla original sin otro sheet. 	
 	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
 	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
 	console.log (fcmam);	
@@ -288,8 +281,10 @@ function Generalista(window.data) {
 	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	console.log (fcanf);
-}
-  		
+	
+}; //FINADDPOINTS
+
+	
 // Returns different colors depending on the string passed // Used for the points layer
   function getIcon(type) {
   switch (type) {
