@@ -131,9 +131,9 @@ function addPoints(data) {
 		// Se limpian los especies
 		especieXs.innerHTML = '<option value="-">...</option>'
 		//condicional
-		if(claseXs !== "-"){
+		if(claseSeleccionada !== "-"){
 			// Se seleccionan los especies
-			switch (claseXs) {
+			switch (claseSeleccionada) {
 				case "MAMIFERO": claseSeleccionada = fcmam; break;
 				case "AVE": claseSeleccionada = fcave; break;
 				case "REPTIL": claseSeleccionada = fcrep; break;
