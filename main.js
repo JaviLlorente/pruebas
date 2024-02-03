@@ -152,7 +152,7 @@ function addPoints(data) {
 	} //FinCargaEspecies
 	
 	// RENDERING METHOD
-	function renderMarkers () {
+	function renderMarkers (data) {
 		
 		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
