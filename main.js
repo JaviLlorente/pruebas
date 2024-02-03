@@ -237,7 +237,7 @@ function addPoints(data) {
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos
 	
-	/////SeleccionandoESPECIE  	
+	/////SELECCIONANDOESPECIE  	
 	function cargarEspecies() {
 		// Objeto de clases con especies
 		
@@ -267,26 +267,29 @@ function addPoints(data) {
 			});
 		}			
 	} //FinCargaEspecies
-		
+	
+	Generalista();
+	
 }; //FINADDPOINTS
-
 
 //CALCULA LA LISTA DE ESPECIES (creo que la calcula lo último, que sería lo suyo)
 //partiendo de la tabla original sin otro sheet. 
-var MAMIFEROlist = window.data.filter(function(window.data)  { return window.data.Clase == "MAMIFERO"; });  //filtra mamiferos
-var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-console.log (fcmam);	
-var AVElist = window.data.filter(function(window.data)  { return window.data.Clase == "AVE"; });  //filtra aves
-var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-console.log (fcave);	
-var REPTILlist = window.data.filter(function(window.data)  { return window.data.Clase == "REPTIL"; });  //filtra reptiles
-var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-console.log (fcrep);	
-var ANFIBIOlist = window.data.filter(function(window.data)  { return window.data.Clase == "ANFIBIO"; });  //filtra anfibios
-var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-console.log (fcanf);
-  	
-	
+function Generalista(window.data) {
+	data = window.data;
+	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
+	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
+	console.log (fcmam);	
+	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
+	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
+	console.log (fcave);	
+	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
+	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
+	console.log (fcrep);	
+	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
+	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
+	console.log (fcanf);
+}
+  		
 // Returns different colors depending on the string passed // Used for the points layer
   function getIcon(type) {
   switch (type) {
