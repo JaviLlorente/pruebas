@@ -18,96 +18,92 @@ let sidebar;
 let panelID = "my-info-panel";
 
 /* FUNCIONINIT
- * init() is called when the page has loaded
- */
+ * init() is called when the page has loaded */
 function init() {
-  // Create a new Leaflet map centered on the continental US
-  map = L.map('map').setView([41.10, -4.00], 9.4);
+	// Create a new Leaflet map centered on the continental US
+	map = L.map('map').setView([41.10, -4.00], 9.4);
 
-  // This is the Carto Positron basemap
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
-	maxZoom: 18,
-  }).addTo(map);
-  
-	map.spin(true, {
-		lines: 13, length: 30
-	}); //on_spin
+	// This is the Carto Positron basemap
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+		maxZoom: 18,
+	}).addTo(map);
+	
+	map.spin(true, { lines: 13, length: 30 } ); //on_spin
+	
+	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 
-  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
+	let panelContent = {
+		id: panelID,
+		tab: "<i class='fa fa-bars active'></i>",
+		pane: "<p id='sidebar-content'></p>",
+		title: "<h2 id='sidebar-title'>Nothing selected</h2>",
+	};
+	sidebar.addPanel(panelContent);
 
-  let panelContent = {
-    id: panelID,
-    tab: "<i class='fa fa-bars active'></i>",
-    pane: "<p id='sidebar-content'></p>",
-    title: "<h2 id='sidebar-title'>Nothing selected</h2>",
-  };
-  sidebar.addPanel(panelContent);
+	map.on("click", function () {
+		sidebar.close(panelID);
+	});
 
-  map.on("click", function () {
-    sidebar.close(panelID);
-  });
-
-  // Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
-  Papa.parse(geomURL, {
-    download: true,
-    header: true,
-    complete: addGeoms,
-  });
-  Papa.parse(pointsURL, {
-    download: true,
-    header: true,
-    complete: addPoints,
-  });   
+	// Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
+	Papa.parse(geomURL, {
+		download: true,
+		header: true,
+		complete: addGeoms,
+	});
+	Papa.parse(pointsURL, {
+		download: true,
+		header: true,
+		complete: addPoints,
+	});   
 }//FinInit
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
 function addGeoms(data) {
-  data = data.data;
-  // Need to convert the PapaParse JSON into a GeoJSON // Start with an empty GeoJSON of type FeatureCollection // All the rows will be inserted into a single GeoJSON
-  let fc = {
-    type: "FeatureCollection",
-    features: [],
-  };
+	data = data.data;
+	// Need to convert the PapaParse JSON into a GeoJSON // Start with an empty GeoJSON of type FeatureCollection // All the rows will be inserted into a single GeoJSON
+	let fc = {
+		type: "FeatureCollection",
+		features: [],
+	};
 
-  for (let row in data) {
-    // The Sheets data has a column 'include' that specifies if that row should be mapped
-    if (data[row].include == "y") {
-      let features = parseGeom(JSON.parse(data[row].geometry));
-      features.forEach((el) => {
-        el.properties = {
-          name: data[row].name,
-          description: data[row].description,
-        };
-        fc.features.push(el);
-      });
-    }}
+	for (let row in data) {
+		// The Sheets data has a column 'include' that specifies if that row should be mapped
+		if (data[row].include == "y") {
+		  let features = parseGeom(JSON.parse(data[row].geometry));
+		  features.forEach((el) => {
+			el.properties = {
+			  name: data[row].name,
+			  description: data[row].description,
+			};
+			fc.features.push(el);
+		  });
+		}}
 
-  // The geometries are styled slightly differently on mouse hovers
-  let geomStyle = { color: "#2ca25f", fillColor: "#99d8c9", weight: 2 };
-  let geomHoverStyle = { color: "green", fillColor: "#2ca25f", weight: 3 };
+	// The geometries are styled slightly differently on mouse hovers
+	let geomStyle = { color: "#2ca25f", fillColor: "#99d8c9", weight: 2 };
+	let geomHoverStyle = { color: "green", fillColor: "#2ca25f", weight: 3 };
 
-  L.geoJSON(fc, {
-    onEachFeature: function (feature, layer) {
-      layer.on({
-        mouseout: function (e) {
-          e.target.setStyle(geomStyle); },
-        mouseover: function (e) {
-          e.target.setStyle(geomHoverStyle); },
-        click: function (e) {
-          // This zooms the map to the clicked geometry // Uncomment to enable // map.fitBounds(e.target.getBounds());
-          // if this isn't added, then map.click is also fired!
-          L.DomEvent.stopPropagation(e);
-
-          document.getElementById("sidebar-title").innerHTML =  e.target.feature.properties.name;
-          document.getElementById("sidebar-content").innerHTML =  e.target.feature.properties.description;
-          sidebar.open(panelID);
-        },
-      });
-    },
-    style: geomStyle,
-  }).addTo(map);
+	L.geoJSON(fc, {
+		onEachFeature: function (feature, layer) {
+		  layer.on({
+			mouseout: function (e) {
+			  e.target.setStyle(geomStyle); },
+			mouseover: function (e) {
+			  e.target.setStyle(geomHoverStyle); },
+			click: function (e) {
+			  // This zooms the map to the clicked geometry // Uncomment to enable // map.fitBounds(e.target.getBounds());
+			  // if this isn't added, then map.click is also fired!
+			  L.DomEvent.stopPropagation(e);
+			  document.getElementById("sidebar-title").innerHTML =  e.target.feature.properties.name;
+			  document.getElementById("sidebar-content").innerHTML =  e.target.feature.properties.description;
+			  sidebar.open(panelID);
+			},
+		  });
+		},
+		style: geomStyle,
+	}).addTo(map);
 } //Fin Addgeom
 
 /* ADDPOINTS
@@ -152,8 +148,7 @@ function addPoints(data) {
 	} //FinCargaEspecies
 	
 	// RENDERING METHOD
-	function renderMarkers (data) {
-		
+	function renderMarkers (data) {		
 		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
@@ -280,7 +275,7 @@ function addPoints(data) {
 	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
 	console.log (fcanf);
 	
-}; //FINADDPOINTS
+}; //FINdeADDPOINTS
 
 	
 // Returns different colors depending on the string passed // Used for the points layer
