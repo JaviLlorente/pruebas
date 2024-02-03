@@ -123,7 +123,7 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//window.data = data; //Creo que no hace falta	
 	
-	document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
+	document.getElementById("claseX").addEventListener("change", cargarEspecies); //con click no va bien en Android
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
