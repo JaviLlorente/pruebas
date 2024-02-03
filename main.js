@@ -138,7 +138,7 @@ function addPoints(data) {
 	//console.log (fcanf);
 
 	document.getElementById("claseX").addEventListener("click", cargarEspecies); //hace falta para buen funcionamiento
-	document.getElementById("claseX").addEventListener("click", filterData);
+	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 
 	/////SeleccionandoESPECIE  	
