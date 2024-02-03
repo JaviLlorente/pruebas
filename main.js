@@ -200,7 +200,6 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 	
-	cargarEspecies();
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
@@ -230,7 +229,8 @@ function addPoints(data) {
 		if (prescValue === "-") {  filteredData = simdFilteredData; }
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados		
+		renderMarkers(filteredData); //Renderizado desde los datos filtrados	
+		cargarEspecies();		
 		
     }; //FinFiltro
 
