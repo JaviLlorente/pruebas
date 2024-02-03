@@ -119,8 +119,8 @@ function addPoints(data) {
 
 	document.getElementById("claseX").addEventListener("change", filterData);
 	document.getElementById("especieX").addEventListener("change", filterData);
-	document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
-	document.getElementById("especieX").addEventListener("change", cargarEspecies);
+	document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta change para buen funcionamiento en android
+	//document.getElementById("especieX").addEventListener("change", cargarEspecies);
 	
 	/////CARGANDOESPECIES	
 	function cargarEspecies() {
