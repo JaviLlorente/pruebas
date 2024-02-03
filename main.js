@@ -117,12 +117,12 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//window.data = data; 
 
-	document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
+	//document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta para buen funcionamiento
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
-	function renderMarkers (data) {
+	function renderMarkers () {
 		
 		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
@@ -230,8 +230,7 @@ function addPoints(data) {
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		
-		CargaEspecies();
+		cargarEspecies();
 		
     }; //FinFiltro
 
