@@ -199,7 +199,8 @@ function addPoints(data) {
 			marker.setIcon(icon);			
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
-		
+	
+	cargarEspecies();
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
@@ -229,8 +230,7 @@ function addPoints(data) {
 		if (prescValue === "-") {  filteredData = simdFilteredData; }
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados
-		cargarEspecies();
+		renderMarkers(filteredData); //Renderizado desde los datos filtrados		
 		
     }; //FinFiltro
 
@@ -252,7 +252,8 @@ function addPoints(data) {
 				case "MAMIFERO": claseSeleccionada = fcmam; break;
 				case "AVE": claseSeleccionada = fcave; break;
 				case "REPTIL": claseSeleccionada = fcrep; break;
-				case "ANFIBIO": claseSeleccionada = fcanf; break;			  
+				case "ANFIBIO": claseSeleccionada = fcanf; break;	
+				default: claseSeleccionada = data;
 			}			
 			claseSeleccionada.sort(Intl.Collator().compare);
 
