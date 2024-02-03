@@ -17,6 +17,7 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
+
 /* FUNCIONINIT
  * init() is called when the page has loaded */
 function init() {
@@ -57,6 +58,7 @@ function init() {
 		complete: addPoints,
 	});   
 }//FinInit
+
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
@@ -105,6 +107,7 @@ function addGeoms(data) {
 		style: geomStyle,
 	}).addTo(map);
 } //Fin Addgeom
+
 
 /* ADDPOINTS
  * addPoints is a bit simpler, as no GeoJSON is needed for the points */
