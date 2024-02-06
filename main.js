@@ -73,7 +73,8 @@ function addPoints_lista(data) {
 	data = data.data; 
 	var listaEspecies = data;
 	console.log (data);
-	alert("cambiada5");
+	alert("cambiada4");
+	window.data = data; //Creo que no hace falta	
 }
 
 /////SeleccionandoESPECIE  	
@@ -82,6 +83,7 @@ function addPoints_lista(data) {
 		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 		function cargarEspecies() {
+			var listaEspecies = window.data;
 			// Objeto de clases con especies
 			
 			var claseXs = document.getElementById('claseX')
