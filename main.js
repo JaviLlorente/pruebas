@@ -287,7 +287,7 @@ function addPoints(data) {
 }; //FINdeADDPOINTS
 
 	
-function addPoints(data) {
+function addPoints_lista(data) {
 	data = data.data; 
 	console.log (data);
 }
