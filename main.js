@@ -156,9 +156,8 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	console.log (data);
-	//window.data = data; //Creo que no hace falta	
-
+	//console.log (data);
+	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
