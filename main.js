@@ -8,10 +8,10 @@
 let geomURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1on0SyoQQfTL0lsTJTuZGotL3IRWj7raYbbnYy5WT83TiQUshrby-SHIducbO7j5T4H3t8x63OKQy/pub?output=csv";
 let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
 let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=264987713&single=true&output=csv"
-	//https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=1198544515&single=true&output=csv
-	//Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
+	// Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
 	//"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
-    //let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
+
+let pointsURL_lista = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2070618516&single=true&output=csv"
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -19,147 +19,148 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 
-
 /* FUNCIONINIT
- * init() is called when the page has loaded */
+ * init() is called when the page has loaded
+ */
 function init() {
-	// Create a new Leaflet map centered on the continental US
-	map = L.map('map').setView([41.10, -4.00], 9.4);
+  // Create a new Leaflet map centered on the continental US
+  map = L.map('map').setView([41.10, -4.00], 9.4);
 
-	// This is the Carto Positron basemap
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
-		maxZoom: 18,
-	}).addTo(map);
-	
-	map.spin(true, { lines: 13, length: 30 } ); //on_spin
-	
-	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
+  // This is the Carto Positron basemap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+	maxZoom: 18,
+  }).addTo(map);
+  
+	map.spin(true, {
+		lines: 13, length: 30
+	}); //on_spin
 
-	let panelContent = {
-		id: panelID,
-		tab: "<i class='fa fa-bars active'></i>",
-		pane: "<p id='sidebar-content'></p>",
-		title: "<h2 id='sidebar-title'>Nothing selected</h2>",
-	};
-	sidebar.addPanel(panelContent);
+  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 
-	map.on("click", function () {
-		sidebar.close(panelID);
-	});
+  let panelContent = {
+    id: panelID,
+    tab: "<i class='fa fa-bars active'></i>",
+    pane: "<p id='sidebar-content'></p>",
+    title: "<h2 id='sidebar-title'>Nothing selected</h2>",
+  };
+  sidebar.addPanel(panelContent);
 
-	// Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
-	Papa.parse(geomURL, {
-		download: true,
-		header: true,
-		complete: addGeoms,
-	});
-	Papa.parse(pointsURL, {
-		download: true,
-		header: true,
-		complete: addPoints,
-	});
-	Papa.parse(points_listaURL, {
+  map.on("click", function () {
+    sidebar.close(panelID);
+  });
+
+  // Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
+  Papa.parse(geomURL, {
+    download: true,
+    header: true,
+    complete: addGeoms,
+  });
+  Papa.parse(pointsURL, {
+    download: true,
+    header: true,
+    complete: addPoints,
+  });
+  Papa.parse(points_listaURL, {
 		download: true,
 		header: false,
 		complete: addPoints_lista,
-	});   
+	});  
 }//FinInit
 
+function addPoints_lista(data) {
+	data = data.data; 
+	var listaEspecies = data;
+	//console.log (data);
+	
+	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+
+	function cargarEspecies() {
+			var claseXs = document.getElementById('claseX')
+			var especieXs = document.getElementById('especieX')
+			var claseSeleccionada = claseXs.value
+				
+			// Se limpian los especies
+			especieXs.innerHTML = '<option value="-">...</option>'
+				
+			if(claseSeleccionada !== "-"){
+				// Se seleccionan los especies y se ordenan
+				claseSeleccionada = listaEspecies[claseSeleccionada]
+				//claseSeleccionada.sort()
+				
+				// Insertamos los especies
+				claseSeleccionada.forEach(function(especieX){
+					let opcion = document.createElement('option')
+					opcion.value = especieX
+					opcion.text = especieX
+					especieXs.add(opcion)
+				});
+			}			
+		} // Iniciar la carga de clases solo para comprobar que funciona			
+} /////FIN ESPECIE
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
 function addGeoms(data) {
-	data = data.data;
-	// Need to convert the PapaParse JSON into a GeoJSON // Start with an empty GeoJSON of type FeatureCollection // All the rows will be inserted into a single GeoJSON
-	let fc = {
-		type: "FeatureCollection",
-		features: [],
-	};
+  data = data.data;
+  // Need to convert the PapaParse JSON into a GeoJSON // Start with an empty GeoJSON of type FeatureCollection // All the rows will be inserted into a single GeoJSON
+  let fc = {
+    type: "FeatureCollection",
+    features: [],
+  };
 
-	for (let row in data) {
-		// The Sheets data has a column 'include' that specifies if that row should be mapped
-		if (data[row].include == "y") {
-		  let features = parseGeom(JSON.parse(data[row].geometry));
-		  features.forEach((el) => {
-			el.properties = {
-			  name: data[row].name,
-			  description: data[row].description,
-			};
-			fc.features.push(el);
-		  });
-		}}
+  for (let row in data) {
+    // The Sheets data has a column 'include' that specifies if that row should be mapped
+    if (data[row].include == "y") {
+      let features = parseGeom(JSON.parse(data[row].geometry));
+      features.forEach((el) => {
+        el.properties = {
+          name: data[row].name,
+          description: data[row].description,
+        };
+        fc.features.push(el);
+      });
+    }}
 
-	// The geometries are styled slightly differently on mouse hovers
-	let geomStyle = { color: "#2ca25f", fillColor: "#99d8c9", weight: 2 };
-	let geomHoverStyle = { color: "green", fillColor: "#2ca25f", weight: 3 };
+  // The geometries are styled slightly differently on mouse hovers
+  let geomStyle = { color: "#2ca25f", fillColor: "#99d8c9", weight: 2 };
+  let geomHoverStyle = { color: "green", fillColor: "#2ca25f", weight: 3 };
 
-	L.geoJSON(fc, {
-		onEachFeature: function (feature, layer) {
-		  layer.on({
-			mouseout: function (e) {
-			  e.target.setStyle(geomStyle); },
-			mouseover: function (e) {
-			  e.target.setStyle(geomHoverStyle); },
-			click: function (e) {
-			  // This zooms the map to the clicked geometry // Uncomment to enable // map.fitBounds(e.target.getBounds());
-			  // if this isn't added, then map.click is also fired!
-			  L.DomEvent.stopPropagation(e);
-			  document.getElementById("sidebar-title").innerHTML =  e.target.feature.properties.name;
-			  document.getElementById("sidebar-content").innerHTML =  e.target.feature.properties.description;
-			  sidebar.open(panelID);
-			},
-		  });
-		},
-		style: geomStyle,
-	}).addTo(map);
+  L.geoJSON(fc, {
+    onEachFeature: function (feature, layer) {
+      layer.on({
+        mouseout: function (e) {
+          e.target.setStyle(geomStyle); },
+        mouseover: function (e) {
+          e.target.setStyle(geomHoverStyle); },
+        click: function (e) {
+          // This zooms the map to the clicked geometry // Uncomment to enable // map.fitBounds(e.target.getBounds());
+          // if this isn't added, then map.click is also fired!
+          L.DomEvent.stopPropagation(e);
+
+          document.getElementById("sidebar-title").innerHTML =  e.target.feature.properties.name;
+          document.getElementById("sidebar-content").innerHTML =  e.target.feature.properties.description;
+          sidebar.open(panelID);
+        },
+      });
+    },
+    style: geomStyle,
+  }).addTo(map);
 } //Fin Addgeom
-
 
 /* ADDPOINTS
  * addPoints is a bit simpler, as no GeoJSON is needed for the points */
 function addPoints(data) {
 	data = data.data; 
-	console.log(data);
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
-	//window.data = data; 
+	//window.data = data; //Creo que no hace falta	
 
 	document.getElementById("claseX").addEventListener("change", filterData);
-	document.getElementById("especieX").addEventListener("change", filterData);
-	document.getElementById("claseX").addEventListener("change", cargarEspecies); //hace falta change para buen funcionamiento en android
-	//document.getElementById("especieX").addEventListener("change", cargarEspecies);
-	
-	/////CARGANDOESPECIES	
-	function cargarEspecies() {
-		// Objeto de clases con especies		
-		var claseXs = document.getElementById('claseX')
-		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada = claseXs.value
-		// Se limpian los especies
-		especieXs.innerHTML = '<option value="-">...</option>'
-		//condicional
-		if(claseSeleccionada !== "-"){
-			// Se seleccionan los especies
-			switch (claseSeleccionada) {
-				case "MAMIFERO": claseSeleccionada = fcmam; break;
-				case "AVE": claseSeleccionada = fcave; break;
-				case "REPTIL": claseSeleccionada = fcrep; break;
-				case "ANFIBIO": claseSeleccionada = fcanf; break;	
-				default: claseSeleccionada = [];
-			}			
-			claseSeleccionada.sort(Intl.Collator().compare); //se ordenan
-			// Insertamos las especies
-			claseSeleccionada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = especieX
-				opcion.text = especieX
-				especieXs.add(opcion)
-			});
-		}			
-	} //FinCargaEspecies
+    document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
-	function renderMarkers (data) {		
+	function renderMarkers (data) {
+		
 		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
@@ -226,7 +227,8 @@ function addPoints(data) {
 				}	
 				sidebar.open(panelID);
 			 },
-			});	// COMMENT UNTIL HERE TO DISABLE SIDEBAR FOR THE MARKERS
+			});
+			// COMMENT UNTIL HERE TO DISABLE SIDEBAR FOR THE MARKERS
 		  
 			// AwesomeMarkers is used to create fancier icons
 			let icon = L.icon({ iconUrl: getIcon(data[row].Clase), iconSize: [15, 25], iconAnchor: [9, 28],	popupAnchor: [0, -28],
@@ -235,7 +237,7 @@ function addPoints(data) {
 			marker.setIcon(icon);			
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
-	
+		
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
@@ -265,43 +267,22 @@ function addPoints(data) {
 		if (prescValue === "-") {  filteredData = simdFilteredData; }
 		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados	
-	
+		renderMarkers(filteredData); //Renderizado desde los datos filtrados
+		
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos
 	
-	//CALCULA LA LISTA DE ESPECIES (creo que la calcula lo último, que sería lo suyo. Y lo hace solo la primera carga)
-	//partiendo de la tabla original sin otro sheet. 	
-	var MAMIFEROlist = data.filter(function(data)  { return data.Clase == "MAMIFERO"; });  //filtra mamiferos
-	var fcmam = [...new Set(MAMIFEROlist.map(MAMIFEROlist => MAMIFEROlist.Especie))];  //saca especies únicas
-	console.log (fcmam);	
-	var AVElist = data.filter(function(data)  { return data.Clase == "AVE"; });  //filtra aves
-	var fcave = [...new Set(AVElist.map(AVElist => AVElist.Especie))];  //saca especies únicas
-	console.log (fcave);	
-	var REPTILlist = data.filter(function(data)  { return data.Clase == "REPTIL"; });  //filtra reptiles
-	var fcrep = [...new Set(REPTILlist.map(REPTILlist => REPTILlist.Especie))];  //saca especies únicas
-	console.log (fcrep);	
-	var ANFIBIOlist = data.filter(function(data)  { return data.Clase == "ANFIBIO"; });  //filtra anfibios
-	var fcanf = [...new Set(ANFIBIOlist.map(ANFIBIOlist => ANFIBIOlist.Especie))];  //saca especies únicas
-	console.log (fcanf);
-	
-}; //FINdeADDPOINTS
-
-	
-function addPoints_lista(data) {
-	data = data.data; 
-	console.log (data);
-}
-	
+}; //FINADDPOINTS
+   	
 	
 // Returns different colors depending on the string passed // Used for the points layer
   function getIcon(type) {
   switch (type) {
     case 'MAMIFERO':  return 'css/images/marker-icon-red.png';
     case 'AVE':  return 'css/images/marker-icon-yellow.png';
-	case 'REPTIL':  return 'css/images/marker-icon-green.png';
-	case 'ANFIBIO':  return 'css/images/marker-icon-blue.png';
+	 case 'REPTIL':  return 'css/images/marker-icon-green.png';
+	 case 'ANFIBIO':  return 'css/images/marker-icon-blue.png';
     default:  return 'css/images/marker-icon-black.png';
   }
 }
