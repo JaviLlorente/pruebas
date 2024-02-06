@@ -77,28 +77,27 @@ function addPoints_lista(data) {
 	
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
-	function cargarEspecies() {
-		var claseXs = document.getElementById('claseX')
-		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada = claseXs.value
-		
-		// Se limpian los especies
-		especieXs.innerHTML = '<option value="-">...</option>'
+	var claseXs = document.getElementById('claseX')
+	var especieXs = document.getElementById('especieX')
+	var claseSeleccionada = claseXs.value
+	
+	// Se limpian los especies
+	especieXs.innerHTML = '<option value="-">...</option>'
+	
+	if(claseSeleccionada !== "-"){
+		// Se seleccionan los especies y se ordenan
+		claseSeleccionada = listaEspecies[claseSeleccionada]
+		//claseSeleccionada.sort()
 
-		if(claseSeleccionada !== "-"){
-			// Se seleccionan los especies y se ordenan
-			claseSeleccionada = listaEspecies[claseSeleccionada]
-			//claseSeleccionada.sort()
-
-			// Insertamos los especies
-			claseSeleccionada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = especieX
-				opcion.text = especieX
-				especieXs.add(opcion)
-			});
-		}			
-	} // Iniciar la carga de clases solo para comprobar que funciona			
+		// Insertamos los especies
+		claseSeleccionada.forEach(function(especieX){
+			let opcion = document.createElement('option')
+			opcion.value = especieX
+			opcion.text = especieX
+			especieXs.add(opcion)
+		});
+	}			
+	// Iniciar la carga de clases solo para comprobar que funciona			
 } /////FIN CARGA_LISTAESPECIES
 
 /* ADDGEOM
