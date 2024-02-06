@@ -68,6 +68,8 @@ function init() {
 	});  
 }//FinInit
 
+
+//CARGA_LISTAESPECIES
 function addPoints_lista(data) {
 	data = data.data; 
 	var listaEspecies = data;
@@ -76,28 +78,28 @@ function addPoints_lista(data) {
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
 	function cargarEspecies() {
-			var claseXs = document.getElementById('claseX')
-			var especieXs = document.getElementById('especieX')
-			var claseSeleccionada = claseXs.value
-				
-			// Se limpian los especies
-			especieXs.innerHTML = '<option value="-">...</option>'
-				
-			if(claseSeleccionada !== "-"){
-				// Se seleccionan los especies y se ordenan
-				claseSeleccionada = listaEspecies[claseSeleccionada]
-				//claseSeleccionada.sort()
-				
-				// Insertamos los especies
-				claseSeleccionada.forEach(function(especieX){
-					let opcion = document.createElement('option')
-					opcion.value = especieX
-					opcion.text = especieX
-					especieXs.add(opcion)
-				});
-			}			
-		} // Iniciar la carga de clases solo para comprobar que funciona			
-} /////FIN ESPECIE
+		var claseXs = document.getElementById('claseX')
+		var especieXs = document.getElementById('especieX')
+		var claseSeleccionada = claseXs.value
+		
+		// Se limpian los especies
+		especieXs.innerHTML = '<option value="-">...</option>'
+
+		if(claseSeleccionada !== "-"){
+			// Se seleccionan los especies y se ordenan
+			claseSeleccionada = listaEspecies[claseSeleccionada]
+			//claseSeleccionada.sort()
+
+			// Insertamos los especies
+			claseSeleccionada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = especieX
+				opcion.text = especieX
+				especieXs.add(opcion)
+			});
+		}			
+	} // Iniciar la carga de clases solo para comprobar que funciona			
+} /////FIN CARGA_LISTAESPECIES
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
