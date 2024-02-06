@@ -64,17 +64,9 @@ function init() {
   });  
 }//FinInit
 
-//AñadirLista
-function addPoints_lista(data) {
-	data = data.data; 
-	console.log (data);
-	window.data = data; //Para enviar lista	
-}
 
-window.onload = function () {
-	
+window.onload = function () {	
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-
 	// CargaEspecies
 	function cargarEspecies() {
 		var listaEspecies = window.data; //recoge de addPoints_lista
@@ -95,7 +87,7 @@ window.onload = function () {
 				default: claseSeleccionada = [];
 			}			
 			claseSeleccionada = listaEspecies[claseSeleccionada]
-			const filtrada = claseSeleccionada.filter(dato => dato != '');
+			const filtrada = claseSeleccionada.filter(dato => dato != ''); //quita las celdas vacías
 			
 			// Insertamos las especies
 			filtrada.forEach(function(especieX){
@@ -104,9 +96,10 @@ window.onload = function () {
 				opcion.text = especieX
 				especieXs.add(opcion)
 			});
-		}			
+		}	
+	document.getElementById("Narray3").value = filtrada.length;	//nºregistros
 	} // FinCargaEspecies	
-} // FinAñadirLista
+}
 	
 
 /* ADDGEOM
@@ -286,7 +279,13 @@ function addPoints(data) {
 	
 }; //FINADDPOINTS
    	
-	
+//AñadirLista
+function addPoints_lista(data) {
+	data = data.data; 
+	console.log (data);
+	window.data = data; //Para enviar lista	
+}	
+
 // Returns different colors depending on the string passed // Used for the points layer
   function getIcon(type) {
   switch (type) {
