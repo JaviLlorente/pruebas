@@ -61,7 +61,7 @@ function init() {
 	});
 	Papa.parse(points_listaURL, {
 		download: true,
-		header: true,
+		header: false,
 		complete: addPoints_lista,
 	});   
 }//FinInit
