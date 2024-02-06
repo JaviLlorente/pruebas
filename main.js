@@ -9,7 +9,7 @@ let geomURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1on0SyoQQfTL0l
 let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
 //let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2140926050&single=true&output=csv" //sheet6
 //let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=264987713&single=true&output=csv" //sheet5
-let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=162799454&single=true&output=csv" // sheet7
+let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=775902029&single=true&output=csv" // MAMIFEROS
 
 window.addEventListener("DOMContentLoaded", init);
 
