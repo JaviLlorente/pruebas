@@ -95,7 +95,7 @@ window.onload = function () {
 				opcion.value = especieX
 				opcion.text = especieX
 				especieXs.add(opcion)
-				document.getElementById("Narray3").value = filtrada.length;	//nºregistros
+				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
 		}	
 	} // FinCargaEspecies	
