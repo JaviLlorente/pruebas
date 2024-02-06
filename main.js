@@ -73,7 +73,7 @@ function addPoints_lista(data) {
 	data = data.data; 
 	var listaEspecies = data;
 	console.log (data);
-	alert("cambiada2");
+	alert("cambiada");
 }
 
 /////SeleccionandoESPECIE  	
@@ -161,6 +161,7 @@ function addGeoms(data) {
 function addPoints(data) {
 	data = data.data; 
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
+	console.log (data);
 	//window.data = data; //Creo que no hace falta	
 
 	document.getElementById("claseX").addEventListener("change", filterData);
