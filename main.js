@@ -93,6 +93,14 @@ function addPoints_lista(data) {
 			
 			if(claseSeleccionada !== "-"){
 			  // Se seleccionan los especies y se ordenan
+			  switch (claseSeleccionada) {
+				case "MAMIFERO": claseSeleccionada = 0; break;
+				case "AVE": claseSeleccionada = 1; break;
+				case "REPTIL": claseSeleccionada = 2; break;
+				case "ANFIBIO": claseSeleccionada = 3; break;	
+				default: claseSeleccionada = [];
+			  }			
+			  
 			  claseSeleccionada = listaEspecies[claseSeleccionada]
 			  //claseSeleccionada.sort()
 			
