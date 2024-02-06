@@ -69,8 +69,7 @@ function init() {
 function addPoints_lista(data) {
 	data = data.data; 
 	console.log (data);
-	const filtrado = data.filter(dato => dato != '');
-	window.data = filtrado; //Para enviar lista	
+	window.data = data; //Para enviar lista	
 	
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
@@ -92,12 +91,12 @@ function addPoints_lista(data) {
 				case "ANFIBIO": claseSeleccionada = 3; break;	
 				default: claseSeleccionada = [];
 			}			
-			  
 			claseSeleccionada = listaEspecies[claseSeleccionada]
+			const filtrada = claseSeleccionada.filter(dato => dato != '');
 			//claseSeleccionada.sort() //no hace falta porque viene ya ordenado
 			
 			// Insertamos las especies
-			claseSeleccionada.forEach(function(especieX){
+			filtrada.forEach(function(especieX){
 				let opcion = document.createElement('option')
 				opcion.value = especieX
 				opcion.text = especieX
