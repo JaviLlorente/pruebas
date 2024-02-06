@@ -8,17 +8,12 @@
 let geomURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1on0SyoQQfTL0lsTJTuZGotL3IRWj7raYbbnYy5WT83TiQUshrby-SHIducbO7j5T4H3t8x63OKQy/pub?output=csv";
 let pointsURL =  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8kfDgeV5DH0yXntk8-b2WXs5oW_bHuJdNb4hDXPA6AilTSTsNvHieU9yEhP14uBxaj3wALggT03-D/pub?output=csv";
 let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=2140926050&single=true&output=csv" //sheet6
-//let points_listaURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=264987713&single=true&output=csv" //sheet5
-	// Google spreadsheet Leaflet_points_COPIA con campo geometry (sin array para calculo automatico):
-	//"https://docs.google.com/spreadsheets/d/e/2PACX-1vQbcdexNbJ3QYG2y7Ska32sodt5Ovv23_j_4wpK1UCMzmlKyUdTWQ4w2v69Q5LZ9aEzgf2lei-Ju9Lc/pub?gid=0&single=true&output=csv"
 
 window.addEventListener("DOMContentLoaded", init);
 
 let map;
 let sidebar;
 let panelID = "my-info-panel";
-
-var listaEspecies;
 
 /* FUNCIONINIT
  * init() is called when the page has loaded
@@ -71,51 +66,44 @@ function init() {
 
 function addPoints_lista(data) {
 	data = data.data; 
-	var listaEspecies = data;
 	console.log (data);
-	alert("cambiada4");
-	window.data = data; //Creo que no hace falta	
-}
+	window.data = data; //Para enviar lista	
+	
+	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 
-/////SeleccionandoESPECIE  	
-	window.onload = function () {
+	function cargarEspecies() {
+		var listaEspecies = window.data; //recoge de addPoints_lista
+		var claseXs = document.getElementById('claseX')
+		var especieXs = document.getElementById('especieX')
+		var claseSeleccionada = claseXs.value
 		
-		document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-
-		function cargarEspecies() {
-			var listaEspecies = window.data;
-			// Objeto de clases con especies
-			
-			var claseXs = document.getElementById('claseX')
-			var especieXs = document.getElementById('especieX')
-			var claseSeleccionada = claseXs.value
-			
-			// Se limpian los especies
-			especieXs.innerHTML = '<option value="-">...</option>'
-			
-			if(claseSeleccionada !== "-"){
-			  // Se seleccionan los especies y se ordenan
-			  switch (claseSeleccionada) {
+		// Se limpian las especies del desplegable
+		especieXs.innerHTML = '<option value="-">...</option>'
+		
+		if(claseSeleccionada !== "-"){
+			// Se seleccionan los especies y se ordenan
+			switch (claseSeleccionada) {
 				case "MAMIFERO": claseSeleccionada = 0; break;
 				case "AVE": claseSeleccionada = 1; break;
 				case "REPTIL": claseSeleccionada = 2; break;
 				case "ANFIBIO": claseSeleccionada = 3; break;	
 				default: claseSeleccionada = [];
-			  }			
+			}			
 			  
-			  claseSeleccionada = listaEspecies[claseSeleccionada]
-			  //claseSeleccionada.sort()
+			claseSeleccionada = listaEspecies[claseSeleccionada]
+			//claseSeleccionada.sort() //no hace falta porque viene ya ordenado
 			
-			  // Insertamos los especies
-			  claseSeleccionada.forEach(function(especieX){
+			// Insertamos las especies
+			claseSeleccionada.forEach(function(especieX){
 				let opcion = document.createElement('option')
 				opcion.value = especieX
 				opcion.text = especieX
 				especieXs.add(opcion)
-			  });
-			}			
-		} // Iniciar la carga de clases solo para comprobar que funciona			
-	} /////FIN ESPECIE
+			});
+		}			
+	} // Iniciar la carga de clases solo para comprobar que funciona	
+}
+	
 
 /* ADDGEOM
  * Expects a JSON representation of the table with properties columns * and a 'geometry' column that can be parsed by parseGeom() */
