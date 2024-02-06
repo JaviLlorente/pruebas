@@ -119,6 +119,7 @@ function addGeoms(data) {
  * addPoints is a bit simpler, as no GeoJSON is needed for the points */
 function addPoints(data) {
 	data = data.data; 
+	console.log(data);
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//window.data = data; 
 
