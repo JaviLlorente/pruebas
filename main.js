@@ -255,16 +255,16 @@ function addPoints(data) {
 			let fechillas = data.map(a => a.Fecha);
 			console.log(fechillas);
 			
-			let corte = data.slice(-4);
+			let corte = fechillas.slice(-4);
 			console.log(corte);
 			
-			let anios = fechillas.getFullYear();
-			console.log(anios);
+			//let anios = fechillas.getFullYear();
+			//console.log(anios);
 			
-			var max = Math.max.apply(null, anios);
-			var min = Math.min.apply(null, anios);
-			console.log("min" + min);
-			console.log("max" + max);
+			var max = Math.max.apply(null, corte);
+			var min = Math.min.apply(null, corte);
+			console.log("min: " + min);
+			console.log("max: " + max);
 
 
 	//console.log(data);
