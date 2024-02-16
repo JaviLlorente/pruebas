@@ -32,8 +32,8 @@
 		<div id="panel" style = "margin-left:0px; background-color:#D3D3D3;">
 			
 			<form name="form1" id="form1" style="height:1.7em;" > 
-				<label>&nbsp;&nbsp;Clase</label>
-				<select name="claseX" id='claseX'>
+				<label>&nbsp;&nbsp;&nbsp;Clase</label>
+				<select name="claseX" id='claseX' style="margin-right:1em">
 					<option value="-"selected>Seleccione...</opcion>
 					<option value="MAMIFERO">MAMIFEROS</opcion>
 					<option value="AVE">AVES</opcion>
@@ -41,13 +41,18 @@
 					<option value="ANFIBIO">ANFIBIOS</opcion>					
 				</select>
 				
-				<label>&nbsp;&nbsp;&nbsp;Especie</label>
-				<select name="especieX" id='especieX'> 
+				<label>Especie</label>
+				<select name="especieX" id='especieX' style="margin-right:4em"> 
 					<option value="-">...</option> 
 				</select>
-
+				
+				<label>entre</label>
+					<input type="select" id="start" name="start" value="2012" style="height:fit-content; width:4em; " />	
+				<label>&nbsp;y&nbsp;</label>
+					<input type="select" id="end" name="end" style="height:fit-content; width:4em;" />
+					
 				<span name="form2" id="form2" style="height:auto;" >				
-					<input type="text" id="Narray" name="Narray" style="width: 2.7em; height: fit-content; float:right; text-align:right; margin-right:10px; background-color:#EAEDED" readonly><br><br>
+					<input type="text" id="Narray" name="Narray" style="width:2.7em; height:fit-content; float:right; text-align:right; margin-right:10px; background-color:#EAEDED" readonly><br><br>
 				</span> 				
 			</form>
 			
@@ -55,32 +60,26 @@
 			  id="presc-filter"
 			  type="number"
 			  placeholder="Año"
-			/>-->			
-
-			<!--<label>&nbsp;&nbsp;&nbsp;Desde </label>
-			<input type="date" id="start" name="trip-start" />	
-			<label>&nbsp;hasta </label>
-			<input type="date" id="end" name="trip-end" />				
-			</form>-->
+			/>-->		
 			
 			<!--<input type="range" min="1" max="100" value="50" name="rango">-->
-						
+			
 		</div>
 		</font>
 		
 	<!--FIN DE NUEVO-->
-	<script src="js/leaflet.js"></script>
+		<script src="js/leaflet.js"></script>
         <script src="js/leaflet-sidebar.js"></script>
         <script src="js/leaflet.awesome-markers.min.js"></script>
         <script src="js/papaparse.min.js"></script>
 		
-	<script src="leafletspin/spin/spin.min.js" charset="utf-8"></script>
-	<script src="leafletspin/leaflet.spin.min.js"></script>
-	<script src="leafletspin/leaflet.spin.js"></script>
+		<script src="leafletspin/spin/spin.min.js" charset="utf-8"></script>
+		<script src="leafletspin/leaflet.spin.min.js"></script>
+		<script src="leafletspin/leaflet.spin.js"></script>
 		
         <script src="main.js" defer></script>
         <div id="map"></div>
-        
+		    
     </body>
 	
 </html>
