@@ -244,13 +244,11 @@ function addPoints(data) {
 		} //Fin iteracion		
 		
 		
-		const itemMenor = data.reduce((prev, cur) =>
-		  cur.fecha < prev.fecha ? cur : prev
-		);
+		const itemMenor = data.reduce((prev, cur) => cur.fecha < prev.fecha ? cur : prev );
+		console.log(itemMenor);
 		
-		const itemMayor = data.reduce((prev, cur) =>
-		  cur.fecha > prev.fecha ? cur : prev
-		);
+		const itemMayor = data.reduce((prev, cur) => cur.fecha > prev.fecha ? cur : prev );
+		console.log(itemMayor);
 		
 			let fechillas = data.map(a => a.Fecha);
 			//console.log(fechillas);
