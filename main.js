@@ -246,10 +246,10 @@ function addPoints(data) {
 	let fechillas = data.map(a => a.Fecha);
 			console.log(fechillas);
 			
-			console.log([...new Set(data.map(x => x.split('/')[1]))].sort();
+			console.log([...new Set(data.map(x => x.split('/')[1]))]);
 			
-			console.log(new Date(Math.min(...fechillas))) // Expected Output: Sun Jan 01 2023 00:00:00 GMT+0000 (Greenwich Mean Time)
-			console.log(new Date(Math.max(...fechillas))) // Expected Output: Wed Jan 04 2023 00:00:00 GMT+0000 (Greenwich Mean Time)
+			console.log(new Date(Math.min(...fechillas))); // Expected Output: Sun Jan 01 2023 00:00:00 GMT+0000 (Greenwich Mean Time)
+			console.log(new Date(Math.max(...fechillas))); // Expected Output: Wed Jan 04 2023 00:00:00 GMT+0000 (Greenwich Mean Time)
 			
 			let maximumDate = new Date(Math.max.apply(null, marker.Fecha));
 			let minimumDate = new Date(Math.min.apply(null, marker.Fecha));
