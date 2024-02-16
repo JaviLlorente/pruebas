@@ -192,7 +192,8 @@ function addPoints(data) {
 				Carretera: data[row].Carretera,	Pk: data[row].Pk, Foto: data[row].Foto,	Observaciones: data[row].Observaciones,
 			  }	};
 			
-			let fechillas = marker.map(a => a.Fecha);
+			let fechillas = [];
+			fechillas = data.map(a => a.Fecha);
 			console.log(fechillas);
 			
 			let maximumDate = new Date(Math.max.apply(null, marker.Fecha));
