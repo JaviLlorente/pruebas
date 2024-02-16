@@ -264,6 +264,12 @@ function addPoints(data) {
 			const pieces = dates.map( d => d.split(' ')[4] );
 			console.log( pieces );
 			
+			const array2 = [];
+			fechillas.forEach(element => {
+				array2.push(element.split(' ')[4]);
+			});
+			console.log(array2);
+			
 			let anios = fechillas.getFullYear();
 			console.log(anios);
 			
