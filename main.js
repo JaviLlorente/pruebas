@@ -256,7 +256,7 @@ function addPoints(data) {
 			console.log("fechillas");
 			
 			let corte = data.slice(-4);
-			console.log("corte" + corte);
+			console.log("corte");
 			
 			let anios = fechillas.getFullYear();
 			console.log("anios" + anios);
