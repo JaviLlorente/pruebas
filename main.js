@@ -255,7 +255,7 @@ function addPoints(data) {
 			let fechillas = data.map(a => a.Fecha);
 			console.log("fechillas" + fechillas);
 			
-			let corte = data.slice(-4));
+			let corte = data.slice(-4);
 			console.log("corte" + corte);
 			
 			let anios = fechillas.getFullYear();
