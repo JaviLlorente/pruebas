@@ -254,8 +254,8 @@ function addPoints(data) {
 		
 			let fechillas = data.map(a => a.Fecha);
 			//console.log(fechillas);
-			const years = fechillas.map(y => new Date(y).getFullYear());
-			//console.log(years);			
+			const years = fechillas.set(y => new Date(y).getFullYear());
+			console.log(years);			
 			var min = Math.min.apply(null, years);
 			console.log("min: " + min);
 			//var max = Math.max.apply(null, years);
@@ -267,9 +267,7 @@ function addPoints(data) {
 
 			let anios = []
 			//let array = data.Fecha;
-			for(item of data){
-			  anios.push(item.Fecha);
-			}
+			for(item of data){ anios.push(item.Fecha); }
 			console.log(anios);
 
 
