@@ -29,7 +29,7 @@ function init() {
   }).addTo(map);
   
 	map.spin(true, {
-		lines: 13, length: 35,
+		lines: 13, length: 40,
 	}); //on_spin
 
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
