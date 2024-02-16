@@ -258,8 +258,8 @@ function addPoints(data) {
 			let corte = fechillas.slice(-4);
 			console.log(corte);
 			
-			//let anios = fechillas.getFullYear();
-			//console.log(anios);
+			let anios = fechillas.getFullYear();
+			console.log(anios);
 			
 			var max = Math.max.apply(null, corte);
 			var min = Math.min.apply(null, corte);
