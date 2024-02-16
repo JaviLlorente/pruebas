@@ -258,11 +258,17 @@ function addPoints(data) {
 			let corte = fechillas.slice(-4);
 			console.log(corte);
 			
+			const years = dates.map( y => new Date( y ).getDate() );
+			console.log( years );
+			
+			const pieces = dates.map( d => d.split(' ')[4] );
+			console.log( pieces );
+			
 			let anios = fechillas.getFullYear();
 			console.log(anios);
 			
-			var max = Math.max.apply(null, corte);
-			var min = Math.min.apply(null, corte);
+			var max = Math.max.apply(null, anios);
+			var min = Math.min.apply(null, anios);
 			console.log("min: " + min);
 			console.log("max: " + max);
 
