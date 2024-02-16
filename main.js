@@ -265,6 +265,15 @@ function addPoints(data) {
 			console.log(min2);
 
 
+			let anios = []
+			//let array = data.Fecha;
+			for(item of data){
+			  anios.push(item.Fecha);
+			}
+			console.log(anios);
+
+
+
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
