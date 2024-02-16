@@ -248,6 +248,8 @@ function addPoints(data) {
 			
 			var max = new Date(Math.max.apply(null,fechillas));
 			var min = new Date(Math.min.apply(null,fechillas));
+			console.log("valor minimo" , min) 
+			console.log("valor maximo" ,max)
 
 
 	//console.log(data);
