@@ -192,17 +192,6 @@ function addPoints(data) {
 				Carretera: data[row].Carretera,	Pk: data[row].Pk, Foto: data[row].Foto,	Observaciones: data[row].Observaciones,
 			  }	};
 			
-			let fechillas = [];
-			fechillas = data.map(a => a.Fecha);
-			console.log(fechillas);
-			
-			let maximumDate = new Date(Math.max.apply(null, marker.Fecha));
-			let minimumDate = new Date(Math.min.apply(null, marker.Fecha));
-		 
-			console.log("Max date is - " + maximumDate);
-			console.log("Min date is - " + minimumDate);
-			  
-			  
 			marker.on({
 			  click: function (e) {
 				L.DomEvent.stopPropagation(e);
@@ -253,6 +242,20 @@ function addPoints(data) {
 			marker.setIcon(icon);			
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
+		
+	let fechillas = data.map(a => a.Fecha);
+			console.log(fechillas);
+			
+			console.log([...new Set(data.map(x => x.split('/')[1]))].sort();
+			
+			console.log(new Date(Math.min(...fechillas))) // Expected Output: Sun Jan 01 2023 00:00:00 GMT+0000 (Greenwich Mean Time)
+			console.log(new Date(Math.max(...fechillas))) // Expected Output: Wed Jan 04 2023 00:00:00 GMT+0000 (Greenwich Mean Time)
+			
+			let maximumDate = new Date(Math.max.apply(null, marker.Fecha));
+			let minimumDate = new Date(Math.min.apply(null, marker.Fecha));
+		 
+			console.log("Max date is - " + maximumDate);
+			console.log("Min date is - " + minimumDate);	
 		
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
