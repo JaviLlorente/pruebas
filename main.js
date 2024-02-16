@@ -243,12 +243,7 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-		
-		const itemMenor = data.reduce((prev, cur) => cur.fecha < prev.fecha ? cur : prev );
-		console.log(itemMenor);
-		
-		const itemMayor = data.reduce((prev, cur) => cur.fecha > prev.fecha ? cur : prev );
-		console.log(itemMayor);
+			
 		
 			let fechillas = data.map(a => a.Fecha);
 			//console.log(fechillas);
@@ -263,15 +258,10 @@ function addPoints(data) {
 			const min2 = Math.min.apply(null, ((data.map(a => a.Fecha)).map(y => new Date(y).getFullYear())));
 			console.log(min2);
 
-			let uniqueArray = Array.from(new Set(data));
+			let uniqueArray = Array.from(new Set(years));
 			console.log(uniqueArray);
 
-			let anios = []
-			//let array = data.Fecha;
-			for(item of data){ anios.push(item.Fecha); }
-			console.log(anios);
-
-
+			
 
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
