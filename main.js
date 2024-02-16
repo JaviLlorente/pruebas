@@ -253,15 +253,18 @@ function addPoints(data) {
 		);
 		
 			let fechillas = data.map(a => a.Fecha);
-			console.log(fechillas);
+			console.log("fechillas" + fechillas);
+			
+			let corte = data.slice(-4));
+			console.log("corte" + corte);
 			
 			let anios = fechillas.getFullYear();
-			console.log(anios);
+			console.log("anios" + anios);
 			
 			var max = Math.max.apply(null, anios);
 			var min = Math.min.apply(null, anios);
-			console.log(min);
-			console.log(max);
+			console.log("min" + min);
+			console.log("max" + max);
 
 
 	//console.log(data);
