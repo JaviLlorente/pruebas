@@ -261,14 +261,14 @@ function addPoints(data) {
 			const years = fechillas.map( y => new Date( y ).getFullYear() );
 			console.log(years);
 			
-			const pieces = fechillas.map( d => d.slice[-4] );
-			console.log(pieces);
+			//const pieces = fechillas.map( d => d.slice[-4] );
+			//console.log(pieces);
 			
-			const array2 = [];
-			fechillas.forEach(element => {
-				array2.push(element.slice[-4]);
-			});
-			console.log(array2);
+			//const array2 = [];
+			//fechillas.forEach(element => {
+			//	array2.push(element.slice[-4]);
+			//});
+			//console.log(array2);
 			
 			//let anios = fechillas.getFullYear();
 			//console.log(anios);
