@@ -243,6 +243,15 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
+		
+		const itemMenor = data.reduce((prev, cur) =>
+		  cur.fecha < prev.fecha ? cur : prev
+		);
+		
+		const itemMayor = data.reduce((prev, cur) =>
+		  cur.fecha > prev.fecha ? cur : prev
+		);
+		
 			let fechillas = data.map(a => a.Fecha);
 			console.log(fechillas);
 			
