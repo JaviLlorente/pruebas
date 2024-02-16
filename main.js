@@ -255,23 +255,23 @@ function addPoints(data) {
 			let fechillas = data.map(a => a.Fecha);
 			console.log(fechillas);
 			
-			let corte = fechillas.slice(-4);
-			console.log(corte);
+			//let corte = fechillas.slice(-4);
+			//console.log(corte);
 			
-			const years = fechillas.map( y => new Date( y ).getDate() );
+			const years = fechillas.map( y => new Date( y ).getFullYear() );
 			console.log( years );
 			
-			const pieces = fechillas.map( d => d.split(' ')[4] );
+			const pieces = fechillas.map( d => d.slice[-4] );
 			console.log( pieces );
 			
 			const array2 = [];
 			fechillas.forEach(element => {
-				array2.push(element.split(' ')[4]);
+				array2.push(element.slice[-4]);
 			});
 			console.log(array2);
 			
-			let anios = fechillas.getFullYear();
-			console.log(anios);
+			//let anios = fechillas.getFullYear();
+			//console.log(anios);
 			
 			var max = Math.max.apply(null, anios);
 			var min = Math.min.apply(null, anios);
