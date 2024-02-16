@@ -191,6 +191,14 @@ function addPoints(data) {
 				Fecha: data[row].Fecha,	Seguridad_id: data[row].Seguridad_id, Frecuencia_paso: data[row].Frecuencia_paso,
 				Carretera: data[row].Carretera,	Pk: data[row].Pk, Foto: data[row].Foto,	Observaciones: data[row].Observaciones,
 			  }	};
+			  
+			let maximumDate = new Date(Math.max.apply(null, Fecha));
+			let minimumDate = new Date(Math.min.apply(null, Fecha));
+		 
+			console.log("Max date is - " + maximumDate);
+			console.log("Min date is - " + minimumDate);
+			  
+			  
 			marker.on({
 			  click: function (e) {
 				L.DomEvent.stopPropagation(e);
@@ -209,7 +217,8 @@ function addPoints(data) {
 					'Carretera: ' + e.target.feature.properties.Carretera + '<br/>' +	
 					'Pk: ' + e.target.feature.properties.Pk + '<br/>' +
 					//'Foto: ' + e.target.feature.properties.Foto + '<br/>' +	
-					'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>'  
+					'<a href="' + e.target.feature.properties.Foto + '">Descarga la foto del atropello</a><br/>' +
+					'<img src="' + e.target.feature.properties.Foto + '" width="250"><br/>'  //Esto funciona con las de Jotform
 					//'Observaciones: ' + e.target.feature.properties.Observaciones + '<br/>' +
 					//Funcionan estos formatos de foto + el id al final: https://drive.google.com/uc?id= // https://drive.google.com/uc?export=download&id=
 					//No funciona'<iframe src="' + e.target.feature.properties.Foto + '" name="iframe_a" width="250"></iframe>' + '<br/>' +						
@@ -281,7 +290,7 @@ function addPoints(data) {
 //AñadirLista
 function addPoints_lista(data) {
 	data = data.data; 
-	console.log (data);
+	//console.log (data);
 	window.data = data; //Para enviar lista	
 }	
 
