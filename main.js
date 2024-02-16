@@ -258,8 +258,8 @@ function addPoints(data) {
 			let corte = fechillas.slice(-4);
 			console.log(corte);
 			
-			"const years = dates.map( y => new Date( y ).getDate() );
-			"console.log( years );
+			//const years = dates.map( y => new Date( y ).getDate() );
+			//console.log( years );
 			
 			const pieces = dates.map( d => d.split(' ')[4] );
 			console.log( pieces );
