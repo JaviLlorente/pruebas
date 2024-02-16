@@ -29,7 +29,7 @@ function init() {
   }).addTo(map);
   
 	map.spin(true, {
-		lines: 13, length: 30
+		lines: 13, length: 40
 	}); //on_spin
 
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
@@ -258,10 +258,10 @@ function addPoints(data) {
 			let corte = fechillas.slice(-4);
 			console.log(corte);
 			
-			//const years = dates.map( y => new Date( y ).getDate() );
-			//console.log( years );
+			const years = fechillas.map( y => new Date( y ).getDate() );
+			console.log( years );
 			
-			const pieces = dates.map( d => d.split(' ')[4] );
+			const pieces = fechillas.map( d => d.split(' ')[4] );
 			console.log( pieces );
 			
 			const array2 = [];
