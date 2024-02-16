@@ -191,11 +191,10 @@ function addPoints(data) {
 				Fecha: data[row].Fecha,	Seguridad_id: data[row].Seguridad_id, Frecuencia_paso: data[row].Frecuencia_paso,
 				Carretera: data[row].Carretera,	Pk: data[row].Pk, Foto: data[row].Foto,	Observaciones: data[row].Observaciones,
 			  }	};
-			  
-			var years = [];
-			years = getFullYear(marker.Fecha);
-			console.log (years);
-			  
+			
+			let fechillas = marker.map(a => a.Fecha)
+			console.log(fechillas);
+			
 			let maximumDate = new Date(Math.max.apply(null, marker.Fecha));
 			let minimumDate = new Date(Math.min.apply(null, marker.Fecha));
 		 
