@@ -192,6 +192,10 @@ function addPoints(data) {
 				Carretera: data[row].Carretera,	Pk: data[row].Pk, Foto: data[row].Foto,	Observaciones: data[row].Observaciones,
 			  }	};
 			  
+			var years = [];
+			years = getFullYear(marker.Fecha);
+			console.log (years);
+			  
 			let maximumDate = new Date(Math.max.apply(null, marker.Fecha));
 			let minimumDate = new Date(Math.min.apply(null, marker.Fecha));
 		 
