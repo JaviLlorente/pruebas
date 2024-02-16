@@ -265,6 +265,8 @@ function addPoints(data) {
 			const min2 = Math.min.apply(null, ((data.map(a => a.Fecha)).map(y => new Date(y).getFullYear())));
 			console.log(min2);
 
+			let uniqueArray = Array.from(new Set(data));
+			console.log(uniqueArray);
 
 			let anios = []
 			//let array = data.Fecha;
