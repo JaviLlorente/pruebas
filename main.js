@@ -287,12 +287,12 @@ function addPoints(data) {
 			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
 			console.log(valormin3);	
 			
-			//const foundmin = data.find((b) => b.minyear != "");
-			//console.log(foundmin);
-			//var foundmin2 = foundmin.map(c => c.minyear);
-			//console.log(foundmin2);	
+			const foundmin = data.map(b => b.minyear);
+			console.log(foundmin);
+			var foundmin2 = foundmin.find((c) => c.minyear != "");
+			console.log(foundmin2);	
 			
-			var foundmin3 = (data.find((b) => b.minyear != "")).map(c => c.minyear);
+			var foundmin3 = (data.map(b => b.minyear)).find((c) => c.minyear != "");
 			console.log(foundmin3);
 			
 			const encurso = new Date().getFullYear()
