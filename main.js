@@ -35,8 +35,7 @@ function init() {
 		scale: 1, // Scales overall size of the spinner
 		corners: 1, // Corner roundness (0..1)
 		speed: 0,5 // Rounds per second
-		//rotate: 0, // The rotation offset
-		animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+		animation: 'spinner-line-shrink', // The CSS animation name for the lines
 		direction: 1, // 1: clockwise, -1: counterclockwise
 		color: '#ffffff', // CSS color or array of colors
 		fadeColor: 'transparent', // CSS color or array of colors
