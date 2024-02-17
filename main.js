@@ -245,39 +245,43 @@ function addPoints(data) {
 		
 			
 		
-			let fechillas = data.map(a => a.Fecha);
+			//let fechillas = data.map(a => a.Fecha);
 			//console.log(fechillas);
-			const years = fechillas.map(y => new Date(y).getFullYear());
+			//const years = fechillas.map(y => new Date(y).getFullYear());
 			//console.log(years);			
-			var min = Math.min.apply(null, years);
-			console.log("min: " + min);
+			//var min = Math.min.apply(null, years);
+			//console.log("min: " + min);
 			//var max = Math.max.apply(null, years);
 			//console.log("max: " + max);
 			
 			const min2 = Math.min.apply(null, ((data.map(a => a.Fecha)).map(y => new Date(y).getFullYear())));
 			console.log(min2);
 
-			let uniqueArray = (Array.from(new Set(years))).sort();
-			console.log(uniqueArray);
+			//let uniqueArray = (Array.from(new Set(years))).sort();
+			//console.log(uniqueArray);
 			
 			let uniqueArray2 = (Array.from(new Set(data.map(a => a.Fecha).map(y => new Date(y).getFullYear())))).sort();
 			console.log(uniqueArray2);
 			
-			let valormin = data.map(a => a.minyear);
-			console.log(valormin);			
-			var valormin2 = valormin.slice(0,1);
-			console.log(valormin2);	
+			//let valormin = data.map(d => d.minyear);
+			//console.log(valormin);			
+			//var valormin2 = valormin.slice(0,1);
+			//console.log(valormin2);	
 			
 			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
 			console.log(valormin3);	
 			
-			const foundmin = data.find((a) => a.minyear != "");
-			console.log(foundmin);
-			var foundmin2 = foundmin.map(a => a.minyear);
-			console.log(foundmin2);	
+			//const foundmin = data.find((b) => b.minyear != "");
+			//console.log(foundmin);
+			//var foundmin2 = foundmin.map(c => c.minyear);
+			//console.log(foundmin2);	
+			
+			var foundmin3 = (data.find((b) => b.minyear != "")).map(c => c.minyear);
+			console.log(foundmin3);
+			
 			const encurso = new Date().getFullYear()
 			const anios = []
-			for (let i = foundmin2; i <= encurso; i++) { anios.push(i) }
+			for (let i = foundmin3; i <= encurso; i++) { anios.push(i) }
 			console.log (anios);
 
 			
