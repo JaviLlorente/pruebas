@@ -284,16 +284,16 @@ function addPoints(data) {
 			//var valormin2 = valormin.slice(0,1);
 			//console.log(valormin2);	
 			
-			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
-			console.log(valormin3);	
-			
-			const foundmin = data.map(b => b.minyear);
-			console.log(foundmin);
-			var foundmin2 = foundmin.find((c) => c.minyear != "");
-			console.log(foundmin2);	
+			//const foundmin = data.map(b => b.minyear);
+			//console.log(foundmin);
+			//var foundmin2 = foundmin.find((c) => c.minyear != "");
+			//console.log(foundmin2);	
 			
 			var foundmin3 = (data.map(b => b.minyear)).find((c) => c.minyear != "");
 			console.log(foundmin3);
+			
+			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
+			console.log(valormin3);	
 			
 			const encurso = new Date().getFullYear()
 			const anios = []
