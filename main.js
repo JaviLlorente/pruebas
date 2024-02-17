@@ -266,7 +266,7 @@ function addPoints(data) {
 			let valormin = data.map(a => a.minyear);
 			console.log(valormin);
 			
-			const found = data.find((a) => a.minyear <> "");
+			const found = data.find((a) => a.minyear != "");
 			console.log(found);
 
 			
