@@ -263,7 +263,8 @@ function addPoints(data) {
 			let uniqueArray2 = (Array.from(new Set(data.map(a => a.Fecha).map(y => new Date(y).getFullYear())))).sort();
 			console.log(uniqueArray2);
 			
-
+			let valormin = Array.from(new Set(data.minyear));
+			console.log(valormin);
 			
 
 	//console.log(data);
