@@ -281,9 +281,10 @@ function addPoints(data) {
 			const encurso = new Date().getFullYear()
 			const anios = []
 			for (let i = valormin3; i <= encurso; i++) { anios.push(i) }
-			console.log (anios);
+			console.log(anios);
 
-			
+			var temp = data.length ? data[0].yearmin : null;
+			console.log(temp);
 
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
