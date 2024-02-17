@@ -269,10 +269,10 @@ function addPoints(data) {
 			console.log(mini);	
 			
 			//da ?: extrayendolo directamente
-			var mini3 = data[0].minyear;
+			var mini3 = Number(data[0].minyear);
 			console.log(mini3);
 			
-			var temp = data.length ? data[0].minyear : null;
+			var temp = Number(data.length ? data[0].minyear : null);
 			console.log(temp);
 			
 			//calcula el array entre min y año en curso (funciona con número)
