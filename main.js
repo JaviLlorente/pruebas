@@ -227,8 +227,7 @@ function addPoints(data) {
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	document.getElementById("start").addEventListener("change", filterData);
-	document.getElementById("end").addEventListener("change", filterData);
+	
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
