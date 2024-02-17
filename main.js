@@ -325,7 +325,7 @@ function addPoints(data) {
 		if (startValue == min.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) => parseFloat(startValue)) { filteredData2.push(d); } }
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados
+		renderMarkers(filteredData2); //Renderizado desde los datos filtrados
 		
     }; //FinFiltro
 
