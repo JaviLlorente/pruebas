@@ -271,7 +271,7 @@ function addPoints(data) {
 			
 			const foundmin = data.find((a) => a.minyear != "");
 			console.log(foundmin);
-			var foundmin2 = foundmin.slice(0,1);
+			var foundmin2 = foundmin.map(a => a.minyear);
 			console.log(foundmin2);	
 			const encurso = new Date().getFullYear()
 			const anios = []
