@@ -249,7 +249,6 @@ function addPoints(data) {
 			//console.log(fechillas);
 			const years = fechillas.map(y => new Date(y).getFullYear());
 			//console.log(years);			
-			
 			var min = Math.min.apply(null, years);
 			console.log("min: " + min);
 			//var max = Math.max.apply(null, years);
@@ -260,6 +259,10 @@ function addPoints(data) {
 
 			let uniqueArray = Array.from(new Set(years));
 			console.log(uniqueArray);
+			
+			let uniqueArray2 = (Array.from(new Set(data.map(a => a.Fecha).map(y => new Date(y).getFullYear())))).sort();
+			console.log(uniqueArray2);
+			
 
 			
 
