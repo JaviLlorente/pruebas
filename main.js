@@ -188,7 +188,7 @@ function addPoints(data) {
 			console.log(mini);			
 			
 			//calcula el array entre min y año en curso (funciona con entrada de número)
-			const maxi = new Date().getFullYear()
+			var maxi = new Date().getFullYear()
 			const anios = []
 			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			console.log(anios);
@@ -323,12 +323,12 @@ function addPoints(data) {
 		
 		let filteredData2 = [];
 		let startValue = document.getElementById("start").value;
-		if (startValue == min.value) { filteredData2 = filteredData; }
+		if (startValue == mini.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
 		
 		let filteredData3 = [];
 		let endValue = document.getElementById("end").value;
-		if (endValue == min.value) { filteredData3 = filteredData2; }
+		if (endValue == maxi.value) { filteredData3 = filteredData2; }
 		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
 		
 		renderMarkers(filteredData3); //Renderizado desde los datos filtrados
