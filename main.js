@@ -30,11 +30,11 @@ function init() {
   
 	map.spin(true, {
 		lines: 10, length: 40,
-		width: 17, // The line thickness
-		radius: 50, // The radius of the inner circle
+		width: 16, // The line thickness
+		radius: 25, // The radius of the inner circle
 		scale: 1, // Scales overall size of the spinner
 		corners: 1, // Corner roundness (0..1)
-		speed: 0.5, // Rounds per second
+		speed: 0.7, // Rounds per second
 		rotate: 0, // The rotation offset
 		animation: 'spinner-line-shrink', // The CSS animation name for the lines
 		direction: 1, // 1: clockwise, -1: counterclockwise
