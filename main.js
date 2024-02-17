@@ -197,29 +197,7 @@ function addPoints(data) {
 			
 			
 			
-		var deslizante = function () {			
-			const max = new Date().getFullYear()
-			const min = 2012
-			const years = []
-			for (let i = min; i <= max; i++) { years.push(i) }
-			console.log (years);
-			
-            var slider = new rSlider({
-                target: '#slider',
-                values: years,
-                range: true,
-                set: [min.value, max.value],
-				width:    null,
-				scale:    true,
-				labels:   true,
-				tooltip:  false,
-				step:     null, // step size
-				disabled: false, // is disabled?
-                onChange: function (vals) {
-                    console.log(vals);						
-                }
-            });
-        };
+	
 		
       
 	  
