@@ -324,7 +324,7 @@ function addPoints(data) {
 		let filteredData2 = [];
 		let startValue = document.getElementById("start").value;
 		if (startValue == min.value) { filteredData2 = filteredData; }
-		for (const d of filteredData) { if (parseFloat(d.Anio) => parseFloat(startValue)) { filteredData2.push(d); } }
+		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
 		
 		let filteredData3 = [];
 		let endValue = document.getElementById("end").value;
