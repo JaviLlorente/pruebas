@@ -193,23 +193,8 @@ function addPoints(data) {
 			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
-			var startX = document.getElementById('start');
-			anios.forEach(function(start){
-				let opcion = document.createElement('option');
-				opcion.value = start;
-				opcion.text = start;
-				startX.add(opcion);		
-			});
-			startX.value = mini;  
 			
-			var endX = document.getElementById('end');
-			anios.forEach(function(end){
-				let opcion = document.createElement('option');
-				opcion.value = end;
-				opcion.text = end;
-				endX.add(opcion);		
-			});	
-			endX.value = maxi;  
+			
 			
 			
 		var deslizante = function () {			
