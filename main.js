@@ -325,7 +325,12 @@ function addPoints(data) {
 		if (startValue == min.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) => parseFloat(startValue)) { filteredData2.push(d); } }
 		
-		renderMarkers(filteredData2); //Renderizado desde los datos filtrados
+		let filteredData3 = [];
+		let endValue = document.getElementById("end").value;
+		if (endValue == min.value) { filteredData3 = filteredData2; }
+		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
+		
+		renderMarkers(filteredData3); //Renderizado desde los datos filtrados
 		
     }; //FinFiltro
 
