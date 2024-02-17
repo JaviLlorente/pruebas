@@ -266,6 +266,10 @@ function addPoints(data) {
 			let valormin = data.map(a => a.minyear);
 			console.log(valormin);
 			
+			const found = data.find((element) => element <> "");
+			console.log(found);
+
+			
 
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
