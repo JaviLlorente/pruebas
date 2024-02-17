@@ -252,8 +252,6 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);					
 		} //Fin iteracion		
 		
-			
-		
 			//let fechillas = data.map(a => a.Fecha);
 			//console.log(fechillas);
 			//const years = fechillas.map(y => new Date(y).getFullYear());
@@ -263,11 +261,11 @@ function addPoints(data) {
 			//var max = Math.max.apply(null, years);
 			//console.log("max: " + max);
 			
-			//da numero/ Data: map.fecha-mapgetfullyear-Min
+			//da numero: desde todo el Data: min(map.getfullyear(map.fecha))
 			const min2 = Math.min.apply(null, ((data.map(a => a.Fecha)).map(y => new Date(y).getFullYear())));
 			console.log(min2);
 			
-			//da array/ Data: map.fecha-mapgetfullyear-Sort
+			//da array: desde todo el Data: sort(set(map.getfullyear(map.fecha)))
 			let uniqueArray2 = (Array.from(new Set(data.map(a => a.Fecha).map(y => new Date(y).getFullYear())))).sort();
 			console.log(uniqueArray2);
 			
@@ -275,11 +273,11 @@ function addPoints(data) {
 			//var foundmin3 = (data.map(b => b.minyear)).find((c) => c.minyear != "");
 			//console.log(foundmin3);
 			
-			//da array de 1/ map.minyear-slice 			
-			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
+			//da array de 1: desde el minyear de datos: number(slice(map.minyear))) 			
+			var valormin3 = Number((data.map(a => a.minyear)).slice(0,1));
 			console.log(valormin3);	
 			
-			//calcula el array entre min y año en curso (funciona con array de 1 y con número
+			//calcula el array entre min y año en curso (funciona con número)
 			const encurso = new Date().getFullYear()
 			const anios = []
 			for (let i = valormin3; i <= encurso; i++) { anios.push(i) }
