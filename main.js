@@ -278,7 +278,7 @@ function addPoints(data) {
 			//calcula el array entre min y año en curso (funciona con número)
 			const maxi = new Date().getFullYear()
 			const anios = []
-			for (let i = mini; i <= maxi; i++) { anios.push(i) }
+			for (let i = mini3; i <= maxi; i++) { anios.push(i) }
 			console.log(anios);
 			
 	//console.log(data);
