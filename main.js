@@ -270,34 +270,26 @@ function addPoints(data) {
 			//var max = Math.max.apply(null, years);
 			//console.log("max: " + max);
 			
+			//da numero/ Data: map.fecha-mapgetfullyear-Min
 			const min2 = Math.min.apply(null, ((data.map(a => a.Fecha)).map(y => new Date(y).getFullYear())));
 			console.log(min2);
-
-			//let uniqueArray = (Array.from(new Set(years))).sort();
-			//console.log(uniqueArray);
 			
+			//da array/ Data: map.fecha-mapgetfullyear-Sort
 			let uniqueArray2 = (Array.from(new Set(data.map(a => a.Fecha).map(y => new Date(y).getFullYear())))).sort();
 			console.log(uniqueArray2);
 			
-			//let valormin = data.map(d => d.minyear);
-			//console.log(valormin);			
-			//var valormin2 = valormin.slice(0,1);
-			//console.log(valormin2);	
+			//funciona pero da un string de resultado
+			//var foundmin3 = (data.map(b => b.minyear)).find((c) => c.minyear != "");
+			//console.log(foundmin3);
 			
-			//const foundmin = data.map(b => b.minyear);
-			//console.log(foundmin);
-			//var foundmin2 = foundmin.find((c) => c.minyear != "");
-			//console.log(foundmin2);	
-			
-			var foundmin3 = (data.map(b => b.minyear)).find((c) => c.minyear != "");
-			console.log(foundmin3);
-			
+			//da array de 1/ map.minyear-slice 			
 			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
 			console.log(valormin3);	
 			
+			//calcula el array entre min y año en curso (funciona con array de 1 y con número
 			const encurso = new Date().getFullYear()
 			const anios = []
-			for (let i = valormin3; i <= encurso; i++) { anios.push(i) }
+			for (let i = min2; i <= encurso; i++) { anios.push(i) }
 			console.log (anios);
 
 			
