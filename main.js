@@ -185,13 +185,13 @@ function addPoints(data) {
 			
 			//da string (Number para sacar numero): extrayendolo directamente
 			var mini = Number(data[0].minyear);
-			console.log(mini);			
+			//console.log(mini);			
 			
 			//calcula el array entre min y año en curso (funciona con entrada de número)
 			var maxi = new Date().getFullYear()
 			const anios = []
 			for (let i = mini; i <= maxi; i++) { anios.push(i) }
-			console.log(anios);
+			//console.log(anios);
 			
 			var startX = document.getElementById('start');
 			anios.forEach(function(start){
