@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Range Slider</title>
+     <link rel="stylesheet" href="css/leaflet.css"/>
+        <link rel="stylesheet" href="css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/leaflet.awesome-markers.css"/>
+        <link rel="stylesheet" href="css/leaflet-sidebar.css"/>
     <style>
         * { box-sizing: border-box; }
         body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 5em; color: #333; }        
         pre { padding: 1em 1em 0 0; background: #f9f9f9; border: 1px solid #f2f2f2; margin-bottom: 1em; line-height: 2em; }
         .container { width: 70%; margin: 0.5em auto; }
         .slider-container { width: 80%; max-width: 70em; margin: 0 auto 3em; }    
-    </style>
+   			body {
+				padding: 0;
+				margin: 0;
+			}
+			html, body, #map {
+				height: 98.65%;
+				width: 100%;
+			}
+			#sidebar-content, #sidebar-title {
+				word-break: break-word;
+				margin-right: 40px;
+			}
+
+        
+ </style>
     <link rel="stylesheet" href="css/rSlider.min.css">
+
+
+	
 </head>
 
 <body>    
@@ -20,7 +40,62 @@
         <div class="slider-container">
             <input type="text" id="slider" class="slider" />
         </div>    
-        
+
+<!--NUEVO-->
+		<font face="arial" size=2em color="black" >
+		<div id="panel" style = "margin-left:0px; background-color:#D3D3D3;">
+			
+			<form name="form1" id="form1" style="height:1.7em;" > 
+				<label>&nbsp;&nbsp;&nbsp;Clase</label>
+				<select name="claseX" id='claseX' style="margin-right:1em">
+					<option value="-"selected>Seleccione...</opcion>
+					<option value="MAMIFERO">MAMIFEROS</opcion>
+					<option value="AVE">AVES</opcion>
+					<option value="REPTIL">REPTILES</opcion>
+					<option value="ANFIBIO">ANFIBIOS</opcion>					
+				</select>
+				
+				<label>Especie</label>
+				<select name="especieX" id='especieX' style="margin-right:4em"> 
+					<option value="-">...</option> 
+				</select>
+				
+				<label>entre</label>
+					<select id="start" name="start" style=" width:4em; "> </select>	
+				<label>&nbsp;y&nbsp;</label>
+					<select id="end" name="end" style=" width:4em; "> </select>	
+					
+				<span name="form2" id="form2" style="height:auto;" >				
+					<input type="text" id="Narray" name="Narray" style="width:2.7em; height:fit-content; float:right; text-align:right; margin-right:10px; background-color:#EAEDED" readonly><br><br>
+				</span> 				
+			</form>
+			
+			<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input 
+			  id="presc-filter"
+			  type="number"
+			  placeholder="Año"
+			/>-->		
+			
+			<!--<input type="range" min="1" max="100" value="50" name="rango">-->
+			
+		</div>
+		</font>
+		
+	<!--FIN DE NUEVO-->
+		<script src="js/leaflet.js"></script>
+        <script src="js/leaflet-sidebar.js"></script>
+        <script src="js/leaflet.awesome-markers.min.js"></script>
+        <script src="js/papaparse.min.js"></script>
+		
+		<script src="leafletspin/spin/spin.min.js" charset="utf-8"></script>
+		<script src="leafletspin/leaflet.spin.min.js"></script>
+		<script src="leafletspin/leaflet.spin.js"></script>
+		
+        <script src="main.js" defer></script>
+        <div id="map"></div>
+
+
+	    
     </div>
     
     <script src="js/rSlider.min.js"></script>
