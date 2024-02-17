@@ -267,7 +267,9 @@ function addPoints(data) {
 			console.log(valormin);			
 			var valormin2 = valormin.slice(0,1);
 			console.log(valormin2);	
-
+			
+			var valormin3 = (data.map(a => a.minyear)).slice(0,1);
+			console.log(valormin3);	
 			
 			const foundmin = data.find((a) => a.minyear != "");
 			console.log(foundmin);
