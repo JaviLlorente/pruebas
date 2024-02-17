@@ -265,15 +265,17 @@ function addPoints(data) {
 			
 			let valormin = data.map(a => a.minyear);
 			console.log(valormin);			
-			var valormin2 = valormin.slice(1, 1);
+			var valormin2 = valormin.slice(1);
 			console.log(valormin2);	
 
 			
 			const foundmin = data.find((a) => a.minyear != "");
 			console.log(foundmin);
+			var foundmin2 = foundmin.slice(1);
+			console.log(foundmin2);	
 			const encurso = new Date().getFullYear()
 			const anios = []
-			for (let i = foundmin; i <= encurso; i++) { anios.push(i) }
+			for (let i = foundmin2; i <= encurso; i++) { anios.push(i) }
 			console.log (anios);
 
 			
