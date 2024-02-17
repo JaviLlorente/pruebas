@@ -20,7 +20,7 @@ let panelID = "my-info-panel";
  */
 function init() {
   // Create a new Leaflet map centered on the continental US
-  map = L.map('map').setView([41.08, -4.00], 9.4);
+  map = L.map('map').setView([41.09, -4.00], 9.4);
 
   // This is the Carto Positron basemap
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -193,19 +193,29 @@ function addPoints(data) {
 			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
+			var startX = document.getElementById('start');
+			anios.forEach(function(start){
+				let opcion = document.createElement('option');
+				opcion.value = start;
+				opcion.text = start;
+				startX.add(opcion);		
+			});
+			startX.value = mini;  
 			
-			
-			
-			
+			var endX = document.getElementById('end');
+			anios.forEach(function(end){
+				let opcion = document.createElement('option');
+				opcion.value = end;
+				opcion.text = end;
+				endX.add(opcion);		
+			});	
+			endX.value = maxi;  
 	
-		
-      
-	  
-	  
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	
+	document.getElementById("start").addEventListener("change", filterData);
+	document.getElementById("end").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
