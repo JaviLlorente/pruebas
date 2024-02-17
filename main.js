@@ -214,6 +214,8 @@ function addPoints(data) {
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
+	document.getElementById("star").addEventListener("change", filterData);
+	document.getElementById("end").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -305,6 +307,7 @@ function addPoints(data) {
 	//FILTERING LOGIC
     function filterData () {	
 	
+		//Pone la barra lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
 		document.getElementById('sidebar-content').innerHTML = ('');
