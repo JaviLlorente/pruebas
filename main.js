@@ -297,7 +297,7 @@ function addPoints(data) {
 			
 			const encurso = new Date().getFullYear()
 			const anios = []
-			for (let i = foundmin3; i <= encurso; i++) { anios.push(i) }
+			for (let i = valormin3; i <= encurso; i++) { anios.push(i) }
 			console.log (anios);
 
 			
