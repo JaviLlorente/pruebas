@@ -273,19 +273,20 @@ function addPoints(data) {
 			//var foundmin3 = (data.map(b => b.minyear)).find((c) => c.minyear != "");
 			//console.log(foundmin3);
 			
-			//da array de 1: desde el minyear de datos: number(slice(map.minyear))) 			
+			//da numero (sin number daba array de uno): desde el minyear de datos: number(slice(map.minyear))) 			
 			var valormin3 = Number((data.map(a => a.minyear)).slice(0,1));
 			console.log(valormin3);	
+			
+			//da ?: extrayendolo directamente
+			var temp = data[0].yearmin;
+			console.log(temp);
 			
 			//calcula el array entre min y año en curso (funciona con número)
 			const encurso = new Date().getFullYear()
 			const anios = []
 			for (let i = valormin3; i <= encurso; i++) { anios.push(i) }
 			console.log(anios);
-
-			var temp = data.length ? data[0].yearmin : null;
-			console.log(temp);
-
+			
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
