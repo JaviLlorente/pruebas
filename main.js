@@ -264,22 +264,28 @@ function addPoints(data) {
 			//var mini = (data.map(b => b.minyear)).find((c) => c.minyear != "");
 			//console.log(mini);
 			
-			//da numero (sin number daba array de uno): desde el minyear de datos: number(slice(map.minyear))) 			
-			var mini = Number((data.map(a => a.minyear)).slice(0,1));
-			console.log(mini);	
+			//da array de uno (Number para sacar numero): desde el minyear de datos: number(slice(map.minyear))) 			
+			//var mini = Number((data.map(a => a.minyear)).slice(0,1));
+			//console.log(mini);	
 			
-			//da ?: extrayendolo directamente
-			var mini3 = Number(data[0].minyear);
-			console.log(mini3);
+			//da string (Number para sacar numero): extrayendolo directamente
+			var mini = Number(data[0].minyear);
+			console.log(mini);			
 			
-			var temp = Number(data.length ? data[0].minyear : null);
-			console.log(temp);
-			
-			//calcula el array entre min y año en curso (funciona con número)
+			//calcula el array entre min y año en curso (funciona con entrada de número)
 			const maxi = new Date().getFullYear()
 			const anios = []
-			for (let i = mini3; i <= maxi; i++) { anios.push(i) }
+			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			console.log(anios);
+			
+			var startX = document.getElementById('start')
+			anios.forEach(function(start){
+				let opcion = document.createElement('option')
+				opcion.value = start
+				opcion.text = start
+				startX.add(opcion)				
+			});		
+			
 			
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
