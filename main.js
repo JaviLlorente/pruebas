@@ -320,10 +320,10 @@ function addPoints(data) {
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		/*let filteredData = [];
-		let prescValue = document.getElementById("presc-filter").value;
-		if (prescValue === "-") {  filteredData = simdFilteredData; }
-		for (const d of simdFilteredData) { if (parseFloat(d.prescriptions) <= parseFloat(prescValue)) { filteredData.push(d); } }*/
+		let filteredData2 = [];
+		let startValue = document.getElementById("start").value;
+		if (startValue == min.value) { filteredData2 = filteredData; }
+		for (const d of filteredData) { if (parseFloat(d.Anio) => parseFloat(startValue)) { filteredData2.push(d); } }
 		
 		renderMarkers(filteredData); //Renderizado desde los datos filtrados
 		
