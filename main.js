@@ -214,7 +214,7 @@ function addPoints(data) {
 	
 	var slider = document.getElementById('slider');
 	noUiSlider.create(slider, {
-		// step: ,
+		//step: ,
 		//behaviour: 'tap-drag',
 		start: [mini+1, maxi-1],
 		connect: true,
@@ -252,10 +252,10 @@ function addPoints(data) {
 		}*/
 	});
 	
-	/* add slider
+	//add slider
 	let Slider = L.Control.extend({
 		options: {
-		  position: 'topleft',
+		  position: 'bottomleft',
 		},
 		onAdd: function (map) {
 		  let controlSlider = L.DomUtil.create('div', 'map-slider', L.DomUtil.get('map'));
@@ -264,7 +264,7 @@ function addPoints(data) {
 		  return controlSlider;
 		},
 	  });
-	  map.addControl(new Slider());*/
+	  map.addControl(new Slider());
 	
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
