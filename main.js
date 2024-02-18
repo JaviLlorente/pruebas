@@ -227,29 +227,7 @@ function addPoints(data) {
 		//step: 24 * 60 * 60 * 1000,
 		//format: wNumb({
 		//	decimals: 0
-		//	}),
-		/*pips:{
-			mode:'values',
-			values: anios,
-			/*format: {
-				to: function(month){
-					// custom function to format the months.
-					let target_month = new Date(month)
-					if (window.innerWidth > 740){
-						month_label = months_short[target_month.getMonth()]
-						console.log(target_month.getMonth())
-						console.log(month_label)
-						return month_label
-					}
-					else {
-						return []
-					}
-				},
-				from: function(value){
-						return value
-				}
-			}
-		}*/
+		//	}),		
 	});
 	
 	//add slider
