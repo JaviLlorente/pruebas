@@ -228,7 +228,7 @@ function addPoints(data) {
 		//format: wNumb({
 		//	decimals: 0
 		//	}),
-		/*pips:{
+		pips:{
 			mode:'values',
 			values:monthVals,
 			format: {
