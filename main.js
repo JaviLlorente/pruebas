@@ -249,7 +249,7 @@ function addPoints(data) {
 						return value
 				}
 			}
-		}*/
+		}
 	});
 	
 	/* add slider
