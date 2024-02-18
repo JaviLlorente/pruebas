@@ -212,8 +212,16 @@ function addPoints(data) {
 			endX.value = maxi;  
 	
 	
-	slider = L.control.slider(function(50) {console.log(value);}, {id:slider, orientation: 'vertical'}).addTo(map);
-	slider2 = L.control.slider(function(100) {alert(value);}, {id:slider2, orientation: 'horizontal'}).addTo(map);
+	var slider = document.getElementById('slider');
+
+	noUiSlider.create(slider, {
+		start: [20, 80],
+		connect: true,
+		range: {
+			'min': 0,
+			'max': 100
+		}
+	});
 	
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
