@@ -232,9 +232,9 @@ function addPoints(data) {
 		start: [timestamp('2011'), timestamp('2015')],
 
 	// No decimals
-		format: wNumb({
+		/*format: wNumb({
 			decimals: 0
-		})
+		})*/
 	});
 	
 	
