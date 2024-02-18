@@ -216,6 +216,7 @@ function addPoints(data) {
 	noUiSlider.create(slider, {
 		// step: ,
 		//behaviour: 'tap-drag',
+		orientation: 'vertical',
 		start: [mini, maxi],
 		connect: true,
 		range: {
