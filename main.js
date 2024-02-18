@@ -219,8 +219,8 @@ function addPoints(data) {
 		start: [mini, maxi],
 		connect: true,
 		range: {
-			'min': 0,
-			'max': 100
+			'min': mini,
+			'max': maxi
 		},
 		//direction: 'ltr',
 		//step: 24 * 60 * 60 * 1000,
