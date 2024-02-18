@@ -213,15 +213,57 @@ function addPoints(data) {
 	
 	
 	var slider = document.getElementById('slider');
-
 	noUiSlider.create(slider, {
-		start: [20, 80],
+		// step: ,
+		//behaviour: 'tap-drag',
+		start: [mini, maxi],
 		connect: true,
 		range: {
 			'min': 0,
 			'max': 100
-		}
+		},
+		//direction: 'ltr',
+		//step: 24 * 60 * 60 * 1000,
+		//format: wNumb({
+		//	decimals: 0
+		//	}),
+		/*pips:{
+			mode:'values',
+			values:monthVals,
+			format: {
+				to: function(month){
+					// custom function to format the months.
+					let target_month = new Date(month)
+					if (window.innerWidth > 740){
+						month_label = months_short[target_month.getMonth()]
+						console.log(target_month.getMonth())
+						console.log(month_label)
+						return month_label
+					}
+					else {
+						return []
+					}
+				},
+				from: function(value){
+						return value
+				}
+			}
+		}*/
 	});
+	
+	// add slider
+	let Slider = L.Control.extend({
+		options: {
+		  position: 'topleft',
+		},
+		onAdd: function (map) {
+		  let controlSlider = L.DomUtil.create('div', 'map-slider', L.DomUtil.get('map'));
+		  // here we can fill the slider with colors, strings and whatever
+		  controlSlider.innerHTML = '<form><input id="command" type="checkbox"/>command</form>'; 
+		  return controlSlider;
+		},
+	  });
+	  map.addControl(new Slider());
 	
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
