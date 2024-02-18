@@ -24,7 +24,9 @@
 				word-break: break-word;
 				margin-right: 40px;
 			}
-			.slider_contenedor {
+			.slider_contenedor {				 
+				z-index:1; 
+				position:relative;
 				height:20em; 				
 				float: left;
 				bottom: 0; 
@@ -92,7 +94,7 @@
         <script src="main.js" defer></script>
 		
 		<div class="slider_contenedor">
-			<div id="slider" style="position:relative; z-index:1; "></div>
+			<div id="slider"></div>
 		</div>
 		<div id="map" style="position:absolute; z-index:0; "></div>
 	
