@@ -210,25 +210,34 @@ function addPoints(data) {
 				endX.add(opcion);		
 			});	
 			endX.value = maxi;  */
+		
 	
-	
-	var slider = document.getElementById('slider');
-	noUiSlider.create(slider, {
-		//step: ,
-		//behaviour: 'tap-drag',
-		start: [mini, maxi],
-		connect: true,
+	var dateSlider = document.getElementById('slider-date');
+
+	function timestamp(str) {
+		return new Date(str).getTime();
+	}
+
+	noUiSlider.create(dateSlider, {
+	// Create two timestamps to define a range.
 		range: {
-			'min': mini,
-			'max': maxi
+			min: timestamp('2010'),
+			max: timestamp('2016')
 		},
-		orientation: 'vertical',
-		//direction: 'ltr',
-		//step: 24 * 60 * 60 * 1000,
-		//format: wNumb({
-		//	decimals: 0
-		//	}),		
+
+	// Steps of one week
+		step: 7 * 24 * 60 * 60 * 1000,
+
+	// Two more timestamps indicate the handle starting positions.
+		start: [timestamp('2011'), timestamp('2015')],
+
+	// No decimals
+		format: wNumb({
+			decimals: 0
+		})
 	});
+	
+	
 	
 	//add slider
 	/*let Slider = L.Control.extend({
