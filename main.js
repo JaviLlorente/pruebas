@@ -212,7 +212,7 @@ function addPoints(data) {
 			endX.value = maxi;  
 	
 	
-	slider = L.control.slider(function(value) {console.log(value);}, {id:slider, 'vertical'});
+	slider = L.control.slider(function(value) {console.log(value);}, {id:slider, orientation: 'vertical'});
 	slider2 = L.control.slider(function(value) {alert(value);}, {id:slider2, orientation: 'horizontal'});
 	
 	
