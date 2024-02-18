@@ -216,13 +216,13 @@ function addPoints(data) {
 	noUiSlider.create(slider, {
 		// step: ,
 		//behaviour: 'tap-drag',
-		orientation: 'vertical',
-		start: [mini, maxi],
+		start: [mini+1, maxi-1],
 		connect: true,
 		range: {
 			'min': mini,
 			'max': maxi
 		},
+		orientation: 'vertical',
 		//direction: 'ltr',
 		//step: 24 * 60 * 60 * 1000,
 		//format: wNumb({
@@ -252,7 +252,7 @@ function addPoints(data) {
 		}*/
 	});
 	
-	// add slider
+	/* add slider
 	let Slider = L.Control.extend({
 		options: {
 		  position: 'topleft',
@@ -264,7 +264,7 @@ function addPoints(data) {
 		  return controlSlider;
 		},
 	  });
-	  map.addControl(new Slider());
+	  map.addControl(new Slider());*/
 	
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
