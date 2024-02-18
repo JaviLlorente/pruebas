@@ -28,10 +28,17 @@
 				height:20em; 				
 				float: left;
 				bottom: 0; 
-				<!--marging-left: 10px;
-				marging-bottom: 4em;-->
-				
+				position:relative; 
+				z-index:2; 
 			}
+			.slider_contenedor {
+				height:auto; 				
+				float: left;
+				bottom: 0; 
+				position:relative; 
+				z-index:1;
+			}
+			
 
         </style>
     </head>
@@ -92,7 +99,9 @@
 		
         <script src="main.js" defer></script>
 		
-        <div id="slider" class="slider" style="position:relative; z-index:1; "></div>
+        <div class="slider_contenedor">
+			<div id="slider" class="slider" ></div>
+		</div>
 		<div id="map" style="position:absolute; z-index:0; "></div>
 		
     </body>
