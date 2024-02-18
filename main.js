@@ -231,7 +231,7 @@ function addPoints(data) {
 	});
 	
 	//add slider
-	let Slider = L.Control.extend({
+	/*let Slider = L.Control.extend({
 		options: {
 		  position: 'bottomleft',
 		},
@@ -242,7 +242,7 @@ function addPoints(data) {
 		  return controlSlider;
 		},
 	  });
-	  map.addControl(new Slider());
+	  map.addControl(new Slider());*/
 	
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
