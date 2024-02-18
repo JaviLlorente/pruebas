@@ -212,8 +212,8 @@ function addPoints(data) {
 			endX.value = maxi;  
 	
 	
-	slider = L.control.slider(function(value) {console.log(value);}, {id:slider, orientation: 'vertical'});
-	slider2 = L.control.slider(function(value) {alert(value);}, {id:slider2, orientation: 'horizontal'});
+	slider = L.control.slider(function(value) {console.log(value);}, {id:slider, orientation: 'vertical'}).addTo(map);;
+	slider2 = L.control.slider(function(value) {alert(value);}, {id:slider2, orientation: 'horizontal'}).addTo(map);;
 	
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
