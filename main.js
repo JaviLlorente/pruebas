@@ -228,10 +228,10 @@ function addPoints(data) {
 		//format: wNumb({
 		//	decimals: 0
 		//	}),
-		pips:{
+		/*pips:{
 			mode:'values',
 			values: anios,
-			/*format: {
+			format: {
 				to: function(month){
 					// custom function to format the months.
 					let target_month = new Date(month)
