@@ -230,7 +230,7 @@ function addPoints(data) {
 		//	}),
 		pips:{
 			mode:'values',
-			values: years,
+			values: anios,
 			/*format: {
 				to: function(month){
 					// custom function to format the months.
