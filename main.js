@@ -193,29 +193,41 @@ function addPoints(data) {
 			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
-			var startX = document.getElementById('start');
-			anios.forEach(function(start){
-				let opcion = document.createElement('option');
-				opcion.value = start;
-				opcion.text = start;
-				startX.add(opcion);		
-			});
-			startX.value = mini;  
 			
-			var endX = document.getElementById('end');
-			anios.forEach(function(end){
-				let opcion = document.createElement('option');
-				opcion.value = end;
-				opcion.text = end;
-				endX.add(opcion);		
-			});	
-			endX.value = maxi;  
-	
+			
+			
+		var deslizante = function () {			
+			const max = new Date().getFullYear()
+			const min = 2012
+			const years = []
+			for (let i = min; i <= max; i++) { years.push(i) }
+			console.log (years);
+			
+            var slider = new rSlider({
+                target: '#slider',
+                values: years,
+                range: true,
+                set: [min.value, max.value],
+				width:    null,
+				scale:    true,
+				labels:   true,
+				tooltip:  false,
+				step:     null, // step size
+				disabled: false, // is disabled?
+                onChange: function (vals) {
+                    console.log(vals);						
+                }
+            });
+        };
+		
+      
+	  
+	  
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	document.getElementById("start").addEventListener("change", filterData);
-	document.getElementById("end").addEventListener("change", filterData);
+	//document.getElementById("start").addEventListener("change", filterData);
+	//document.getElementById("end").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
