@@ -24,14 +24,13 @@
 				word-break: break-word;
 				margin-right: 40px;
 			}
-			.slider_contenedor {				 
-				z-index:1; 
-				position:relative;
+			.slider {
 				height:20em; 				
 				float: left;
 				bottom: 0; 
-				padding-left: 20px;
-				padding-bottom: 10em;
+				<!--marging-left: 10px;
+				marging-bottom: 4em;-->
+				
 			}
 
         </style>
@@ -93,11 +92,8 @@
 		
         <script src="main.js" defer></script>
 		
-		<div class="slider_contenedor">
-			<div id="slider"></div>
-		</div>
+        <div id="slider" class="slider" style="position:relative; z-index:1; "></div>
 		<div id="map" style="position:absolute; z-index:0; "></div>
-	
 		
     </body>
 	
