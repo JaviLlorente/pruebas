@@ -230,8 +230,8 @@ function addPoints(data) {
 		//	}),
 		pips:{
 			mode:'values',
-			values:monthVals,
-			format: {
+			values: years,
+			/*format: {
 				to: function(month){
 					// custom function to format the months.
 					let target_month = new Date(month)
@@ -248,7 +248,7 @@ function addPoints(data) {
 				from: function(value){
 						return value
 				}
-			}
+			}*/
 		}
 	});
 	
