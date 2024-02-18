@@ -193,7 +193,7 @@ function addPoints(data) {
 			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
-			var startX = document.getElementById('start');
+			/* var startX = document.getElementById('start');
 			anios.forEach(function(start){
 				let opcion = document.createElement('option');
 				opcion.value = start;
@@ -209,7 +209,7 @@ function addPoints(data) {
 				opcion.text = end;
 				endX.add(opcion);		
 			});	
-			endX.value = maxi;  
+			endX.value = maxi;  */
 	
 	
 	var slider = document.getElementById('slider');
@@ -268,8 +268,8 @@ function addPoints(data) {
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	document.getElementById("start").addEventListener("change", filterData);
-	document.getElementById("end").addEventListener("change", filterData);
+	/*document.getElementById("start").addEventListener("change", filterData);
+	document.getElementById("end").addEventListener("change", filterData);*/
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -378,7 +378,7 @@ function addPoints(data) {
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		let filteredData2 = [];
+		/*let filteredData2 = [];
 		let startValue = document.getElementById("start").value;
 		if (startValue == mini.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
@@ -386,7 +386,7 @@ function addPoints(data) {
 		let filteredData3 = [];
 		let endValue = document.getElementById("end").value;
 		if (endValue == maxi.value) { filteredData3 = filteredData2; }
-		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
+		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }*/
 		
 		renderMarkers(filteredData3); //Renderizado desde los datos filtrados
 		
