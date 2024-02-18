@@ -8,7 +8,13 @@
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
         <link rel="stylesheet" href="css/leaflet.awesome-markers.css"/>
         <link rel="stylesheet" href="css/leaflet-sidebar.css"/>
-        <style>
+		<link rel="stylesheet" href="css/rSlider.min.css">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+				
+		<style>
+        .container { width: 70%; margin: 0.5em auto; }
+        .slider-container { width: 80%; max-width: 70em; margin: 0 auto 3em; }    
+		
 			body {
 				padding: 0;
 				margin: 0;
@@ -21,12 +27,12 @@
 				word-break: break-word;
 				margin-right: 40px;
 			}
-
         </style>
-    </head>
-		
-    <body>	
 			
+    </head>
+
+    <body>
+	
 	<!--NUEVO-->
 		<font face="arial" size=2em color="black" >
 		<div id="panel" style = "margin-left:0px; background-color:#D3D3D3;">
@@ -42,24 +48,35 @@
 				</select>
 				
 				<label>Especie</label>
-				<select name="especieX" id='especieX' style="margin-right:25px"> 
+				<select name="especieX" id='especieX' style="margin-right:4em"> 
 					<option value="-">...</option> 
 				</select>
 				
-				<label>entre</label>
-				<select id="start" name="start" style=" width:4em; "> </select>	
-				<label>&nbsp;y&nbsp;</label>
-				<select id="end" name="end" style=" width:4em; "> </select>	
-			
+				<!--<div class="container">
+					<div class="slider-container">-->
+						<input type="text" id="slider" class="slider" />
+					<!--</div>
+				</div>-->
+				
 				<span name="form2" id="form2" style="height:auto;" >				
 					<input type="text" id="Narray" name="Narray" style="width:2.7em; height:fit-content; float:right; text-align:right; margin-right:10px; background-color:#EAEDED" readonly><br><br>
 				</span> 				
 			</form>
 			
+			<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input 
+			  id="presc-filter"
+			  type="number"
+			  placeholder="Año"
+			/>-->		
+			
+			<!--<input type="range" min="1" max="100" value="50" name="rango">-->
+			
 		</div>
 		</font>
 		
 	<!--FIN DE NUEVO-->
+		<script src="js/rSlider.min.js"></script>
+	
 		<script src="js/leaflet.js"></script>
         <script src="js/leaflet-sidebar.js"></script>
         <script src="js/leaflet.awesome-markers.min.js"></script>
@@ -71,6 +88,12 @@
 		
         <script src="main.js" defer></script>
         <div id="map"></div>
+		
+		<div class="container">
+        <div class="slider-container">
+            <input type="text" id="slider2" class="slider" />
+        </div>           
+		</div>  
 		
     </body>
 	
