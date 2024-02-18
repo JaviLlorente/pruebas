@@ -216,7 +216,7 @@ function addPoints(data) {
 	noUiSlider.create(slider, {
 		// step: ,
 		//behaviour: 'tap-drag',
-		start: [mini, maxi],
+		start: [mini+1, maxi-1],
 		connect: true,
 		range: {
 			'min': mini,
@@ -231,7 +231,7 @@ function addPoints(data) {
 		/*pips:{
 			mode:'values',
 			values: anios,
-			format: {
+			/*format: {
 				to: function(month){
 					// custom function to format the months.
 					let target_month = new Date(month)
@@ -248,8 +248,8 @@ function addPoints(data) {
 				from: function(value){
 						return value
 				}
-			}*/
-		}
+			}
+		}*/
 	});
 	
 	/* add slider
