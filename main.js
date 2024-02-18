@@ -223,7 +223,6 @@ function addPoints(data) {
 			'max': maxi
 		},
 		orientation: 'vertical',
-		height: 6em,
 		//direction: 'ltr',
 		//step: 24 * 60 * 60 * 1000,
 		//format: wNumb({
