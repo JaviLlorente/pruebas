@@ -212,7 +212,7 @@ function addPoints(data) {
 			endX.value = maxi;  */
 	
 	
-	var slider = document.getElementById('slider');
+	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
 		behaviour: 'snap',
 		start: [mini, maxi],
@@ -229,26 +229,11 @@ function addPoints(data) {
 		//	decimals: 0
 		//	}),		
 	});
-	
-	
-	
-	//add slider
-	/*let Slider = L.Control.extend({
-		options: {
-		  position: 'bottomleft',
-		},
-		onAdd: function (map) {
-		  let controlSlider = L.DomUtil.create('div', 'map-slider', L.DomUtil.get('map'));
-		  // here we can fill the slider with colors, strings and whatever
-		  controlSlider.innerHTML = '<form><input id="command" type="checkbox"/>command</form>'; 
-		  return controlSlider;
-		},
-	  });
-	  map.addControl(new Slider());*/
-	
+
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
+	document.getElementById("slider").addEventListener("change", filterData);
 	/*document.getElementById("start").addEventListener("change", filterData);
 	document.getElementById("end").addEventListener("change", filterData);*/
 	
@@ -339,8 +324,10 @@ function addPoints(data) {
 	map.spin(false);  // spinoff
 	
 	//actualizando valores del slider de años
-	var slider_value = slider.noUiSlider.get();
-	console.log(slider_value);
+	var slider_values = slider.noUiSlider.get();
+	var mini = slider_values[0];
+	var maxi = slider_values[1];
+	console.log(slider_values);
     } //Fin Render
 	
 	//FILTERING LOGIC
@@ -363,7 +350,7 @@ function addPoints(data) {
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		/*let filteredData2 = [];
+		let filteredData2 = [];
 		let startValue = document.getElementById("start").value;
 		if (startValue == mini.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
@@ -371,9 +358,9 @@ function addPoints(data) {
 		let filteredData3 = [];
 		let endValue = document.getElementById("end").value;
 		if (endValue == maxi.value) { filteredData3 = filteredData2; }
-		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }*/
+		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
 		
-		renderMarkers(filteredData); //Renderizado desde los datos filtrados
+		renderMarkers(filteredData3); //Renderizado desde los datos filtrados
 		
     }; //FinFiltro
 
