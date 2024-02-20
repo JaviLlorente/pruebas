@@ -222,12 +222,21 @@ function addPoints(data) {
 			'max': maxi
 		},
 		orientation: 'vertical',
-		//direction: 'ltr',
+		
 		step: 1,
-		pips: { mode: 'steps', density: 10  }
+		pips: { mode: 'steps', density: 10  },
+			cssPrefix: 'noUi-', // defaults to 'noUi-',
+			cssClasses: {
+				slider-round, slider-round.noUi-connect, slider-round.noUi-handle
+		// Full list of class names to override.
+        // Does NOT extend the default classes.
+        // The first class in String gets prefixed, the rest gets added as it is
+		}
+});
 		//format: wNumb({
 		//	decimals: 0
 		//	}),		
+		
 	});
 
 	
@@ -236,8 +245,8 @@ function addPoints(data) {
 	//document.getElementById("slider").addEventListener("change", filterData);
 	slider.noUiSlider.on('update', function( ) {
 		var slider_values = slider.noUiSlider.get();
-		var mini = slider_values[0];
-		var maxi = slider_values[1];
+		var start = slider_values[0];
+		var end = slider_values[1];
 		console.log(slider_values);
     	filterData();
     });
