@@ -231,7 +231,7 @@ function addPoints(data) {
 	});
 	
 	var slidervalue = slider.noUiSlider.get()
-	var integerslider = slidervalue.toFixed(0);
+	var integerslider = parseInt(slidervalue);
 	console.log(integerslider);
 	
 	//add slider
