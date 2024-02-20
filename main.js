@@ -224,15 +224,14 @@ function addPoints(data) {
 		orientation: 'vertical',
 		//direction: 'ltr',
 		step: 1,
-		//pips: { mode: 'steps', filter: 1  }
+		pips: { mode: 'steps', filter: 1  }
 		//format: wNumb({
 		//	decimals: 0
 		//	}),		
 	});
 	
-	var slidervalue = slider.noUiSlider.get()
-	var integerslider = parseInt(slidervalue);
-	console.log(integerslider);
+	var slider_value = slider.noUiSlider.get()
+	console.log(slider_value);
 	
 	//add slider
 	/*let Slider = L.Control.extend({
