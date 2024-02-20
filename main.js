@@ -230,7 +230,7 @@ function addPoints(data) {
 		//	}),		
 	});
 	
-	var slider_value = slider.noUiSlider.get()
+	var slider_value = slider.noUiSlider.get();
 	console.log(slider_value);
 	
 	//add slider
