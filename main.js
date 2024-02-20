@@ -233,7 +233,14 @@ function addPoints(data) {
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	document.getElementById("slider").addEventListener("change", filterData);
+	//document.getElementById("slider").addEventListener("change", filterData);
+	slider.noUiSlider.on('update', function( ) {
+		var slider_values = slider.noUiSlider.get();
+		var mini = slider_values[0];
+		var maxi = slider_values[1];
+		console.log(slider_values);
+    	filterData();
+    });
 	/*document.getElementById("start").addEventListener("change", filterData);
 	document.getElementById("end").addEventListener("change", filterData);*/
 	
@@ -321,13 +328,7 @@ function addPoints(data) {
 		
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
-	map.spin(false);  // spinoff
-	
-	//actualizando valores del slider de años
-	var slider_values = slider.noUiSlider.get();
-	var mini = slider_values[0];
-	var maxi = slider_values[1];
-	console.log(slider_values);
+	map.spin(false);  // spinoff	
     } //Fin Render
 	
 	//FILTERING LOGIC
