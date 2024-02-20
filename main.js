@@ -338,6 +338,7 @@ function addPoints(data) {
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
 	
+	//actualizando valores del slider de años
 	var slider_value = slider.noUiSlider.get();
 	console.log(slider_value);
     } //Fin Render
