@@ -373,7 +373,7 @@ function addPoints(data) {
 		if (endValue == maxi.value) { filteredData3 = filteredData2; }
 		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }*/
 		
-		renderMarkers(filteredData3); //Renderizado desde los datos filtrados
+		renderMarkers(filteredData); //Renderizado desde los datos filtrados
 		
     }; //FinFiltro
 
