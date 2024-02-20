@@ -241,8 +241,8 @@ function addPoints(data) {
 	//document.getElementById("slider").addEventListener("change", filterData);
 	slider.noUiSlider.on('update', function( ) {
 		var slider_values = slider.noUiSlider.get();
-		var start = slider_values[0];
-		var end = slider_values[1];
+		var startValue = slider_values[0];
+		var endValue = slider_values[1];
 		console.log(slider_values);
     	filterData();
     });
@@ -357,12 +357,12 @@ function addPoints(data) {
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		let filteredData2 = [];
-		let startValue = document.getElementById("start").value;
+		//let startValue = document.getElementById("start").value;
 		if (startValue == mini.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
 		
 		let filteredData3 = [];
-		let endValue = document.getElementById("end").value;
+		//let endValue = document.getElementById("end").value;
 		if (endValue == maxi.value) { filteredData3 = filteredData2; }
 		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
 		
