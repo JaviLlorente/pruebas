@@ -219,13 +219,17 @@ function addPoints(data) {
 		start: [mini, maxi],
 		connect: true,
 		range: {
-			'min': mini,
-			'max': maxi
+			'min': mini.toFixed(0),
+			'max': maxi.toFIxed(0)
 		},
 		orientation: 'vertical',
-		
 		step: 1,
 		pips: { mode: 'steps', density: 10  },
+		format: wNumb({
+			decimals: 0,
+			//thousand: '.',
+			//suffix: ' (US $)'
+		})
 		
 		// Full list of class names to override.
         // Does NOT extend the default classes.
@@ -240,8 +244,7 @@ function addPoints(data) {
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	//document.getElementById("slider").addEventListener("change", filterData);
-	
-	
+		
 	
 	slider.noUiSlider.on('change', function( ) {   			
 		filterData( );
@@ -339,8 +342,8 @@ function addPoints(data) {
 	//FILTERING LOGIC
     function filterData () {
 		var slider_values = slider.noUiSlider.get();
-		var startValue = slider_values[0];
-		var endValue = slider_values[1];
+		var startValue = slider_values[0].toFixed(0);
+		var endValue = slider_values[1].toFixed(0);
 		console.log(slider_values);	
 	
 		//Pone la barra lateral a cero y la cierra
