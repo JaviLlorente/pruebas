@@ -242,8 +242,7 @@ function addPoints(data) {
 	
 	
 	
-	slider.noUiSlider.on('update', function( ) {   	
-		
+	slider.noUiSlider.on('change', function( ) {   			
 		filterData( );
     });
 	/*document.getElementById("start").addEventListener("change", filterData);
