@@ -240,12 +240,11 @@ function addPoints(data) {
     document.getElementById("especieX").addEventListener("change", filterData);
 	//document.getElementById("slider").addEventListener("change", filterData);
 	
-	var slider_values = slider.noUiSlider.get();
-	var startValue = slider_values[0];
-	var endValue = slider_values[1];
-	console.log(slider_values);
-	slider.noUiSlider.on('update', function( ) {		
-    	filterData( );
+	
+	
+	slider.noUiSlider.on('update', function( ) {   	
+		
+		filterData( );
     });
 	/*document.getElementById("start").addEventListener("change", filterData);
 	document.getElementById("end").addEventListener("change", filterData);*/
@@ -338,7 +337,11 @@ function addPoints(data) {
     } //Fin Render
 	
 	//FILTERING LOGIC
-    function filterData () {	
+    function filterData () {
+		var slider_values = slider.noUiSlider.get();
+		var startValue = slider_values[0];
+		var endValue = slider_values[1];
+		console.log(slider_values);	
 	
 		//Pone la barra lateral a cero y la cierra
 		sidebar.close(panelID);
