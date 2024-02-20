@@ -230,8 +230,7 @@ function addPoints(data) {
 		//	}),		
 	});
 	
-	var slider_value = slider.noUiSlider.get();
-	console.log(slider_value);
+	
 	
 	//add slider
 	/*let Slider = L.Control.extend({
@@ -338,6 +337,9 @@ function addPoints(data) {
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
 	map.spin(false);  // spinoff
+	
+	var slider_value = slider.noUiSlider.get();
+	console.log(slider_value);
     } //Fin Render
 	
 	//FILTERING LOGIC
