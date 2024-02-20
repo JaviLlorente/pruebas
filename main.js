@@ -225,7 +225,7 @@ function addPoints(data) {
 		orientation: 'vertical',
 		//direction: 'ltr',
 		step: 1,
-		pips: { mode: 'steps', format: format },
+		pips: { mode: 'steps' },
 		//format: wNumb({
 		//	decimals: 0
 		//	}),		
