@@ -215,7 +215,7 @@ function addPoints(data) {
 	var slider = document.getElementById('slider');
 	noUiSlider.create(slider, {
 		//step: ,
-		//behaviour: 'tap-drag',
+		behaviour: 'snap',
 		start: [mini, maxi],
 		connect: true,
 		range: {
