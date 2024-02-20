@@ -220,7 +220,7 @@ function addPoints(data) {
 		connect: true,
 		range: {
 			'min': mini.toFixed(0),
-			'max': maxi.toFIxed(0)
+			'max': maxi.toFixed(0)
 		},
 		orientation: 'vertical',
 		step: 1,
