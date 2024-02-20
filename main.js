@@ -218,21 +218,11 @@ function addPoints(data) {
 		behaviour: 'snap',
 		start: [mini, maxi],
 		connect: true,
-		range: {
-			'min': mini,
-			'max': maxi
-		},
+		range: { 'min': mini, 'max': maxi },
 		orientation: 'vertical',
 		step: 1,
-		pips: { mode: 'steps', density: 10  },
-			
-		// Full list of class names to override.
-        // Does NOT extend the default classes.
-        // The first class in String gets prefixed, the rest gets added as it is
-		format: wNumb({
-			decimals: 0
-			}),		
-		
+		//pips: { mode: 'steps', density: 10  },
+		format: wNumb({	decimals: 0	}),	
 	});
 
 	
