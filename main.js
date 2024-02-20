@@ -240,12 +240,12 @@ function addPoints(data) {
     document.getElementById("especieX").addEventListener("change", filterData);
 	//document.getElementById("slider").addEventListener("change", filterData);
 	
-	slider.noUiSlider.on('update', function( ) {
-		var slider_values = slider.noUiSlider.get();
-		var startValue = slider_values[0];
-		var endValue = slider_values[1];
-		console.log(slider_values);
-    	filterData( startValue, endValue );
+	var slider_values = slider.noUiSlider.get();
+	var startValue = slider_values[0];
+	var endValue = slider_values[1];
+	console.log(slider_values);
+	slider.noUiSlider.on('update', function( ) {		
+    	filterData( );
     });
 	/*document.getElementById("start").addEventListener("change", filterData);
 	document.getElementById("end").addEventListener("change", filterData);*/
