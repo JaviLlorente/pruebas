@@ -239,12 +239,13 @@ function addPoints(data) {
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	//document.getElementById("slider").addEventListener("change", filterData);
+	
 	slider.noUiSlider.on('update', function( ) {
 		var slider_values = slider.noUiSlider.get();
 		var startValue = slider_values[0];
 		var endValue = slider_values[1];
 		console.log(slider_values);
-    	filterData();
+    	filterData( startValue, endValue );
     });
 	/*document.getElementById("start").addEventListener("change", filterData);
 	document.getElementById("end").addEventListener("change", filterData);*/
