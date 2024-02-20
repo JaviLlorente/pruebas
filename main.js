@@ -230,8 +230,9 @@ function addPoints(data) {
 		//	}),		
 	});
 	
-	var slider_value = slider.noUiSlider.get().toFixed();
-	console.log(slider_value);
+	var slidervalue = slider.noUiSlider.get()
+	var integerslider = slidervalue.toFixed(0);
+	console.log(integerslider);
 	
 	//add slider
 	/*let Slider = L.Control.extend({
