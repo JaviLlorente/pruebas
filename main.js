@@ -337,8 +337,8 @@ function addPoints(data) {
 	//FILTERING LOGIC
     function filterData () {
 		var slider_values = slider.noUiSlider.get();
-		var startValue = Number(slider_values[0].toFixed(0));
-		var endValue = Number(slider_values[1].toFixed(0));
+		var startValue = slider_values[0];
+		var endValue = slider_values[1];
 		console.log(slider_values);	
 	
 		//Pone la barra lateral a cero y la cierra
