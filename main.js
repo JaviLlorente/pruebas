@@ -219,8 +219,8 @@ function addPoints(data) {
 		start: [mini, maxi],
 		connect: true,
 		range: {
-			'min': Number(mini.toFixed(0)),
-			'max': Number(maxi.toFixed(0))
+			'min': mini,
+			'max': maxi
 		},
 		orientation: 'vertical',
 		step: 1,
@@ -229,9 +229,9 @@ function addPoints(data) {
 		// Full list of class names to override.
         // Does NOT extend the default classes.
         // The first class in String gets prefixed, the rest gets added as it is
-		//format: wNumb({
-		//	decimals: 0
-		//	}),		
+		format: wNumb({
+			decimals: 0
+			}),		
 		
 	});
 
