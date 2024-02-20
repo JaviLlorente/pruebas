@@ -225,14 +225,10 @@ function addPoints(data) {
 		
 		step: 1,
 		pips: { mode: 'steps', density: 10  },
-			cssPrefix: 'noUi-', // defaults to 'noUi-',
-			cssClasses: {
-				slider-round, slider-round.noUi-connect, slider-round.noUi-handle
+		
 		// Full list of class names to override.
         // Does NOT extend the default classes.
         // The first class in String gets prefixed, the rest gets added as it is
-		}
-});
 		//format: wNumb({
 		//	decimals: 0
 		//	}),		
