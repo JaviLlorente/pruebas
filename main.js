@@ -316,13 +316,12 @@ function addPoints(data) {
 				//shadowUrl: 'css/images/markers-shadow.png', //shadowSize: [30, 10], //shadowAnchor: [5, 5]
 			});
 			marker.setIcon(icon);			
-			pointGroupLayer.addLayer(marker);	
-			map.spin(false);  // spinoff_2
+			pointGroupLayer.addLayer(marker);				
 		} //Fin iteracion		
 		
 	//console.log(data);
 	document.getElementById("Narray").value = data.length;	//nºregistros
-	map.spin(false);  // spinoff_1	
+	map.spin(false);  // spinoff_1
     } //Fin Render
 	
 	//FILTERING LOGIC
@@ -364,6 +363,7 @@ function addPoints(data) {
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos
+	map.spin(false);  // spinoff_2
 	
 }; //FINADDPOINTS
    	
