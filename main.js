@@ -240,7 +240,7 @@ function addPoints(data) {
 	// RENDERING METHOD
 	function renderMarkers (data) {
 		
-		//map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
+		map.spin(true, { lines: 13, length: 30 }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
