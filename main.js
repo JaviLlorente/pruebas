@@ -108,16 +108,6 @@ window.onload = function () {
 			});		
 		}	
 	} // FinCargaEspecies	
-	
-	var miCheckbox = document.getElementById("cbox1");
-	miCheckbox.addEventListener("click", function() {
-		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
-	});		
-
-	slider.noUiSlider.on('set', function() { 
-		filterData( ); 
-		if(slider_values = slider.noUiSlider.set([mini, maxi])) { miCheckbox.checked; } else { miCheckbox.checked=false; }
-	});
 }
 	
 
@@ -218,6 +208,13 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
+	var miCheckbox = document.getElementById("cbox1");
+	miCheckbox.addEventListener("click", function() {
+		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
+	});		
+
+	slider.noUiSlider.on('set', function() { filterData( ); });
+
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -319,6 +316,8 @@ function addPoints(data) {
 		var startValue = slider_values[0];
 		var endValue = slider_values[1];
 		console.log(slider_values);	
+		
+		if(slider_values = [mini, maxi]) { miCheckbox.checked; } else { miCheckbox.checked=false; }
 	
 		//Pone la barra lateral a cero y la cierra
 		sidebar.close(panelID);
