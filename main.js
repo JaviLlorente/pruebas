@@ -209,11 +209,10 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 
-	
-	document.getElementById("claseX").addEventListener("change", filterData);
-    	document.getElementById("especieX").addEventListener("change", filterData);
-
 	slider.noUiSlider.on('change', function( ) { filterData( ); });
+	document.getElementById("claseX").addEventListener("change", filterData);
+    document.getElementById("especieX").addEventListener("change", filterData);
+	
 	//document.getElementById("start").addEventListener("change", filterData);
 	//document.getElementById("end").addEventListener("change", filterData);
 	
