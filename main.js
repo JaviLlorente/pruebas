@@ -41,8 +41,8 @@ function init() {
 		//position: 'absolute', // Element positioning		
 	}); //on_spin (https://spin.js.org/)
 
-  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right", marginTop:20px }).addTo(map);
-  //document.getElementById("sidebar").style.marginTop = "900px"
+  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
+  document.getElementById("sidebar").style.marginTop = "60px"
 
   let panelContent = {
     id: panelID,
