@@ -173,11 +173,11 @@ function addPoints(data) {
 			
 			//calcula el array entre min y año en curso (funciona con entrada de número)
 			var maxi = new Date().getFullYear()
-			//const anios = []
-			//for (let i = mini; i <= maxi; i++) { anios.push(i) }
+			const anios = []
+			for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
-			/*var startX = document.getElementById('start');
+			/* var startX = document.getElementById('start');
 			anios.forEach(function(start){
 				let opcion = document.createElement('option');
 				opcion.value = start;
@@ -192,22 +192,23 @@ function addPoints(data) {
 				opcion.value = end;
 				opcion.text = end;
 				endX.add(opcion);		
-			});
-			endX.value = maxi; */
+			});	
+			endX.value = maxi;  */
 	
 	
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
-		//tooltips: [true, true],
-		behaviour: 'tap-snap-drag',
+		tooltips: [true, true],
+		behaviour: 'snap',
 		start: [mini, maxi],
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
-		//orientation: 'horizontal',
+		orientation: 'vertical',
 		step: 1,
 		//pips: { mode: 'steps', density: 10  },
 		format: wNumb({	decimals: 0	}),	
 	});
+
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -215,6 +216,7 @@ function addPoints(data) {
 	slider.noUiSlider.on('update', function( ) { filterData( ); });
 	//document.getElementById("start").addEventListener("change", filterData);
 	//document.getElementById("end").addEventListener("change", filterData);
+	
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -295,12 +297,13 @@ function addPoints(data) {
 				//shadowUrl: 'css/images/markers-shadow.png', //shadowSize: [30, 10], //shadowAnchor: [5, 5]
 			});
 			marker.setIcon(icon);			
-			pointGroupLayer.addLayer(marker);				
+			pointGroupLayer.addLayer(marker);			
 		} //Fin iteracion		
 		
 		//console.log(data);
 		document.getElementById("Narray").value = data.length;	//nºregistros
 		map.spin(false);  // spinoff_1
+		
     } //Fin Render
 	
 	//FILTERING LOGIC
