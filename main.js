@@ -209,7 +209,8 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	document.getElementById("cbox1").addEventListener("click", function() {
+	var miCheckbox = document.getElementById("cbox1");
+	miCheckbox.addEventListener("click", function() {
 		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
 	});	
 	
