@@ -215,7 +215,7 @@ function addPoints(data) {
 	
 	//document.getElementById("start").addEventListener("change", filterData);
 	//document.getElementById("end").addEventListener("change", filterData);
-	
+	map.spin(false);  // spinoff_2
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -343,8 +343,7 @@ function addPoints(data) {
 		
     }; //FinFiltro
 
-	renderMarkers(data); //Renderizado desde el conjunto de datos
-	map.spin(false);  // spinoff_2
+	renderMarkers(data); //Renderizado desde el conjunto de datos	
 	
 }; //FINADDPOINTS
    	
