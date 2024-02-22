@@ -167,30 +167,14 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//console.log (data);
 	
-			//da numero: desde todo el Data: min(map.getfullyear(map.fecha))
-			//const mini = Math.min.apply(null, ((data.map(a => a.Fecha)).map(y => new Date(y).getFullYear())));
-			//console.log(mini);
-			
-			//da array: desde todo el Data: sort(set(map.getfullyear(map.fecha)))
-			//let anios = (Array.from(new Set(data.map(a => a.Fecha).map(y => new Date(y).getFullYear())))).sort();
-			//console.log(anios);
-			
-			//funciona pero da un string de resultado
-			//var mini = (data.map(b => b.minyear)).find((c) => c.minyear != "");
-			//console.log(mini);
-			
-			//da array de uno (Number para sacar numero): desde el minyear de datos: number(slice(map.minyear))) 			
-			//var mini = Number((data.map(a => a.minyear)).slice(0,1));
-			//console.log(mini);	
-			
 			//da string (Number para sacar numero): extrayendolo directamente
 			var mini = Number(data[0].minyear);
 			//console.log(mini);			
 			
 			//calcula el array entre min y año en curso (funciona con entrada de número)
 			var maxi = new Date().getFullYear()
-			const anios = []
-			for (let i = mini; i <= maxi; i++) { anios.push(i) }
+			//const anios = []
+			//for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
 			/* var startX = document.getElementById('start');
@@ -224,18 +208,13 @@ function addPoints(data) {
 		//pips: { mode: 'steps', density: 10  },
 		format: wNumb({	decimals: 0	}),	
 	});
-
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	//document.getElementById("slider").addEventListener("change", filterData);
-		
-	
-	slider.noUiSlider.on('change', function( ) {   			
-		filterData( );
-    });
-	/*document.getElementById("start").addEventListener("change", filterData);
-	document.getElementById("end").addEventListener("change", filterData);*/
+
+	slider.noUiSlider.on('update', function( ) { filterData( ); });
+	//document.getElementById("start").addEventListener("change", filterData);
+	//document.getElementById("end").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
@@ -319,9 +298,9 @@ function addPoints(data) {
 			pointGroupLayer.addLayer(marker);				
 		} //Fin iteracion		
 		
-	//console.log(data);
-	document.getElementById("Narray").value = data.length;	//nºregistros
-	map.spin(false);  // spinoff_1
+		//console.log(data);
+		document.getElementById("Narray").value = data.length;	//nºregistros
+		map.spin(false);  // spinoff_1
     } //Fin Render
 	
 	//FILTERING LOGIC
