@@ -20,16 +20,20 @@
 				height: 100%;
 				width: 100%;
 			}
+		
+			.leaflet-top { bottom: 0; }
+
+			.leaflet-top .leaflet-control-zoom { 
+				top:50%;
+				transform: translateY(-50%);
+			}
+
 			#sidebar-content, #sidebar-title {
 				word-break: break-word;
 				margin-right: 40px;
 				margin-top: 40px;
 			}
-			
-			.leaflet-control-zoom {
-				margin-top: 40px;
-			}
-			
+
 			.slider_contenedor {
 				height:auto; 				
 				float: left;
