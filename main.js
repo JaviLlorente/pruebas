@@ -41,15 +41,14 @@ function init() {
 		//position: 'absolute', // Element positioning		
 	}); //on_spin (https://spin.js.org/)
 
-  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
+  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right", marginTop:20px }).addTo(map);
   //document.getElementById("sidebar").style.marginTop = "900px"
 
   let panelContent = {
     id: panelID,
     tab: "<i class='fa fa-bars active'></i>",
     pane: "<p id='sidebar-content'></p>",
-    title: "<h2 id='sidebar-title'>No hay selección</h2>",	
-	marginTop: 30px,
+    title: "<h2 id='sidebar-title'>No hay selección</h2>",		
   };
   sidebar.addPanel(panelContent);
 
