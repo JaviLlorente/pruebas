@@ -215,12 +215,12 @@ function addPoints(data) {
 	
 	//document.getElementById("start").addEventListener("change", filterData);
 	//document.getElementById("end").addEventListener("change", filterData);
-	map.spin(false);  // spinoff_2
+	//map.spin(false);  // spinoff_2
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {
 		
-		map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner' }); //on_spin //ya en inicio y aqui puede que retrase
+		//map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner' }); //on_spin2 //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
