@@ -108,6 +108,16 @@ window.onload = function () {
 			});		
 		}	
 	} // FinCargaEspecies	
+	
+	var miCheckbox = document.getElementById("cbox1");
+	miCheckbox.addEventListener("click", function() {
+		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
+	});		
+
+	slider.noUiSlider.on('set', function() { 
+		filterData( ); 
+		if(slider_values = slider.noUiSlider.set([mini, maxi])) { miCheckbox.checked; } else { miCheckbox.checked=false; }
+	});
 }
 	
 
@@ -208,14 +218,6 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	var miCheckbox = document.getElementById("cbox1");
-	miCheckbox.addEventListener("click", function() {
-		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
-	});	
-	
-	if(slider_values = slider.noUiSlider.set([mini, maxi])) { miCheckbox.checked; } else { miCheckbox.checked=false; }
-
-	slider.noUiSlider.on('set', function() { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
