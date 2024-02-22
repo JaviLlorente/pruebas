@@ -28,8 +28,6 @@ function init() {
 	maxZoom: 18,
   }).addTo(map);
   
-  L.control.zoom({ position: 'bottomright' }).addTo(map);
-  
 	map.spin(true, {
 		lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner',
 		//scale: 1, // Scales overall size of the spinner
