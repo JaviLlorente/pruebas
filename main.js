@@ -209,7 +209,7 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 
-	slider.noUiSlider.on('change', function( ) { filterData( ); });
+	slider.noUiSlider.on('slide', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
