@@ -207,8 +207,14 @@ function addPoints(data) {
 		//pips: { mode: 'steps', density: 10  },
 		format: wNumb({	decimals: 0	}),	
 	});
+	
+	document.getElementById("cbox1").addEventListener("click", function() {
+		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
+	});	
+	
+	if(slider_values = slider.noUiSlider.set([mini, maxi])) { miCheckbox.checked; } else { miCheckbox.checked=false; }
 
-	slider.noUiSlider.on('set', function( ) { filterData( ); });
+	slider.noUiSlider.on('set', function() { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -315,16 +321,6 @@ function addPoints(data) {
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
 		document.getElementById('sidebar-content').innerHTML = ('');
-		
-		var miCheckbox = document.getElementById('cbox1');
-		miCheckbox.addEventListener('click', function() {
-			if(miCheckbox.checked) {
-				slider_values = slider.noUiSlider.set([mini, maxi]);
-			} else {
-				slider_values = slider.noUiSlider.set([startValue, endValue]);
-			}
-		});
-	
 		
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
