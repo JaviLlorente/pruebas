@@ -211,9 +211,9 @@ function addPoints(data) {
 
 	
 	document.getElementById("claseX").addEventListener("change", filterData);
-    document.getElementById("especieX").addEventListener("change", filterData);
+    	document.getElementById("especieX").addEventListener("change", filterData);
 
-	slider.noUiSlider.on('update', function( ) { filterData( ); });
+	slider.noUiSlider.on('change', function( ) { filterData( ); });
 	//document.getElementById("start").addEventListener("change", filterData);
 	//document.getElementById("end").addEventListener("change", filterData);
 	
