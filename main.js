@@ -203,7 +203,7 @@ function addPoints(data) {
 		start: [mini, maxi],
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
-		orientation: 'horizontal',
+		//orientation: 'horizontal',
 		step: 1,
 		//pips: { mode: 'steps', density: 10  },
 		format: wNumb({	decimals: 0	}),	
