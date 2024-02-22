@@ -215,7 +215,7 @@ function addPoints(data) {
 		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
 	});		
 
-	slider.noUiSlider.on('set', function() { filterData( ); });
+	slider.noUiSlider.on('set', function( ) { filterData( ); });
 
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
