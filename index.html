@@ -25,10 +25,6 @@
 				margin-right: 40px;
 			}
 			
-			.select_contenedor {
-				width: 100%;
-			}
-			
 			.slider_contenedor {
 				height:auto; 				
 				float: left;
@@ -63,11 +59,28 @@
     <body>	
 
 	<!--NUEVO-->
-	<font face="arial" size=2em color="black" >
+	
 		
-		<div id="panel" style = "margin-left:0px; background-color:transparent; position:absolute; z-index:1; ">
+	<!--FIN DE NUEVO-->
+		<script src="dist/nouislider.js"></script>
+		<script src="js/wNumb.js"></script>
+		
+		<script src="js/leaflet.js"></script>
+        <script src="js/leaflet-sidebar.js"></script>
+        <script src="js/leaflet.awesome-markers.min.js"></script>
+        <script src="js/papaparse.min.js"></script>
+		
+		<script src="leafletspin/spin/spin.min.js" charset="utf-8"></script>
+		<script src="leafletspin/leaflet.spin.min.js"></script>
+		<script src="leafletspin/leaflet.spin.js"></script>
+		
+        <script src="main.js" defer></script>
+		
+	<!--ESPACIO DEL MAPA-->		
+		<font face="arial" size=2em color="black" >
+		
+		<div id="panel" style = "width:100%; margin-left:0px; background-color:transparent; position:absolute; z-index:1; ">
 			
-			<div id="select_contenedor">
 			<form name="form1" id="form1" style="height:1.7em;" > 
 				<label>&nbsp;&nbsp;&nbsp;Clase</label>
 				<select name="claseX" id='claseX' style="margin-right:1em">
@@ -103,23 +116,7 @@
 			
 		</div>		
 	</font>
-		
-	<!--FIN DE NUEVO-->
-		<script src="dist/nouislider.js"></script>
-		<script src="js/wNumb.js"></script>
-		
-		<script src="js/leaflet.js"></script>
-        <script src="js/leaflet-sidebar.js"></script>
-        <script src="js/leaflet.awesome-markers.min.js"></script>
-        <script src="js/papaparse.min.js"></script>
-		
-		<script src="leafletspin/spin/spin.min.js" charset="utf-8"></script>
-		<script src="leafletspin/leaflet.spin.min.js"></script>
-		<script src="leafletspin/leaflet.spin.js"></script>
-		
-        <script src="main.js" defer></script>
-		
-	<!--ESPACIO DEL MAPA-->		
+	
 		<div class="slider_contenedor" style="position:absolute; z-index:1; ">
 			<font face="arial" size="0.7em" color="black" >
 				<label><input type="checkbox" id="cbox1" value="first_checkbox" style="margin-bottom:15px; "/> Todos</label>
