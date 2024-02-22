@@ -27,7 +27,7 @@ function init() {
 	attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
 	maxZoom: 18,
   }).addTo(map);
-  
+   
 	map.spin(true, {
 		lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner',
 		//scale: 1, // Scales overall size of the spinner
@@ -194,7 +194,7 @@ function addPoints(data) {
 				endX.add(opcion);		
 			});	
 			endX.value = maxi;  */	
-	
+			
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
 		tooltips: [true, true],
@@ -315,6 +315,16 @@ function addPoints(data) {
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
 		document.getElementById('sidebar-content').innerHTML = ('');
+		
+		var miCheckbox = document.getElementById('cbox1');
+		miCheckbox.addEventListener('click', function() {
+			if(miCheckbox.checked) {
+				slider_values = slider.noUiSlider.set([mini, maxi]);
+			} else {
+				slider_values = slider.noUiSlider.set([startValue, endValue]);
+			}
+		});
+	
 		
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
