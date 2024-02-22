@@ -47,8 +47,7 @@ function init() {
     id: panelID,
     tab: "<i class='fa fa-bars active'></i>",
     pane: "<p id='sidebar-content'></p>",
-    title: "<h2 id='sidebar-title'>No hay selección</h2>",
-	margin-top: 20px,
+    title: "<h2 id='sidebar-title'>No hay selección</h2>",	
   };
   sidebar.addPanel(panelContent);
 
