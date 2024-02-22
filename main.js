@@ -173,8 +173,8 @@ function addPoints(data) {
 			
 			//calcula el array entre min y año en curso (funciona con entrada de número)
 			var maxi = new Date().getFullYear()
-			const anios = []
-			for (let i = mini; i <= maxi; i++) { anios.push(i) }
+			//const anios = []
+			//for (let i = mini; i <= maxi; i++) { anios.push(i) }
 			//console.log(anios);
 			
 			/* var startX = document.getElementById('start');
@@ -193,8 +193,7 @@ function addPoints(data) {
 				opcion.text = end;
 				endX.add(opcion);		
 			});	
-			endX.value = maxi;  */
-	
+			endX.value = maxi;  */	
 	
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
@@ -209,7 +208,7 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 
-	slider.noUiSlider.on('slide', function( ) { filterData( ); });
+	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
