@@ -220,7 +220,7 @@ function addPoints(data) {
 	// RENDERING METHOD
 	function renderMarkers (data) {
 		
-		//map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner' }); //on_spin //ya en inicio y aqui puede que retrase
+		map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner' }); //on_spin //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
@@ -344,7 +344,7 @@ function addPoints(data) {
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos
-	//map.spin(false);  // spinoff_2
+	map.spin(false);  // spinoff_2
 	
 }; //FINADDPOINTS
    	
