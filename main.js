@@ -181,7 +181,7 @@ function addPoints(data) {
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
 		tooltips: [true, true],
-		behaviour: 'tap-snap',
+		behaviour: 'snap',
 		start: [mini, maxi],
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
