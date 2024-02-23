@@ -37,8 +37,8 @@ function init() {
 	//Sidebar de información
 	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 	const sidebarElement = document.querySelector('.leaflet-sidebar');
-	sidebarElement.style.marginTop = '2em';
-	sidebarElement.style.marginBottom = '0.5em';
+	sidebarElement.style.marginTop = '0.16em';
+	sidebarElement.style.marginBottom = '0.6em';
   
 	let panelContent = {
 		id: panelID,
@@ -298,7 +298,7 @@ function addPoints(data) {
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data; slider.noUiSlider.set([mini,maxi]); }  //en origen data era window.data, cambiar si no funciona
+        if (simdValue == "-") { simdFilteredData = data; slider.noUiSlider.reset(); }  //en origen data era window.data, cambiar si no funciona
         for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
         //segundofiltro_ESPECIE
