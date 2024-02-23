@@ -21,13 +21,14 @@
 
 			.slider_contenedor { height:auto; float: left; bottom: 0; margin-left: 0.65em; margin-bottom: 1.6em; }
 			.slider-square { border-radius: 0; }
-			.slider-square .noUi-base { border: 1px solid #8f8f8f; width: 0.8em;}				
+			.slider-square .noUi-base { border: 1px solid #8f8f8f; width: 0.8em;}	
+			.slider-square .noUi-target { width: 0.8em;}
 			.slider-square .noUi-tooltip {
 				position: absolute; display: block;
-				left: 0; text-align: left; margin-left: 0.08em;				
+				left: 0; text-align: left; margin-left: 0.02em;				
 				border: 1px solid #8f8f8f; border-radius: 3px; background: #fff;
 				font-size: 0.6em; font-family: arial;
-				width: 3.3em; height: 2.4em;
+				width: 3.5em; height: 2.4em;
 			}
 			.slider-square .noUi-handle { height: 1.3em; border: 1px solid #8f8f8f; }	
 			.slider-square .noUi-handle:hover .noUi-touch-area { border: 1px dashed #7f7f7f; }
@@ -61,7 +62,7 @@
 	
 		<div id="panel" style = "min-width:100%; margin-top:0.3em; background-color:transparent; position:absolute; z-index:1; ">
 			
-			<form name="form1" id="form1" style="height:1.8em; margin-left:0.7em;" > 
+			<form name="form1" id="form1" style="height:1.8em; margin-left:0.8em;" > 
 				<label>Clase</label>
 				<select name="claseX" id='claseX' style="margin-right:1.5em; ">
 					<option value="-"selected>Seleccione...</opcion>
@@ -87,7 +88,7 @@
 				<!--<input type="range" min="1" max="100" value="50" name="rango">-->
 
 				<span name="form2" id="form2" style="height:auto;" >				
-					<input type="text" id="Narray" name="Narray" style="width:2.6em; height:fit-content; float:right; text-align:right; margin-right:0.7em; background-color:#EAEDED" readonly><br><br>
+					<input type="text" id="Narray" name="Narray" style="width:2.5em; height:fit-content; float:right; text-align:right; margin-right:0.8em; background-color:#EAEDED" readonly><br><br>
 				</span> 				
 			</form>
 			</div>
