@@ -191,23 +191,6 @@ function addPoints(data) {
 		//pips: { mode: 'steps', density: 10  },
 	});
 	
-	//touch-area del nouislider
-	.slider-styled .noUi-handle .noUi-touch-area {
-		border: 1px solid transparent;
-		position: absolute;
-		top: -10px;
-		left: -10px;
-		right: -10px;
-		bottom: -10px;
-		width: auto;
-		height: auto;
-	}
-	/* Show a border when hovering the area the handle responds to */
-	.slider-styled .noUi-handle:hover .noUi-touch-area {
-		border: 1px dashed #7f7f7f;
-	}
-	
-	//DISPARADORES
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
