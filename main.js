@@ -42,8 +42,7 @@ function init() {
 	}); //on_spin (https://spin.js.org/)
 
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
-  document.getElementById("sidebar").style.marginTop = "60px"
-
+  
   let panelContent = {
     id: panelID,
     tab: "<i class='fa fa-bars active'></i>",
