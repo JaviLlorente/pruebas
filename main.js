@@ -19,62 +19,57 @@ let panelID = "my-info-panel";
  * init() is called when the page has loaded
  */
 function init() {
-  // Create a new Leaflet map centered on the continental US
-  map = L.map('map').setView([41.09, -4.00], 9.4);
+	// Create a new Leaflet map centered on the continental US
+	map = L.map('map').setView([41.09, -4.00], 9.4);
 
-  // This is the Carto Positron basemap
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
-	maxZoom: 18,
-  }).addTo(map);
-   
+	// This is the Carto Positron basemap
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://cloudmade.com">CloudMade</a>',
+		maxZoom: 18,
+	}).addTo(map);
+  
+	//Spin de carga
 	map.spin(true, {
-		lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner',
-		//scale: 1, // Scales overall size of the spinner
-		//corners: 1, // Corner roundness (0..1)
-		//color: '#ffffff', // CSS color or array of colors
-		//fadeColor: 'transparent', // CSS color or array of colors
-		//top: '50%', // Top position relative to parent
-		//left: '50%', // Left position relative to parent
-		//shadow: '0 0 1px transparent', // Box-shadow for the lines
-		//zIndex: 2000000000, // The z-index (defaults to 2e9)
-		//position: 'absolute', // Element positioning		
+		lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner', zIndex: 2000000000, position: 'absolute',
+		//scale: 1, corners: 1, color: '#ffffff', fadeColor: 'transparent', top: '50%', left: '50%', shadow: '0 0 1px transparent',		
 	}); //on_spin (https://spin.js.org/)
 
-  sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
+	//Sidebar de información
+	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
+	const sidebarElement = document.querySelector('.leaflet-sidebar');
+	sidebarElement.style.marginTop = '20px'	
   
-    const sidebarElement = document.querySelector('.leaflet-sidebar');
-	sidebarElement.style.marginTop = '20px'
-	sidebarElement.style.marginBottom = '10px'
-  
-  let panelContent = {
-    id: panelID,
-    tab: "<i class='fa fa-bars active'></i>",
-    pane: "<p id='sidebar-content'></p>",
-    title: "<h2 id='sidebar-title'>No hay selección</h2>",		
-  };
-  sidebar.addPanel(panelContent);
+	let panelContent = {
+		id: panelID,
+		tab: "<i class='fa fa-bars active'></i>",
+		pane: "<p id='sidebar-content'></p>",
+		title: "<h2 id='sidebar-title'>No hay selección</h2>",		
+	};
+	sidebar.addPanel(panelContent);
 
-  map.on("click", function () {
-    sidebar.close(panelID);
-  });
+	map.on("click", function () {
+		sidebar.close(panelID);
+	});
 
-  // Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
-  Papa.parse(geomURL, {
-    download: true,
-    header: true,
-    complete: addGeoms,
-  });
-  Papa.parse(pointsURL, {
-    download: true,
-    header: true,
-    complete: addPoints,
-  });
-  Papa.parse(points_listaURL, {
-	download: true,
-	header: false,
-	complete: addPoints_lista,
-  });  
+	// Use PapaParse to load data from Google Sheets // And call the respective functions to add those to the map.
+	//Datos de poligono de provincia
+	Papa.parse(geomURL, {
+		download: true,
+		header: true,
+		complete: addGeoms,
+	});
+	//Datos de puntos
+	Papa.parse(pointsURL, {
+		download: true,
+		header: true,
+		complete: addPoints,
+	});
+	//Lista de especies
+	Papa.parse(points_listaURL, {
+		download: true,
+		header: false,
+		complete: addPoints_lista,
+	});  
 }//FinInit
 
 
@@ -82,7 +77,7 @@ window.onload = function () {
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 	// CargaEspecies
 	function cargarEspecies() {
-		var listaEspecies = window.data; //recoge de addPoints_lista
+		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
 		var claseSeleccionada = claseXs.value
@@ -171,34 +166,17 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//console.log (data);
 	
-			//da string (Number para sacar numero): extrayendolo directamente
-			var mini = Number(data[0].minyear);
-			//console.log(mini);			
-			
-			//calcula el array entre min y año en curso (funciona con entrada de número)
-			var maxi = new Date().getFullYear()
-			//const anios = []
-			//for (let i = mini; i <= maxi; i++) { anios.push(i) }
-			//console.log(anios);
-			
-			/* var startX = document.getElementById('start');
-			anios.forEach(function(start){
-				let opcion = document.createElement('option');
-				opcion.value = start;
-				opcion.text = start;
-				startX.add(opcion);		
-			});
-			startX.value = mini;  
-			
-			var endX = document.getElementById('end');
-			anios.forEach(function(end){
-				let opcion = document.createElement('option');
-				opcion.value = end;
-				opcion.text = end;
-				endX.add(opcion);		
-			});	
-			endX.value = maxi;  */	
-			
+	//da string (Number para sacar numero): extrayendolo directamente
+	var mini = Number(data[0].minyear);
+	//console.log(mini);			
+
+	//calcula el array entre min y año en curso (funciona con entrada de número)
+	var maxi = new Date().getFullYear()
+	//const anios = []
+	//for (let i = mini; i <= maxi; i++) { anios.push(i) }
+	//console.log(anios);			
+	
+	//Añade nouislider de selección del año
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
 		tooltips: [true, true],
@@ -208,27 +186,16 @@ function addPoints(data) {
 		range: { 'min': mini, 'max': maxi },
 		orientation: 'vertical',
 		step: 1,
+		format: wNumb({	decimals: 0	}),
 		//pips: { mode: 'steps', density: 10  },
-		format: wNumb({	decimals: 0	}),	
 	});
 	
-	/*var miCheckbox = document.getElementById("cbox1");
-	miCheckbox.addEventListener("click", function() {
-		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
-	});*/
-
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
-
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
-	//document.getElementById("start").addEventListener("change", filterData);
-	//document.getElementById("end").addEventListener("change", filterData);
-	//map.spin(false);  // spinoff_2
-	
 	// RENDERING METHOD
-	function renderMarkers (data) {
-		
+	function renderMarkers (data) {		
 		//map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner' }); //on_spin2 //ya en inicio y aqui puede que retrase
 		pointGroupLayer.clearLayers();
 	 
@@ -316,53 +283,54 @@ function addPoints(data) {
 	
 	//FILTERING LOGIC
     function filterData () {
+		//Extrae los valores del slider de seleccion de año
 		var slider_values = slider.noUiSlider.get();
 		var startValue = slider_values[0];
 		var endValue = slider_values[1];
 		console.log(slider_values);	
-		
-		//if(slider_values = [mini, maxi]) { miCheckbox.checked; } else { miCheckbox.checked=false; }
 	
-		//Pone la barra lateral a cero y la cierra
+		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
 		document.getElementById('sidebar-content').innerHTML = ('');
 		
+		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data;  }   //en origen data era window.data, cambiar si no funciona
+        if (simdValue == "-") { simdFilteredData = data;  }  //en origen data era window.data, cambiar si no funciona
         for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
-        let filteredData = [];
+        //segundofiltro_ESPECIE
+		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //INMPORTANTE!!!
         if (prescValue == "-") { filteredData = simdFilteredData;  }
         for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
+		//tercer filtro_AÑO_INICIO
 		let filteredData2 = [];
 		//let startValue = document.getElementById("start").value;
 		if (startValue == mini.value) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
 		
+		//cuarto filtro_AÑO_FINAL
 		let filteredData3 = [];
 		//let endValue = document.getElementById("end").value;
 		if (endValue == maxi.value) { filteredData3 = filteredData2; }
 		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
 		
-		renderMarkers(filteredData3); //Renderizado desde los datos filtrados
-		
+		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
 
-	renderMarkers(data); //Renderizado desde el conjunto de datos	
-	
+	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
 }; //FINADDPOINTS
    	
-//AñadirLista
+//AñadirListaEspecies
 function addPoints_lista(data) {
 	data = data.data; 
 	//console.log (data);
-	window.data = data; //Para enviar lista	
+	window.data = data; //Para enviar lista	y recuperarla en window.onload
 }	
 
 // Returns different colors depending on the string passed // Used for the points layer
