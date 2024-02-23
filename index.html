@@ -21,7 +21,6 @@
 
 			.slider_contenedor { height:auto; float: left; bottom: 0; margin-left: 0.65em; margin-bottom: 1.6em; }
 			.slider-square { border-radius: 0; }
-			.slider-square .noUi-handle { height: 1.3em; border: 1px solid #8f8f8f; }	
 			.slider-square .noUi-base { border: 1px solid #8f8f8f; width: 1em;}				
 			.slider-square .noUi-tooltip {
 				position: absolute; display: block;
@@ -29,7 +28,15 @@
 				border: 1px solid #8f8f8f; border-radius: 3px; background: #fff;
 				font-size: 0.6em; font-family: arial;
 				width: 3.1em; height: 2.2em;
-			}			
+			}
+			.slider-square .noUi-handle { height: 1.3em; border: 1px solid #8f8f8f; }	
+			.slider-square .noUi-handle:hover .noUi-touch-area { border: 1px dashed #7f7f7f; }
+			.slider-square .noUi-handle .noUi-touch-area {
+				border: 1px solid transparent; position: absolute;
+				top: -10px; left: -10px; right: -10px; bottom: -10px;
+				width: auto; height: auto;
+			}
+			
         </style>
     </head>
 
