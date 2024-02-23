@@ -12,47 +12,26 @@
 		<link rel="stylesheet" href="dist/nouislider.css"/>
 		
         <style>
-			body {
-				padding: 0;
-				margin: 0;
-			}
-			html, body, #map {
-				height: 100%;
-				width: 100%;
-			}
+			body { padding: 0; margin: 0; }
+			html, body, #map { height: 100%; width: 100%; }
 			
 			.leaflet-top { bottom: 0; }
 
-			.leaflet-top .leaflet-control-zoom { 
-				top:5%;				
-			}
+			.leaflet-top .leaflet-control-zoom { top:5%; }
 		
-			#sidebar-content, #sidebar-title {
-				word-break: break-word;
-				margin-right: 40px;				
-			}
+			#sidebar-content, #sidebar-title { word-break: break-word; margin-right: 40px; }
 
-			.slider_contenedor {
-				height:auto; 				
-				float: left;
-				bottom: 0; 
-				margin-left: 10px;
-				margin-bottom: 25px;
-			}
+			.slider_contenedor { height:auto; float: left; bottom: 0; margin-left: 10px; margin-bottom: 25px; }
 		
-			.slider-square {
-				border-radius: 0;
-			}
-			.slider-square .noUi-handle {
-				height: 22px;
-			}			
+			.slider-square { border-radius: 0; }
+			.slider-square .noUi-handle { height: 22px;	}			
 			.slider-square .noUi-tooltip {
 				position: absolute;
 				margin-left: 27px;				
 				width: 34px;
 				left:0;
 				display: block;
-				border: 1px solid #d9d9d9;
+				border: 1px solid #8f8f8f;
 				border-radius: 3px;
 				background: #fff;
 				font-size: 0.7em;
@@ -85,7 +64,7 @@
 		
 	<!--ESPACIO DEL MAPA-->		
 		<font face="arial" size=2em color="black" >
-		
+	
 		<div id="panel" style = "min-width:100%; margin-top:3px; background-color:transparent; position:absolute; z-index:1; ">
 			
 			<form name="form1" id="form1" style="height:1.7em; margin-left:10px;" > 
@@ -107,12 +86,10 @@
 				<select id="start" name="start" style=" width:4em; "> </select>	
 				<label>&nbsp;y&nbsp;</label>
 				<select id="end" name="end" style=" width:4em; "> </select>-->
-	
 				<!--<label>&nbsp;&nbsp;&nbsp;Desde </label>
 				<input type="date" id="start" name="trip-start" />	
 				<label>&nbsp;hasta </label>
 				<input type="date" id="end" name="trip-end" />-->		
-					
 				<!--<input type="range" min="1" max="100" value="50" name="rango">-->
 
 				<span name="form2" id="form2" style="height:auto;" >				
@@ -131,8 +108,7 @@
 			<div id="slider" class="slider-square" style="height:17em; "></div>
 		</div>
 		</div>
-		<div id="map" style="position:absolute; z-index:0; "></div>
-	
+		<div id="map" style="position:absolute; z-index:0; "></div>	
 
     </body>
 	
