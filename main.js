@@ -297,12 +297,12 @@ function addPoints(data) {
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data;  }  //en origen data era window.data, cambiar si no funciona
+        if (simdValue == "-") { simdFilteredData = data; slider.noUiSlider.set([mini,maxi]); }  //en origen data era window.data, cambiar si no funciona
         for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
         //segundofiltro_ESPECIE
 		let filteredData = [];
-        let prescValue = document.getElementById("especieX").value; //INMPORTANTE!!!
+        let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
         if (prescValue == "-") { filteredData = simdFilteredData;  }
         for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
