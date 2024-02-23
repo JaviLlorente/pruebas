@@ -37,7 +37,7 @@ function init() {
 	//Sidebar de información
 	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 	const sidebarElement = document.querySelector('.leaflet-sidebar');
-	sidebarElement.style.marginTop = '5em'	
+	sidebarElement.style.marginTop = '2em'	
   
 	let panelContent = {
 		id: panelID,
