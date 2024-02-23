@@ -44,7 +44,8 @@ function init() {
   sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
   
     const sidebarElement = document.querySelector('.leaflet-sidebar');
-	sidebarElement.style.marginTop = '40px'
+	sidebarElement.style.marginTop = '20px'
+	sidebarElement.style.marginBottom = '10px'
   
   let panelContent = {
     id: panelID,
@@ -211,10 +212,10 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	var miCheckbox = document.getElementById("cbox1");
+	/*var miCheckbox = document.getElementById("cbox1");
 	miCheckbox.addEventListener("click", function() {
 		if(miCheckbox.checked) { slider_values = slider.noUiSlider.set([mini, maxi]); } 
-	});		
+	});*/
 
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 
@@ -320,7 +321,7 @@ function addPoints(data) {
 		var endValue = slider_values[1];
 		console.log(slider_values);	
 		
-		if(slider_values = [mini, maxi]) { miCheckbox.checked; } else { miCheckbox.checked=false; }
+		//if(slider_values = [mini, maxi]) { miCheckbox.checked; } else { miCheckbox.checked=false; }
 	
 		//Pone la barra lateral a cero y la cierra
 		sidebar.close(panelID);
