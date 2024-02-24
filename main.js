@@ -179,6 +179,7 @@ function addPoints(data) {
 	
 	//Añade nouislider de selección del año
 	var slider = document.getElementById("slider");
+	noUiSlider.cssClasses.target += ' slider-square';
 	noUiSlider.create(slider, {
 		tooltips: [true, true], //carteles de valor
 		behaviour: 'drag', //snap, tap
