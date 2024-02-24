@@ -180,18 +180,17 @@ function addPoints(data) {
 	//Añade nouislider de selección del año
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
-		tooltips: [true, true],
+		tooltips: [true, true], //carteles de valor
 		behaviour: 'drag', //snap, tap
 		start: [mini, maxi],
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
 		orientation: 'vertical',
-		direction: 'rtl',
+		direction: 'rtl', // al revés
 		step: 1,
-		format: wNumb({	decimals: 0	}),
-		cssPrefix: 'noUi-', // defaults to 'noUi-',
-		cssClasses: {origin, target, base, handle, connect },
-		// Full list of class names to override.// Does NOT extend the default classes.// The first class in String gets prefixed, the rest gets added as it is
+		format: wNumb({	decimals: 0	}), //necesita wNumb.js
+		cssPrefix: 'noUi-', //defaults to 'noUi-',
+		cssClasses: {origin, target, base, handle, connect }, //Full list of class names to override
 		//pips: { mode: 'steps', density: 10  },
 	});
 	
