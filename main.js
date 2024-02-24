@@ -179,19 +179,16 @@ function addPoints(data) {
 	
 	//Añade nouislider de selección del año
 	var slider = document.getElementById("slider");
-	noUiSlider.cssClasses.target += ' slider-square';
 	noUiSlider.create(slider, {
-		tooltips: [true, true], //carteles de valor
+		tooltips: [true, true],
 		behaviour: 'drag', //snap, tap
 		start: [mini, maxi],
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
 		orientation: 'vertical',
-		direction: 'rtl', // al revés
+		direction: 'rtl',
 		step: 1,
-		format: wNumb({	decimals: 0	}), //necesita wNumb.js
-		cssPrefix: 'noUi-', //defaults to 'noUi-',
-		cssClasses: {origin, target, base, handle, connect }, //Full list of class names to override
+		format: wNumb({	decimals: 0	}),
 		//pips: { mode: 'steps', density: 10  },
 	});
 	
