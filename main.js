@@ -186,6 +186,7 @@ function addPoints(data) {
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
 		orientation: 'vertical',
+		direction: 'rtl',
 		step: 1,
 		format: wNumb({	decimals: 0	}),
 		//pips: { mode: 'steps', density: 10  },
