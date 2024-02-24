@@ -190,7 +190,7 @@ function addPoints(data) {
 		step: 1,
 		format: wNumb({	decimals: 0	}),
 		cssPrefix: 'noUi-', // defaults to 'noUi-',
-		cssClasses: {origin, target, base, handle, touch-area, connect },
+		cssClasses: {origin, target, base, handle, connect },
 		// Full list of class names to override.// Does NOT extend the default classes.// The first class in String gets prefixed, the rest gets added as it is
 		//pips: { mode: 'steps', density: 10  },
 	});
