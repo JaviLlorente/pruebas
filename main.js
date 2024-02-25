@@ -190,11 +190,17 @@ function addPoints(data) {
 		//pips: { mode: 'steps', density: (maxi-mini)+1  },
 	});
 	
-	var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
+	//var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
 	
 	var sliderhor = document.getElementById("slider-hor");
 	noUiSlider.create(sliderhor, {
-		tooltips: [true, true],
+		tooltips:  {
+			to: function(value) {
+					// Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
+					return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1];
+			},
+			from: Number
+		},
 		behaviour: 'drag', //snap, tap
 		start: [1, 12],
 		connect: true,
@@ -202,14 +208,7 @@ function addPoints(data) {
 		orientation: 'horizontal',
 		step: 1,
 		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
-		pips: { mode: 'values', values: [], density: 9},
-		format: {
-			to: function(value) {
-					// Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
-					return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1];
-			},
-			from: Number
-		}		
+		pips: { mode: 'values', values: [], density: 9},			
 	});
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
@@ -339,12 +338,12 @@ function addPoints(data) {
 		
 		//tercer filtro_MES_INICIO
 		let filteredData2 = [];
-		if (mestarValue == 'Ene') { filteredData2 = filteredData; }
+		if (mestarValue == 1) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 		
 		//cuarto filtro_MES_FINAL
 		let filteredData3 = [];
-		if (mesendValue == 'Dic') { filteredData3 = filteredData2; }
+		if (mesendValue == 12) { filteredData3 = filteredData2; }
 		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } }
 		
 		//quinto filtro_AÑO_INICIO
