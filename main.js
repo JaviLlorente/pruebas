@@ -203,6 +203,7 @@ function addPoints(data) {
 		step: 1,
 		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
 		pips: { mode: 'values', values: [], density: 9},
+		format: wNumb({	decimals: 0	}),
 		/*format: {
 			to: function(value) {
 					// Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
