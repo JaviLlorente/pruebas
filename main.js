@@ -177,7 +177,6 @@ function addPoints(data) {
 	//for (let i = mini; i <= maxi; i++) { anios.push(i) }
 	//console.log(anios);			
 	
-	//Añade nouislider de selección del año
 	var slider = document.getElementById("slider");
 	noUiSlider.create(slider, {
 		tooltips: [true, true],
@@ -186,13 +185,35 @@ function addPoints(data) {
 		connect: true,
 		range: { 'min': mini, 'max': maxi },
 		orientation: 'vertical',
-		direction: 'rtl',
 		step: 1,
 		format: wNumb({	decimals: 0	}),
-		//pips: { mode: 'steps', density: 10  },
+		//pips: { mode: 'steps', density: (maxi-mini)+1  },
+	});
+	
+	var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
+	
+	var sliderhor = document.getElementById("slider-hor");
+	noUiSlider.create(sliderhor, {
+		tooltips: [true, true],
+		behaviour: 'drag', //snap, tap
+		start: [1, 12],
+		connect: true,
+		range: {'min': 1, 'max': 12} ,
+		orientation: 'horizontal',
+		step: 1,
+		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
+		pips: { mode: 'values', values: [], density: 9},
+		format: {
+			to: function(value) {
+					// Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
+					return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1];
+			},
+			from: Number
+		}		
 	});
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
+	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -290,6 +311,12 @@ function addPoints(data) {
 		var startValue = slider_values[0];
 		var endValue = slider_values[1];
 		console.log(slider_values);	
+		
+		//Extrae los valores del slider de seleccion de mes
+		var sliderhor_values = sliderhor.noUiSlider.get();
+		var mestarValue = sliderhor_values[0];
+		var mesendValue = sliderhor_values[1];
+		console.log(sliderhor_values);	
 	
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
@@ -310,19 +337,30 @@ function addPoints(data) {
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		//tercer filtro_AÑO_INICIO
+		//tercer filtro_MES_INICIO
 		let filteredData2 = [];
-		//let startValue = document.getElementById("start").value;
-		if (startValue == mini.value) { filteredData2 = filteredData; }
-		for (const d of filteredData) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData2.push(d); } }
+		if (mestarValue == 1) { filteredData2 = filteredData; }
+		for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 		
-		//cuarto filtro_AÑO_FINAL
+		//cuarto filtro_MES_FINAL
 		let filteredData3 = [];
-		//let endValue = document.getElementById("end").value;
-		if (endValue == maxi.value) { filteredData3 = filteredData2; }
-		for (const d of filteredData2) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData3.push(d); } }
+		if (mesendValue == 12) { filteredData3 = filteredData2; }
+		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } }
 		
-		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
+		
+		//quinto filtro_AÑO_INICIO
+		let filteredData4 = [];
+		//let startValue = document.getElementById("start").value;
+		if (startValue == mini.value) { filteredData4 = filteredData3; }
+		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData4.push(d); } }
+		
+		//sexto filtro_AÑO_FINAL
+		let filteredData5 = [];
+		//let endValue = document.getElementById("end").value;
+		if (endValue == maxi.value) { filteredData5 = filteredData4; }
+		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } }
+		
+		renderMarkers(filteredData5); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
