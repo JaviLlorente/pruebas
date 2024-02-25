@@ -195,11 +195,8 @@ function addPoints(data) {
 	var sliderhor = document.getElementById("slider-hor");
 	noUiSlider.create(sliderhor, {
 		tooltips:  {
-			to: function(value) {
-					// Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
-					return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1];
-			},
-			from: Number
+			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
+			//from: Number  //Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
 		},
 		behaviour: 'drag', //snap, tap
 		start: [1, 12],
