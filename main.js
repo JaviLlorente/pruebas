@@ -336,12 +336,12 @@ function addPoints(data) {
 		
 		//tercer filtro_MES_INICIO
 		let filteredData2 = [];
-		if (mestarValue = 1) { filteredData2 = filteredData; }
+		if (mestarValue == 1) { filteredData2 = filteredData; }
 		for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 		
 		//cuarto filtro_MES_FINAL
 		let filteredData3 = [];
-		if (mesendValue = 12) { filteredData3 = filteredData2; }
+		if (mesendValue == 12) { filteredData3 = filteredData2; }
 		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } }
 		
 		//quinto filtro_AÑO_INICIO
