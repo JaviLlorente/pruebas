@@ -323,13 +323,13 @@ function addPoints(data) {
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data; }  //en origen data era window.data, cambiar si no funciona
+        //if (simdValue == "-") { simdFilteredData = data; }  //en origen data era window.data, cambiar si no funciona
         for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
         //segundofiltro_ESPECIE
 		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
-        if (prescValue == "-") { filteredData = simdFilteredData;  }
+        //if (prescValue == "-") { filteredData = simdFilteredData;  }
         for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
@@ -347,13 +347,13 @@ function addPoints(data) {
 		//quinto filtro_AÑO_INICIO
 		let filteredData4 = [];
 		//let startValue = document.getElementById("start").value;
-		if (startValue == mini.value) { filteredData4 = filteredData3; }
+		//if (startValue == mini.value) { filteredData4 = filteredData3; }
 		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData4.push(d); } }
 		
 		//sexto filtro_AÑO_FINAL
 		let filteredData5 = [];
 		//let endValue = document.getElementById("end").value;
-		if (endValue == maxi.value) { filteredData5 = filteredData4; }
+		//if (endValue == maxi.value) { filteredData5 = filteredData4; }
 		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } }
 		
 		renderMarkers(filteredData5); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
