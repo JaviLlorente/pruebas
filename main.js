@@ -194,7 +194,7 @@ function addPoints(data) {
 	
 	var sliderhor = document.getElementById("slider-hor");
 	noUiSlider.create(sliderhor, {
-		tooltips:  {
+		tooltips: {
 			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
 			//from: Number  //Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
 		},
@@ -205,13 +205,10 @@ function addPoints(data) {
 		orientation: 'horizontal',
 		step: 1,
 		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
-		pips: { mode: 'values', values: [], density: 9},
+		pips: { mode: 'values', values: [], density: 9 },
 		format: {
-			to: function(value) {
-					// Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
-					return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1];
-			},
-			from: Number
+			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; },
+			from: Number  // Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
 		}	
 	});
 	
