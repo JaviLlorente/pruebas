@@ -23,38 +23,20 @@
 		#sidebar-content, #sidebar-title { word-break:break-word; margin-right:2.4em; }
 		.contador { width:2.57em; height:fit-content; float:right; text-align:right; margin-right:0.85em; background-color:#EAEDED; }
 	
-		.slider-contenedor-hor { width:auto; position:absolute; top:0; padding-top:0.5em; float:right; margin-right:1em; }
-		.slider-hor { width:13em; height:0.7em; float:right; margin-right:1em; }
-		.slider-hor .noUi-base { border:1px solid #8f8f8f; border-radius:3px;  }		
+		.slider-contenedor { height:auto; position:absolute; float:left; bottom:0; padding-bottom:1.8em; margin-left:0.95em; }
+		.slider-square { height:18em; width:0.5em; float:left; }
+		.slider-square .noUi-base { position:absolute; width:0.5em; float:left; border:1px solid #8f8f8f; border-radius:3px; }		
 	
-		.slider-hor .noUi-pips { font-size: 0.8em; }		
-		.slider-hor .noUi-tooltip {
-			float:top; top:0em; z-index:2; align-items:center; 
+		.slider-square .noUi-tooltip {
+			text-align:left; float:left; left:-0.4em;			
 			border:1px solid #8f8f8f; border-radius:3px; background:#fff;
-			font-size:0.85em; font-family:arial; width:2.6em; height:2.2em;
+			font-size:0.6em; font-family:arial; width:3.65em; height:2.5em;
 		}	
-		.slider-hor .noUi-handle { top:-0.8em; width:2.4em; height:2em; }
-		.slider-hor .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
-		.slider-hor .noUi-handle .noUi-touch-area {
+		.slider-square .noUi-handle { height: 1.4em; float:left; left:-1.1em }
+		.slider-square .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
+		.slider-square .noUi-handle .noUi-touch-area {
 			border:1px solid transparent; position:absolute;
-			top:-3px; left:-13px; right:-13px; bottom:-18px;
-			width:auto; height:auto;
-		}		
-
-		.slider-contenedor-ver { height:auto; position:absolute; float:left; bottom:0; padding-bottom:1.8em; margin-left:0.95em; }
-		.slider-ver { height:18em; width:0.45em; float:left; }
-		.slider-ver .noUi-base { position:absolute; width:0.45em; float:left; border:1px solid #8f8f8f; border-radius:3px;  }		
-	
-		.slider-ver .noUi-tooltip {
-			text-align:left; float:left; left:-0.4em; z-index:2;			
-			border:1px solid #8f8f8f; border-radius:3px; background:#fff;
-			font-size:0.6em; font-family:arial; width:3.55em; height:2.45em; 
-		}	
-		.slider-ver .noUi-handle { height: 1.4em; float:left; left:-1.1em; }
-		.slider-ver .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
-		.slider-ver .noUi-handle .noUi-touch-area {
-			border:1px solid transparent; position:absolute;
-			top:-13px; left:-6px; right:-20px; bottom:-13px;
+			top:-13px; left:-8px; right:-20px; bottom:-13px;
 			width:auto; height:auto;
 		}			
         </style>
@@ -82,7 +64,7 @@
 			
 			<form name="form1" id="form1" style="height:1.8em; margin-left:0.8em;" > 
 				<label>Clase</label>
-				<select name="claseX" id='claseX' style="margin-right:1.1em; ">
+				<select name="claseX" id='claseX' style="margin-right:1.46em; ">
 					<option value="-"selected>Seleccione...</opcion>
 					<option value="MAMIFERO">MAMIFEROS</opcion>
 					<option value="AVE">AVES</opcion>
@@ -91,13 +73,9 @@
 				</select>
 				
 				<label>Especie</label>
-				<select name="especieX" id='especieX' style="margin-right:2.5em"> 
+				<select name="especieX" id='especieX' style="margin-right:2em"> 
 					<option value="-">...</option> 
 				</select>
-				
-				<span class="slider-contenedor-hor" style=" z-index:2; ">
-					<div id="slider-hor" class="slider-hor" ></div>
-				</span>
 				
 				<span name="form2" id="form2" style="height:auto;" >				
 					<input class="contador" type="text" id="Narray" name="Narray" readonly ><br><br>
@@ -107,10 +85,10 @@
 		</div>		
 		</font>
 	
-		<div class="slider-contenedor-ver" style=" z-index:2; ">			
-			<div id="slider" class="slider-ver" ></div>
+		<div class="slider-contenedor" style="z-index:1; ">
+			<div id="slider" class="slider-square" ></div>
 		</div>
-	
+		
 		<div id="map" style="position:absolute; z-index:0; "></div>	
 
     </body>
