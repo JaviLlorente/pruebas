@@ -314,10 +314,6 @@ function addPoints(data) {
 		var mestarValue = sliderhor_values[0];
 		var mesendValue = sliderhor_values[1];
 		console.log(sliderhor_values);	
-		
-		//estilo condicional
-		if (mestarValue =! 'Ene') { slider-hor.noUi-tooltip[0].style.color = 'red'; } else { slider-hor.noUi-tooltip[0].style.color = 'black'; }
-		if (mesendValue =! 'Dic') { slider-hor.noUi-tooltip[1].style.color = 'red'; } else { slider-hor.noUi-tooltip[1].style.color = 'black'; }
 	
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
@@ -328,13 +324,13 @@ function addPoints(data) {
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
         if (simdValue == "-") { simdFilteredData = data; }  //en origen data era window.data, cambiar si no funciona
-        else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } } }  //en origen data era window.data, cambiar si no funciona
+        for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
 		
         //segundofiltro_ESPECIE
 		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
         if (prescValue == "-") { filteredData = simdFilteredData;  }
-        else { for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	}
+        for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
