@@ -324,37 +324,31 @@ function addPoints(data) {
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
         if (simdValue == "-") { simdFilteredData = data; }  //en origen data era window.data, cambiar si no funciona
-        for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
+        else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } } } //en origen data era window.data, cambiar si no funciona
 		
         //segundofiltro_ESPECIE
 		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
         if (prescValue == "-") { filteredData = simdFilteredData;  }
-        for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
+        else { for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	}
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		//tercer filtro_MES_INICIO
-		let filteredData2 = [];
-		//if (mestarValue == 1) { filteredData2 = filteredData; }
-		for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
-		
-		//cuarto filtro_MES_FINAL
-		let filteredData3 = [];
-		//if (mesendValue == 12) { filteredData3 = filteredData2; }
-		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } }
-		
-		//quinto filtro_AÑO_INICIO
-		let filteredData4 = [];
-		//let startValue = document.getElementById("start").value;
-		//if (startValue == mini.value) { filteredData4 = filteredData3; }
-		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData4.push(d); } }
-		
-		//sexto filtro_AÑO_FINAL
-		let filteredData5 = [];
+		//tercer filtro_MES
+		let filteredData2 = []; let filteredData3 = [];
+		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; }
+		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } } 
+			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } }
+
+		//quinto filtro_AÑO
+		let filteredData4 = []; let filteredData5 = [];
+		if (startValue == mini.value && endValue == maxi.value) { filteredData5 = filteredData3; }
+		else { for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData4.push(d); } }
+			for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } }
+			
 		//let endValue = document.getElementById("end").value;
-		//if (endValue == maxi.value) { filteredData5 = filteredData4; }
-		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } }
+		if () { filteredData5 = filteredData4; }
+		
 		
 		renderMarkers(filteredData5); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
