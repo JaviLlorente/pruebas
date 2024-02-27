@@ -74,39 +74,7 @@ function init() {
 
 
 window.onload = function () {	
-	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
-	// CargaEspecies
-	function cargarEspecies() {
-		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
-		var claseXs = document.getElementById('claseX')
-		var especieXs = document.getElementById('especieX')
-		var claseSeleccionada = claseXs.value
-		
-		// Se limpian las especies del desplegable
-		especieXs.innerHTML = '<option value="-">...</option>'
-		
-		if(claseSeleccionada !== "-"){
-			// Se seleccionan los especies y se ordenan
-			switch (claseSeleccionada) {
-				case "MAMIFERO": claseSeleccionada = 0; break;
-				case "AVE": claseSeleccionada = 1; break;
-				case "REPTIL": claseSeleccionada = 2; break;
-				case "ANFIBIO": claseSeleccionada = 3; break;	
-				default: claseSeleccionada = [];
-			}			
-			claseSeleccionada = listaEspecies[claseSeleccionada]
-			const filtrada = claseSeleccionada.filter(dato => dato != ''); //quita las celdas vacías
-			
-			// Insertamos las especies
-			filtrada.forEach(function(especieX){
-				let opcion = document.createElement('option')
-				opcion.value = especieX
-				opcion.text = especieX
-				especieXs.add(opcion)
-				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
-			});		
-		} else { function slidersreset(); } // si se selecciona "-" pone los sliders en posiciones originales
-	} // FinCargaEspecies	
+	
 }
 	
 
@@ -208,8 +176,6 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	function slidersreset() { sliderver.noUiSlider.reset();	sliderhor.noUiSlider.reset(); };
-
 	sliderver.noUiSlider.on('set', function( ) { filterData( ); });
 	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
@@ -356,6 +322,44 @@ function addPoints(data) {
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
+	
+	
+	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
+	// CargaEspecies
+	function cargarEspecies() {
+		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
+		var claseXs = document.getElementById('claseX')
+		var especieXs = document.getElementById('especieX')
+		var claseSeleccionada = claseXs.value
+		
+		// Se limpian las especies del desplegable
+		especieXs.innerHTML = '<option value="-">...</option>'
+		
+		if(claseSeleccionada !== "-"){
+			// Se seleccionan los especies y se ordenan
+			switch (claseSeleccionada) {
+				case "MAMIFERO": claseSeleccionada = 0; break;
+				case "AVE": claseSeleccionada = 1; break;
+				case "REPTIL": claseSeleccionada = 2; break;
+				case "ANFIBIO": claseSeleccionada = 3; break;	
+				default: claseSeleccionada = [];
+			}			
+			claseSeleccionada = listaEspecies[claseSeleccionada]
+			const filtrada = claseSeleccionada.filter(dato => dato != ''); //quita las celdas vacías
+			
+			// Insertamos las especies
+			filtrada.forEach(function(especieX){
+				let opcion = document.createElement('option')
+				opcion.value = especieX
+				opcion.text = especieX
+				especieXs.add(opcion)
+				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
+			});		
+		} else { slidersreset(); } // si se selecciona "-" pone los sliders en posiciones originales
+	} // FinCargaEspecies
+	
+	function slidersreset() { sliderver.noUiSlider.reset();	sliderhor.noUiSlider.reset(); };
+
 }; //FINADDPOINTS
    	
 //AñadirListaEspecies
