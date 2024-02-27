@@ -212,7 +212,6 @@ function addPoints(data) {
 	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
-	map.spin(false);  // spinoff_1
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {			
@@ -296,14 +295,14 @@ function addPoints(data) {
 		
 		//console.log(data);
 		document.getElementById("Narray").value = data.length;	//nºregistros
-		
-		map.spin(false);  // spinoff_2
+		map.spin(false);  // spinoff_1
+		//map.spin(false);  // spinoff_2
 		
     } //Fin Render
 	
 	//FILTERING LOGIC
     function filterData () {
-		map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner', zIndex: 2000000000, position: 'absolute', }); //on_spin2 //ya en inicio y aqui puede que retrase
+		//map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner', zIndex: 2000000000, position: 'absolute', }); //on_spin2 //ya en inicio y aqui puede que retrase
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
