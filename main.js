@@ -303,6 +303,11 @@ function addPoints(data) {
 	
 	//FILTERING LOGIC
     function filterData () {
+		//Pone la sidebar lateral a cero y la cierra
+		sidebar.close(panelID);
+		document.getElementById('sidebar-title').innerHTML = '';
+		document.getElementById('sidebar-content').innerHTML = ('');
+		
 		//Extrae los valores del slider de seleccion de año
 		var slider_values = slider.noUiSlider.get();
 		var staValue = slider_values[0];
@@ -321,11 +326,6 @@ function addPoints(data) {
 		if ( mestarValue != 1 || mesendValue != 12) { document.getElementById("themeHor").href = "css/seleccionadoHor.css";}
 		else { document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; }
 
-		//Pone la sidebar lateral a cero y la cierra
-		sidebar.close(panelID);
-		document.getElementById('sidebar-title').innerHTML = '';
-		document.getElementById('sidebar-content').innerHTML = ('');
-		
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
@@ -340,25 +340,17 @@ function addPoints(data) {
 		
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
-		//tercer filtro_MES_INICIO
-		let filteredData2 = [];
-		//if (mestarValue == 1) { filteredData2 = filteredData; }
+		//tercer filtro_MES
+		let filteredData2 = []; let filteredData3 = [];
+		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; } else {
 		for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
+		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } }
 		
-		//cuarto filtro_MES_FINAL
-		let filteredData3 = [];
-		//if (mesendValue == 12) { filteredData3 = filteredData2; }
-		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } }
-		
-		//quinto filtro_AÑO_INICIO
-		let filteredData4 = [];
-		//if (staValue == mini.value) { filteredData4 = filteredData3; }
+		//quinto filtro_AÑO
+		let filteredData4 = []; let filteredData5 = [];
+		if (staValue == mini.value && endValue == maxi.value) { filteredData5 = filteredData3; } else {
 		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
-		
-		//sexto filtro_AÑO_FINAL
-		let filteredData5 = [];
-		//if (endValue == maxi.value) { filteredData5 = filteredData4; }
-		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } }
+		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } }
 		
 		renderMarkers(filteredData5); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
