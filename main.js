@@ -209,35 +209,8 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	
-	slider.noUiSlider.on('set', function( ) { filterStyleVer( ); });	
-	function filterStyleVer() {
-		//Extrae los valores del slider de seleccion de año
-		var slider_values = slider.noUiSlider.get();
-		var startValue = slider_values[0];
-		var endValue = slider_values[1];
-		console.log(slider_values);	
-		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
-		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; }
-		
-		filterData(startValue, endValue);
-	}
-	
-	sliderhor.noUiSlider.on('set', function( ) { filterStyleHor( ); });	
-	function filterStyleHor() {
-		//Extrae los valores del slider de seleccion de mes
-		var sliderhor_values = sliderhor.noUiSlider.get();
-		var mestarValue = sliderhor_values[0];
-		var mesendValue = sliderhor_values[1];
-		console.log(sliderhor_values);	
-		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoHor.css']").href = "css/seleccionadoHor.css";}
-		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; }
-		
-		filterData(mestarValue, mesendValue);
-	}
-	
-	//slider.noUiSlider.on('set', function( ) { filterData( ); });
-	//sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
+	slider.noUiSlider.on('set', function( ) { filterData( ); });
+	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -329,7 +302,25 @@ function addPoints(data) {
     } //Fin Render
 	
 	//FILTERING LOGIC
-    function filterData () {	
+    function filterData () {
+		//Extrae los valores del slider de seleccion de año
+		var slider_values = slider.noUiSlider.get();
+		var startValue = slider_values[0];
+		var endValue = slider_values[1];
+		console.log(slider_values);	
+		
+		//Extrae los valores del slider de seleccion de mes
+		var sliderhor_values = sliderhor.noUiSlider.get();
+		var mestarValue = sliderhor_values[0];
+		var mesendValue = sliderhor_values[1];
+		console.log(sliderhor_values);	
+	
+		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
+		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; }
+		
+		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoHor.css']").href = "css/seleccionadoHor.css";}
+		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; }
+	
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
