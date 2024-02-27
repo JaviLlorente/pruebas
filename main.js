@@ -106,7 +106,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else { slider.noUiSlider.reset(); } // si se selecciona "-" pone el slider en posiciones originales
+		} else { sliderAni.noUiSlider.reset(); sliderMes.noUiSlider.reset(); } // si se selecciona "-" pone el slider en posiciones originales
 	} // FinCargaEspecies	
 }
 	
@@ -177,8 +177,8 @@ function addPoints(data) {
 	//for (let i = mini; i <= maxi; i++) { anios.push(i) }
 	//console.log(anios);			
 	
-	var slider = document.getElementById("slider");
-	noUiSlider.create(slider, {
+	var sliderAni = document.getElementById("slider-Ani");
+	noUiSlider.create(sliderAni, {
 		tooltips: [true, true],
 		behaviour: 'drag', //snap, tap
 		start: [mini, maxi],
@@ -192,8 +192,8 @@ function addPoints(data) {
 	
 	//var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
 	
-	var sliderhor = document.getElementById("slider-hor");
-	noUiSlider.create(sliderhor, {
+	var sliderMes = document.getElementById("slider-Mes");
+	noUiSlider.create(sliderMes, {
 		tooltips: {
 			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
 			//from: Number  //Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
@@ -209,8 +209,8 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	slider.noUiSlider.on('set', function( ) { filterData( ); });
-	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
+	sliderAni.noUiSlider.on('set', function( ) { filterData( ); });
+	sliderMes.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -304,23 +304,23 @@ function addPoints(data) {
 	//FILTERING LOGIC
     function filterData () {
 		//Extrae los valores del slider de seleccion de año
-		var slider_values = slider.noUiSlider.get();
-		var startValue = slider_values[0];
-		var endValue = slider_values[1];
-		console.log(slider_values);	
+		var sliderAni_values = sliderAni.noUiSlider.get();
+		var startValue = sliderAni_values[0];
+		var endValue = sliderAni_values[1];
+		console.log(sliderAni_values);	
 		
 		//Extrae los valores del slider de seleccion de mes
-		var sliderhor_values = sliderhor.noUiSlider.get();
-		var mestarValue = sliderhor_values[0];
-		var mesendValue = sliderhor_values[1];
-		console.log(sliderhor_values);	
+		var sliderMes_values = sliderMes.noUiSlider.get();
+		var mestarValue = sliderMes_values[0];
+		var mesendValue = sliderMes_values[1];
+		console.log(sliderMes_values);	
 	
 		//CAMBIANDO ESTILO
-		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
-		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; }
+		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoAni.css']").href = "css/seleccionadoAni.css";}
+		else { document.querySelector("link[href='css/seleccionadoAni.css']").href = "css/noSeleccionadoAni.css"; }
 		
-		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoHor.css']").href = "css/seleccionadoHor.css";}
-		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; }
+		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoMes.css']").href = "css/seleccionadoMes.css";}
+		else { document.querySelector("link[href='css/seleccionadoMes.css']").href = "css/noSeleccionadoMes.css"; }
 		
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
