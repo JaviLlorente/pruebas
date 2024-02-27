@@ -212,6 +212,7 @@ function addPoints(data) {
 	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
+	map.spin(false);  // spinoff_1
 	
 	// RENDERING METHOD
 	function renderMarkers (data) {			
@@ -295,7 +296,7 @@ function addPoints(data) {
 		
 		//console.log(data);
 		document.getElementById("Narray").value = data.length;	//nºregistros
-		map.spin(false);  // spinoff_1
+		
 		map.spin(false);  // spinoff_2
 		
     } //Fin Render
