@@ -295,7 +295,8 @@ function addPoints(data) {
 		
 		//console.log(data);
 		document.getElementById("Narray").value = data.length;	//nºregistros
-		map.spin(false);  // spinoff
+		map.spin(false);  // spinoff_1
+		map.spin(false);  // spinoff_2
 		
     } //Fin Render
 	
