@@ -308,17 +308,14 @@ function addPoints(data) {
 		var startValue = slider_values[0];
 		var endValue = slider_values[1];
 		console.log(slider_values);	
+		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
+		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; }
 		
 		//Extrae los valores del slider de seleccion de mes
 		var sliderhor_values = sliderhor.noUiSlider.get();
 		var mestarValue = sliderhor_values[0];
 		var mesendValue = sliderhor_values[1];
 		console.log(sliderhor_values);	
-	
-		//CAMBIANDO ESTILO
-		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
-		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; }
-		
 		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoHor.css']").href = "css/seleccionadoHor.css";}
 		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; }
 	
