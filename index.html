@@ -19,17 +19,20 @@
         <style>
 		body { padding:0; margin:0; }
 		html, body, #map { height:100%; width:100%; }
+		
+		.blackText { color:black; option { color:black; } }
+		.redText { color:red; option { color:black; } }
 	
 		.leaflet-top { bottom:0; }
 		.leaflet-top { top:5%; }		
 		#sidebar-content, #sidebar-title { word-break:break-word; margin-right:2.4em; }
 		.contador { width:2.57em; height:fit-content; float:right; text-align:right; margin-right:0.85em; background-color:#EAEDED; }
 	
-		.slider-contenedor-hor { width:auto; position:absolute; top:0; padding-top:0.5em; float:right; margin-right:1em; }
-		.slider-hor { width:13em; height:0.75em; float:right; margin-right:1em; }
+		.slider-contenedor-hor { width:auto; position:relative; padding-top:1.3em; float:left; margin-left:1em; }
+		.slider-hor { width:19em; height:0.65em; float:left; }
 		.slider-hor .noUi-base { border:1px solid #8f8f8f; border-radius:3px; }			
 		.slider-hor .noUi-pips { font-size: 0.8em; }
-		.slider-hor .noUi-handle { top:-0.8em; width:2.4em; height:2em; }
+		.slider-hor .noUi-handle { top:-0.5em; width:1.7em; height:1.4em; }
 		.slider-hor .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
 		.slider-hor .noUi-handle .noUi-touch-area {
 			border:1px solid transparent; position:absolute;
@@ -37,9 +40,9 @@
 			width:auto; height:auto;
 		}		
 		.slider-contenedor-ver { height:auto; position:absolute; float:left; bottom:0; padding-bottom:1.8em; margin-left:0.9em; }
-		.slider-ver { height:18em; width:0.6em; float:left; }
-		.slider-ver .noUi-base { position:absolute; float:left; border:1px solid #8f8f8f; border-radius:3px;  }			
-		.slider-ver .noUi-pips { font-size: 0.8em; }
+		.slider-ver { height:17em; width:0.6em; float:left; }
+		.slider-ver .noUi-base { border:1px solid #8f8f8f; border-radius:3px;  }			
+		.slider-ver .noUi-pips { font-size: 0.6em; }
 		.slider-ver .noUi-handle { height: 1.4em; float:left; left:-1.05em; }
 		.slider-ver .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
 		.slider-ver .noUi-handle .noUi-touch-area {
@@ -71,10 +74,10 @@
         <script src="main.js" defer></script>
 		
 		<!--ESPACIO DEL MAPA-->		
-		<font face="arial" size="2em" color="black" >	
+		<font face="arial" color="black" >	
 		<div id="panel" style = "min-width:100%; margin-top:0.3em; background-color:transparent; position:absolute; z-index:1; ">
 			
-			<form name="form1" id="form1" style="height:1.8em; margin-left:0.8em;" > 
+			<form name="form1" id="form1" style="font-size:0.8em; height:1.8em; margin-left:0.8em;" > 
 				<label>Clase</label>
 				<select name="claseX" id='claseX' style="margin-right:1.1em; ">
 					<option value="-"selected>Seleccione...</opcion>
@@ -89,20 +92,20 @@
 					<option value="-">...</option> 
 				</select>
 				
-				<span class="slider-contenedor-hor" style=" z-index:2; ">
-					<div class="slider-hor" id="slider-hor" ></div>
-				</span>
-				
 				<span name="form2" id="form2" style="height:auto;" >				
 					<input class="contador" type="text" id="Narray" name="Narray" readonly ><br><br>
 				</span> 				
 			</form>
+			
+			<div class="slider-contenedor-hor" style=" z-index:2 ">
+					<div class="slider-hor" id="slider-hor" ></div>
+			</div>
 
 		</div>		
 		</font>
 	
 		<div class="slider-contenedor-ver" style=" z-index:2; ">			
-			<div class="slider-ver" id="slider" ></div>
+			<div class="slider-ver" id="slider-ver" ></div>
 		</div>
 	
 		<div id="map" style="position:absolute; z-index:0; "></div>	
