@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+	
         <title>Leaflet web map with Google Sheets</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,14 +26,8 @@
 	
 		.slider-contenedor-hor { width:auto; position:absolute; top:0; padding-top:0.5em; float:right; margin-right:1em; }
 		.slider-hor { width:13em; height:0.7em; float:right; margin-right:1em; }
-		.slider-hor .noUi-base { border:1px solid #8f8f8f; border-radius:3px; }		
-	
-		.slider-hor .noUi-pips { font-size: 0.8em; }		
-		.slider-hor .noUi-tooltip {
-			float:top; top:0em; z-index:2; align-items:center; 
-			border:1px solid #8f8f8f; border-radius:3px; background:#fff;
-			font-size:0.85em; font-family:arial; width:2.6em; height:2.2em;
-		}	
+		.slider-hor .noUi-base { border:1px solid #8f8f8f; border-radius:3px; }			
+		.slider-hor .noUi-pips { font-size: 0.8em; }
 		.slider-hor .noUi-handle { top:-0.8em; width:2.4em; height:2em; }
 		.slider-hor .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
 		.slider-hor .noUi-handle .noUi-touch-area {
@@ -40,16 +35,9 @@
 			top:-3px; left:-13px; right:-13px; bottom:-18px;
 			width:auto; height:auto;
 		}		
-
 		.slider-contenedor-ver { height:auto; position:absolute; float:left; bottom:0; padding-bottom:1.8em; margin-left:0.95em; }
 		.slider-ver { height:18em; width:0.6em; float:left; }
-		.slider-ver .noUi-base { position:absolute; float:left; border:1px solid #8f8f8f; border-radius:3px;  }		
-	
-		.slider-ver .noUi-tooltip {
-			text-align:left; float:left; left:-0.4em; z-index:2;			
-			border:1px solid #8f8f8f; border-radius:3px; background:#fff;
-			font-size:0.6em; font-family:arial; width:3.55em; height:2.45em; 
-		}	
+		.slider-ver .noUi-base { position:absolute; float:left; border:1px solid #8f8f8f; border-radius:3px;  }			
 		.slider-ver .noUi-handle { height: 1.4em; float:left; left:-1.1em; }
 		.slider-ver .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
 		.slider-ver .noUi-handle .noUi-touch-area {
@@ -58,6 +46,9 @@
 			width:auto; height:auto;
 		}			
         </style>
+		
+		<link id="theme" rel="stylesheet"  type="text/css" href="css/noSeleccionado.css" />
+	
     </head>
 
     <body>	
