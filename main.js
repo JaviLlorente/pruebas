@@ -305,22 +305,22 @@ function addPoints(data) {
     function filterData () {
 		//Extrae los valores del slider de seleccion de año
 		var slider_values = slider.noUiSlider.get();
-		var startValue = slider_values[0];
+		var staValue = slider_values[0];
 		var endValue = slider_values[1];
 		console.log(slider_values);	
+		//Cambia el estilo del slider de año
+		if ( staValue != 2012 || endValue != 2024) { document.getElementById("themeVer").href = "css/seleccionadoVer.css";}
+		else { document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; }
 		
 		//Extrae los valores del slider de seleccion de mes
 		var sliderhor_values = sliderhor.noUiSlider.get();
 		var mestarValue = sliderhor_values[0];
 		var mesendValue = sliderhor_values[1];
 		console.log(sliderhor_values);	
-	
-		//if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
-		//else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; };
-		
-		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoHor.css']").href = "css/seleccionadoHor.css";}
-		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; };
-	
+		//Cambia el estilo del slider de mes
+		if ( mestarValue != 1 || mesendValue != 12) { document.getElementById("themeHor").href = "css/seleccionadoHor.css";}
+		else { document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; }
+
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
@@ -352,13 +352,11 @@ function addPoints(data) {
 		
 		//quinto filtro_AÑO_INICIO
 		let filteredData4 = [];
-		//let startValue = document.getElementById("start").value;
-		//if (startValue == mini.value) { filteredData4 = filteredData3; }
-		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(startValue)) { filteredData4.push(d); } }
+		//if (staValue == mini.value) { filteredData4 = filteredData3; }
+		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
 		
 		//sexto filtro_AÑO_FINAL
 		let filteredData5 = [];
-		//let endValue = document.getElementById("end").value;
 		//if (endValue == maxi.value) { filteredData5 = filteredData4; }
 		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } }
 		
