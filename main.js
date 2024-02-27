@@ -106,7 +106,7 @@ window.onload = function () {
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
 		} else { 
-			slider.noUiSlider.reset(); 
+			sliderver.noUiSlider.reset(); 
 			sliderhor.noUiSlider.set([1, 12]); 
 		} // si se selecciona "-" pone los sliders en posiciones originales
 	} // FinCargaEspecies	
@@ -179,8 +179,8 @@ function addPoints(data) {
 	//for (let i = mini; i <= maxi; i++) { anios.push(i) }
 	//console.log(anios);			
 	
-	var slider = document.getElementById("slider");
-	noUiSlider.create(slider, {
+	var sliderver = document.getElementById("slider-ver");
+	noUiSlider.create(sliderver, {
 		tooltips: [true, true],
 		behaviour: 'drag', //snap, tap
 		start: [mini, maxi],
@@ -211,7 +211,7 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	slider.noUiSlider.on('set', function( ) { filterData( ); });
+	sliderver.noUiSlider.on('set', function( ) { filterData( ); });
 	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -312,12 +312,12 @@ function addPoints(data) {
 		document.getElementById('sidebar-content').innerHTML = ('');
 		
 		//Extrae los valores del slider de seleccion de año
-		var slider_values = slider.noUiSlider.get();
-		var staValue = slider_values[0];
-		var endValue = slider_values[1];
-		console.log(slider_values);	
+		var sliderver_values = sliderver.noUiSlider.get();
+		var staValue = sliderver_values[0];
+		var endValue = sliderver_values[1];
+		console.log(sliderver_values);	
 		//Cambia el estilo del slider de año
-		if ( staValue != 2012 || endValue != 2024) { document.getElementById("themeVer").href = "css/seleccionadoVer.css";}
+		if ( staValue != mini.value || endValue != maxi.value) { document.getElementById("themeVer").href = "css/seleccionadoVer.css";}
 		else { document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; }
 		
 		//Extrae los valores del slider de seleccion de mes
