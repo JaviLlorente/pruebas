@@ -215,8 +215,7 @@ function addPoints(data) {
     document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
-	function renderMarkers (data) {		
-		//map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner' }); //on_spin2 //ya en inicio y aqui puede que retrase
+	function renderMarkers (data) {			
 		pointGroupLayer.clearLayers();
 	 
 		// Choose marker type. Options are: // (these are case-sensitive, defaults to marker!)
@@ -297,12 +296,13 @@ function addPoints(data) {
 		
 		//console.log(data);
 		document.getElementById("Narray").value = data.length;	//nºregistros
-		map.spin(false);  // spinoff_1
+		map.spin(false);  // spinoff
 		
     } //Fin Render
 	
 	//FILTERING LOGIC
     function filterData () {
+		map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner', zIndex: 2000000000, position: 'absolute', }); //on_spin2 //ya en inicio y aqui puede que retrase
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
@@ -329,15 +329,17 @@ function addPoints(data) {
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data; }  //en origen data era window.data, cambiar si no funciona
-        for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }  //en origen data era window.data, cambiar si no funciona
-		
+        if (simdValue == "-") { simdFilteredData = data; document.getElementById("claseX").className('blackText'); }  //en origen data era window.data
+        else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }; 
+			document.getElementById("claseX").className('redText') }  
+	
         //segundofiltro_ESPECIE
 		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
-        if (prescValue == "-") { filteredData = simdFilteredData;  }
-        for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
-		
+        if (prescValue == "-") { filteredData = simdFilteredData; document.getElementById("especieX").className('blackText'); }
+        else { for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
+			document.getElementById("especieX").className('redText') }
+
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		//tercer filtro_MES
