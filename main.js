@@ -106,7 +106,7 @@ window.onload = function () {
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
 		} else { 
-			sliderver.noUiSlider.reset(); 
+			sliderver.noUiSlider.set([mini, maxi]);
 			sliderhor.noUiSlider.set([1, 12]); 
 		} // si se selecciona "-" pone los sliders en posiciones originales
 	} // FinCargaEspecies	
@@ -316,19 +316,13 @@ function addPoints(data) {
 		var staValue = sliderver_values[0];
 		var endValue = sliderver_values[1];
 		console.log(sliderver_values);	
-		//Cambia el estilo del slider de año
-		if ( staValue != mini.value || endValue != maxi.value) { document.getElementById("themeVer").href = "css/seleccionadoVer.css";}
-		else { document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; }
-		
+				
 		//Extrae los valores del slider de seleccion de mes
 		var sliderhor_values = sliderhor.noUiSlider.get();
 		var mestarValue = sliderhor_values[0];
 		var mesendValue = sliderhor_values[1];
 		console.log(sliderhor_values);	
-		//Cambia el estilo del slider de mes
-		if ( mestarValue != 1 || mesendValue != 12) { document.getElementById("themeHor").href = "css/seleccionadoHor.css";}
-		else { document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; }
-
+		
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
@@ -347,15 +341,17 @@ function addPoints(data) {
 		
 		//tercer filtro_MES
 		let filteredData2 = []; let filteredData3 = [];
-		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; } else {
-		for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
-		for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } }
-		
+		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; } 
+		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
+			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
+			document.getElementById("themeHor").href = "css/seleccionadoHor.css"; }
+			
 		//quinto filtro_AÑO
 		let filteredData4 = []; let filteredData5 = [];
-		if (staValue == mini.value && endValue == maxi.value) { filteredData5 = filteredData3; } else {
-		for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
-		for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } }
+		if (staValue == mini.value && endValue == maxi.value) { filteredData5 = filteredData3; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
+		else { for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
+			for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } 
+			document.getElementById("themeVer").href = "css/seleccionadoVer.css"; }
 		
 		renderMarkers(filteredData5); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
