@@ -329,16 +329,16 @@ function addPoints(data) {
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data; document.getElementById("claseX").className('blackText'); }  //en origen data era window.data
+        if (simdValue == "-") { simdFilteredData = data; document.getElementById("claseX").style.color= "black"; }  //en origen data era window.data
         else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }; 
-			document.getElementById("claseX").className('redText') }  
+			document.getElementById("claseX").style.color= "red"; }  
 	
         //segundofiltro_ESPECIE
 		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
-        if (prescValue == "-") { filteredData = simdFilteredData; document.getElementById("especieX").className('blackText'); }
+        if (prescValue == "-") { filteredData = simdFilteredData; document.getElementById("especieX").style.color= "black"; }
         else { for (const d of simdFilteredData) { if (d.Especie == prescValue) { filteredData.push(d); } }	
-			document.getElementById("especieX").className('redText') }
+			document.getElementById("especieX").style.color= "red"; }
 
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
