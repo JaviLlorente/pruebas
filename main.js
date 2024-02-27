@@ -106,7 +106,7 @@ window.onload = function () {
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
 		} else { 
-			slider.noUiSlider.reset(); 
+			//slider.noUiSlider.reset(); 
 			sliderhor.noUiSlider.reset(); 
 		} // si se selecciona "-" pone los sliders en posiciones originales
 	} // FinCargaEspecies	
