@@ -316,10 +316,10 @@ function addPoints(data) {
 		console.log(sliderhor_values);	
 	
 		if ( startValue != 2012 || endValue != 2024) {document.querySelector("link[href='css/noSeleccionadoVer.css']").href = "css/seleccionadoVer.css";}
-		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; }
+		else { document.querySelector("link[href='css/seleccionadoVer.css']").href = "css/noSeleccionadoVer.css"; };
 		
 		if ( mestarValue != 1 || mesendValue != 12) {document.querySelector("link[href='css/noSeleccionadoHor.css']").href = "css/seleccionadoHor.css";}
-		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; }
+		else { document.querySelector("link[href='css/seleccionadoHor.css']").href = "css/noSeleccionadoHor.css"; };
 	
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
