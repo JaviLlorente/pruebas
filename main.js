@@ -105,7 +105,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else { sliderhor.noUiSlider.reset() } // si se selecciona "-" pone los sliders en posiciones originales
+		} else { } // si se selecciona "-" pone los sliders en posiciones originales
 	} // FinCargaEspecies	
 }
 	
@@ -176,8 +176,8 @@ function addPoints(data) {
 	//for (let i = mini; i <= maxi; i++) { anios.push(i) }
 	//console.log(anios);			
 	
-	var sliderver = document.getElementById("slider-ver");
-	noUiSlider.create(sliderver, {
+	var slider1 = document.getElementById("slider-ver");
+	noUiSlider.create(slider1, {
 		tooltips: [true, true],
 		behaviour: 'drag', //snap, tap
 		start: [mini, maxi],
@@ -191,8 +191,8 @@ function addPoints(data) {
 	
 	//var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
 	
-	var sliderhor = document.getElementById("slider-hor");
-	noUiSlider.create(sliderhor, {
+	var slider2 = document.getElementById("slider-hor");
+	noUiSlider.create(slider2, {
 		tooltips: {
 			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
 			//from: Number  //Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
@@ -208,10 +208,10 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	//function slidersreset() { sliderver.noUiSlider.reset();	sliderhor.noUiSlider.reset(); };
+	//function slidersreset() { slider1.noUiSlider.reset();	slider2.noUiSlider.reset(); };
 
-	sliderver.noUiSlider.on('set', function( ) { filterData( ); });
-	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
+	slider1.noUiSlider.on('set', function( ) { filterData( ); });
+	slider2.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -311,16 +311,16 @@ function addPoints(data) {
 		document.getElementById('sidebar-content').innerHTML = ('');
 		
 		//Extrae los valores del slider de seleccion de año
-		var sliderver_values = sliderver.noUiSlider.get();
-		var staValue = sliderver_values[0];
-		var endValue = sliderver_values[1];
-		console.log(sliderver_values);	
+		var slider1_values = slider1.noUiSlider.get();
+		var staValue = slider1_values[0];
+		var endValue = slider1_values[1];
+		console.log(slider1_values);	
 				
 		//Extrae los valores del slider de seleccion de mes
-		var sliderhor_values = sliderhor.noUiSlider.get();
-		var mestarValue = sliderhor_values[0];
-		var mesendValue = sliderhor_values[1];
-		console.log(sliderhor_values);	
+		var slider2_values = slider2.noUiSlider.get();
+		var mestarValue = slider2_values[0];
+		var mesendValue = slider2_values[1];
+		console.log(slider2_values);	
 		
 		//primer filtro_CLASE
 		let simdFilteredData = [];
