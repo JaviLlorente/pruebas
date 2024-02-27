@@ -347,7 +347,7 @@ function addPoints(data) {
 			
 		//quinto filtro_AÑO
 		let filteredData4 = []; let filteredData5 = [];
-		if (staValue == mini.value && endValue == maxi.value) { filteredData5 = filteredData3; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
+		if (staValue == mini && endValue == maxi) { filteredData5 = filteredData3; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
 		else { for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
 			for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } 
 			document.getElementById("themeVer").href = "css/seleccionadoVer.css"; }
