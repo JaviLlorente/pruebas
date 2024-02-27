@@ -23,32 +23,32 @@
 		#sidebar-content, #sidebar-title { word-break:break-word; margin-right:2.4em; }
 		.contador { width:2.57em; height:fit-content; float:right; text-align:right; margin-right:0.85em; background-color:#EAEDED; }
 	
-		.slider-contenedor-hor { width:auto; position:absolute; top:0; padding-top:0.5em; float:right; margin-right:1em; }
-		.slider-hor { width:13em; height:0.7em; float:right; margin-right:1em; }
-		.slider-hor .noUi-base { border:1px solid #8f8f8f; border-radius:3px; }			
-		.slider-hor .noUi-pips { font-size: 0.8em; }		
-		.slider-hor .noUi-handle { top:-0.8em; width:2.4em; height:2em; }
-		.slider-hor .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
-		.slider-hor .noUi-handle .noUi-touch-area {
+		.slider-contenedor-Mes { width:auto; position:absolute; top:0; padding-top:0.5em; float:right; margin-right:1em; }
+		.slider-Mes { width:13em; height:0.7em; float:right; margin-right:1em; }
+		.slider-Mes .noUi-base { border:1px solid #8f8f8f; border-radius:3px; }			
+		.slider-Mes .noUi-pips { font-size: 0.8em; }		
+		.slider-Mes .noUi-handle { top:-0.8em; width:2.4em; height:2em; }
+		.slider-Mes .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
+		.slider-Mes .noUi-handle .noUi-touch-area {
 			border:1px solid transparent; position:absolute;
 			top:-3px; left:-13px; right:-13px; bottom:-18px;
 			width:auto; height:auto;
 		}		
 
-		.slider-contenedor-ver { height:auto; position:absolute; float:left; bottom:0; padding-bottom:1.8em; margin-left:0.95em; }
-		.slider-ver { height:18em; width:0.45em; float:left; }
-		.slider-ver .noUi-base { position:absolute; width:0.45em; float:left; border:1px solid #8f8f8f; border-radius:3px;  }		
-		.slider-ver .noUi-handle { height: 1.4em; float:left; left:-1.1em; }
-		.slider-ver .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
-		.slider-ver .noUi-handle .noUi-touch-area {
+		.slider-contenedor-Ani { height:auto; position:absolute; float:left; bottom:0; padding-bottom:1.8em; margin-left:0.95em; }
+		.slider-Ani { height:18em; width:0.45em; float:left; }
+		.slider-Ani .noUi-base { position:absolute; width:0.45em; float:left; border:1px solid #8f8f8f; border-radius:3px;  }		
+		.slider-Ani .noUi-handle { height: 1.4em; float:left; left:-1.1em; }
+		.slider-Ani .noUi-handle:hover .noUi-touch-area { border:1px dashed #7f7f7f; }
+		.slider-Ani .noUi-handle .noUi-touch-area {
 			border:1px solid transparent; position:absolute;
 			top:-13px; left:-6px; right:-20px; bottom:-13px;
 			width:auto; height:auto;
 		}			
         </style>
 		
-		<link id="theme" rel="stylesheet"  type="text/css" href="css/noSeleccionadoHor.css" />
-		<link id="theme" rel="stylesheet"  type="text/css" href="css/noSeleccionadoVer.css" />
+		<link id="theme" rel="stylesheet"  type="text/css" href="css/noSeleccionadoMes.css" />
+		<link id="theme" rel="stylesheet"  type="text/css" href="css/noSeleccionadoAni.css" />
 	
     </head>
 
@@ -87,8 +87,8 @@
 					<option value="-">...</option> 
 				</select>
 				
-				<span class="slider-contenedor-hor" style=" z-index:2; ">
-					<div class="slider-hor" id="slider-hor" ></div>
+				<span class="slider-contenedor-Mes" style=" z-index:2; ">
+					<div class="slider-Mes" id="slider-Mes" ></div>
 				</span>
 				
 				<span name="form2" id="form2" style="height:auto;" >				
@@ -99,8 +99,8 @@
 		</div>		
 		</font>
 	
-		<div class="slider-contenedor-ver" style=" z-index:2; ">			
-			<div class="slider-ver" id="slider" ></div>
+		<div class="slider-contenedor-Ani" style=" z-index:2; ">			
+			<div class="slider-Ani" id="slider-Ani" ></div>
 		</div>
 	
 		<div id="map" style="position:absolute; z-index:0; "></div>	
