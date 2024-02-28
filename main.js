@@ -105,7 +105,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else { } // si se selecciona "-" pone los sliders en posiciones originales
+		} else { sliderhor.noUiSlider.reset() } // si se selecciona "-" pone los sliders en posiciones originales
 	} // FinCargaEspecies	
 }
 	
@@ -191,7 +191,7 @@ function addPoints(data) {
 	
 	//var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
 	
-	var sliderhor = document.getElementById("slider-hor");
+	/*var sliderhor = document.getElementById("slider-hor");
 	noUiSlider.create(sliderhor, {
 		tooltips: {
 			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
@@ -206,12 +206,12 @@ function addPoints(data) {
 		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
 		pips: { mode: 'values', values: [], density: 9 },
 		format: wNumb({	decimals: 0	}),	
-	});
+	});*/
 	
 	//function slidersreset() { sliderver.noUiSlider.reset();	sliderhor.noUiSlider.reset(); };
 
 	sliderver.noUiSlider.on('set', function( ) { filterData( ); });
-	sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
+	//sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -317,10 +317,10 @@ function addPoints(data) {
 		console.log(sliderver_values);	
 				
 		//Extrae los valores del slider de seleccion de mes
-		var sliderhor_values = sliderhor.noUiSlider.get();
+		/*var sliderhor_values = sliderhor.noUiSlider.get();
 		var mestarValue = sliderhor_values[0];
 		var mesendValue = sliderhor_values[1];
-		console.log(sliderhor_values);	
+		console.log(sliderhor_values);*/	
 		
 		//primer filtro_CLASE
 		let simdFilteredData = [];
@@ -339,11 +339,11 @@ function addPoints(data) {
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		//tercer filtro_MES
-		let filteredData2 = []; let filteredData3 = [];
+		/*let filteredData2 = []; let filteredData3 = [];
 		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; } 
 		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
-			document.getElementById("themeHor").href = "css/seleccionadoHor.css"; }
+			document.getElementById("themeHor").href = "css/seleccionadoHor.css"; }*/
 			
 		//quinto filtro_AÑO
 		let filteredData4 = []; let filteredData5 = [];
