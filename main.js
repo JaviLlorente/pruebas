@@ -297,9 +297,9 @@ function addPoints(data) {
 			//document.getElementById("claseX").style.color= "red"; 
 			}
 		//Reseteo del slider si se deselecciona Clase
-		simdValue.addEventListener("change", sliderReset);
+		document.getElementById("claseX").addEventListener("change", sliderReset);
 		function sliderReset() { if (simdValue == "-") { slider.noUiSlider.reset(); } }
-	
+			
         //segundofiltro_ESPECIE
 		let filteredData = [];
         let prescValue = document.getElementById("especieX").value; //IMPORTANTE!!!
