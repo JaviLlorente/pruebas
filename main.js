@@ -19,7 +19,7 @@ let panelID = "my-info-panel";
  * init() is called when the page has loaded */
 function init() {
 	// Create a new Leaflet map centered on the continental US
-	map = L.map('map', { zoomControl: false } ).setView([41.09, -4.00], 9.4);
+	map = L.map('map', { zoomControl: true } ).setView([41.09, -4.00], 9.4);
 
 	// This is the Carto Positron basemap
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
