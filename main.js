@@ -340,14 +340,14 @@ function addPoints(data) {
 		
 		//tercer filtro_MES
 		let filteredData2 = []; let filteredData3 = [];
-		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; } 
+		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData;  } 
 		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
 			document.getElementById("themeHor").href = "css/seleccionadoHor.css"; }
 			
 		//quinto filtro_AÑO
 		let filteredData4 = []; let filteredData5 = [];
-		if (staValue == mini && endValue == maxi) { filteredData5 = filteredData3; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
+		if (staValue == mini && endValue == maxi) { filteredData5 = filteredData3;  } 
 		else { for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
 			for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } 
 			document.getElementById("themeVer").href = "css/seleccionadoVer.css"; }
