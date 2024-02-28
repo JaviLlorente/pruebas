@@ -106,7 +106,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else { slider.noUiSlider.reset() } // si se selecciona "-" pone los sliders en posiciones originales
+		} else { sliderReset(); } // si se selecciona "-" pone el slider en posiciones originales
 	} // FinCargaEspecies	
 }
 	
@@ -184,8 +184,6 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	//function slidersreset() { slider.noUiSlider.reset(); };
-
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -324,6 +322,8 @@ function addPoints(data) {
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
 }; //FINADDPOINTS
    	
+function sliderReset() { slider.noUiSlider.reset(); };	
+	
 //AñadirListaEspecies
 function addPoints_lista(data) {
 	data = data.data; 
