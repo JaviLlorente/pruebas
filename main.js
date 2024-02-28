@@ -106,7 +106,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else { } // el reseteo del slider va por otro listener en addpoints
+		}
 	} // FinCargaEspecies	
 }
 	
@@ -296,9 +296,6 @@ function addPoints(data) {
         else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }; 
 			//document.getElementById("claseX").style.color= "red"; 
 			}
-		//Reseteo del slider si se deselecciona Clase
-		document.getElementById("claseX").addEventListener("change", sliderReset);
-		function sliderReset() { if (simdValue == "-") { slider.noUiSlider.reset(); } }
 			
         //segundofiltro_ESPECIE
 		let filteredData = [];
