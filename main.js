@@ -177,7 +177,7 @@ function addPoints(data) {
 		start: [1, 12],
 		connect: true,
 		range: {'min': 1, 'max': 12} ,
-		orientation: 'horizontal',
+		orientation: 'vertical',
 		step: 1,
 		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
 		pips: { mode: 'values', values: [], density: 9 },
@@ -311,7 +311,7 @@ function addPoints(data) {
 		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
 			document.getElementById("themeVer").href = "css/seleccionadoVer.css"; }
-				
+		
 		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
 
