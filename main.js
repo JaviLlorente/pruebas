@@ -106,7 +106,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else { sliderver.noUiSlider.reset() } // si se selecciona "-" pone los sliders en posiciones originales
+		} else { slider.noUiSlider.reset() } // si se selecciona "-" pone los sliders en posiciones originales
 	} // FinCargaEspecies	
 }
 	
@@ -167,8 +167,8 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//console.log (data);
 	
-	var sliderver = document.getElementById("slider-ver");
-	noUiSlider.create(sliderver, {
+	var slider = document.getElementById("slider-ver");
+	noUiSlider.create(slider, {
 		tooltips: {
 			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
 			//from: Number  //Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
@@ -184,9 +184,9 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	//function slidersreset() { sliderver.noUiSlider.reset(); };
+	//function slidersreset() { slider.noUiSlider.reset(); };
 
-	sliderver.noUiSlider.on('set', function( ) { filterData( ); });
+	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -284,10 +284,10 @@ function addPoints(data) {
 		document.getElementById('sidebar-content').innerHTML = ('');
 		
 		//Extrae los valores del slider de seleccion de mes
-		var sliderver_values = sliderver.noUiSlider.get();
-		var mestarValue = sliderver_values[0];
-		var mesendValue = sliderver_values[1];
-		console.log(sliderver_values);	
+		var slider_values = slider.noUiSlider.get();
+		var mestarValue = slider_values[0];
+		var mesendValue = slider_values[1];
+		console.log(slider_values);	
 
 		//primer filtro_CLASE
 		let simdFilteredData = [];
