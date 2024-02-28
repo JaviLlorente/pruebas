@@ -307,10 +307,10 @@ function addPoints(data) {
 		
 		//tercer filtro_MES
 		let filteredData2 = []; let filteredData3 = [];
-		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
+		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeVer").href = "css/noSeleccionado.css"; } 
 		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
-			document.getElementById("themeVer").href = "css/seleccionadoVer.css"; }
+			document.getElementById("themeVer").href = "css/seleccionado.css"; }
 		
 		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
