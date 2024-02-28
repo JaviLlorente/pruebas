@@ -285,9 +285,9 @@ function addPoints(data) {
 		
 		//Extrae los valores del slider de seleccion de mes
 		var sliderver_values = sliderver.noUiSlider.get();
-		var mestarValue = sliderhor_values[0];
-		var mesendValue = sliderhor_values[1];
-		console.log(sliderhor_values);	
+		var mestarValue = sliderver_values[0];
+		var mesendValue = sliderver_values[1];
+		console.log(sliderver_values);	
 
 		//primer filtro_CLASE
 		let simdFilteredData = [];
