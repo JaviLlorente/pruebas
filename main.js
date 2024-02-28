@@ -37,7 +37,7 @@ function init() {
 	//Sidebar de información
 	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 	const sidebarElement = document.querySelector('.leaflet-sidebar');
-	sidebarElement.style.marginTop = '1.6em';
+	sidebarElement.style.marginTop = '1.65em';
 	//sidebarElement.style.marginBottom = '0.1em';
   
 	let panelContent = {
@@ -184,13 +184,6 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	//Reseteo del slider si se deselecciona Clase
-	//document.getElementById("claseX").addEventListener("change", sliderReset);
-	//function sliderReset() {
-	//	var claseXs = document.getElementById('claseX');
-	//	if (claseXs == "-") { slider.noUiSlider.set([1, 12]); }
-	//}
-
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -293,17 +286,19 @@ function addPoints(data) {
 		var mestarValue = slider_values[0];
 		var mesendValue = slider_values[1];
 		console.log(slider_values);	
-
+		
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data;
-			slider.noUiSlider.reset(); //Resetea el slider
+        if (simdValue == "-") { simdFilteredData = data; 
 			//document.getElementById("claseX").style.color= "black"; 
 			}  //en origen data era window.data
         else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }; 
 			//document.getElementById("claseX").style.color= "red"; 
-			}  
+			}
+		//Reseteo del slider si se deselecciona Clase
+		simdValue.addEventListener("change", sliderReset);
+		function sliderReset() { if (simdValue == "-") { slider.noUiSlider.reset(); } }
 	
         //segundofiltro_ESPECIE
 		let filteredData = [];
