@@ -185,14 +185,14 @@ function addPoints(data) {
 	});
 	
 	//Reseteo del slider si se deselecciona Clase
-	document.getElementById("claseX").addEventListener("change", sliderReset);
+	//document.getElementById("claseX").addEventListener("change", sliderReset);
 	function sliderReset() {
 		var claseXs = document.getElementById('claseX');
 		if (claseXs == "-") { slider.noUiSlider.reset(); }
 	}
 
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
-	document.getElementById("claseX").addEventListener("change", filterData);
+	document.getElementById("claseX").addEventListener("change", filterData, sliderReset);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
