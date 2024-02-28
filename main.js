@@ -186,13 +186,13 @@ function addPoints(data) {
 	
 	//Reseteo del slider si se deselecciona Clase
 	//document.getElementById("claseX").addEventListener("change", sliderReset);
-	function sliderReset() {
-		var claseXs = document.getElementById('claseX');
-		if (claseXs == "-") { slider.noUiSlider.reset(); }
-	}
+	//function sliderReset() {
+	//	var claseXs = document.getElementById('claseX');
+	//	if (claseXs == "-") { slider.noUiSlider.set([1, 12]); }
+	//}
 
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
-	document.getElementById("claseX").addEventListener("change", filterData, sliderReset);
+	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
 	// RENDERING METHOD
@@ -297,7 +297,8 @@ function addPoints(data) {
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
-        if (simdValue == "-") { simdFilteredData = data; 
+        if (simdValue == "-") { simdFilteredData = data;
+			slider.noUiSlider.set([1, 12]); //Resetea el slider
 			//document.getElementById("claseX").style.color= "black"; 
 			}  //en origen data era window.data
         else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }; 
