@@ -37,7 +37,7 @@ function init() {
 	//Sidebar de información
 	sidebar = L.control.sidebar({  container: "sidebar", closeButton: true, position: "right",  }).addTo(map);
 	const sidebarElement = document.querySelector('.leaflet-sidebar');
-	sidebarElement.style.marginTop = '1.65em';
+	sidebarElement.style.marginTop = '1.6em';
 	//sidebarElement.style.marginBottom = '0.1em';
   
 	let panelContent = {
@@ -298,7 +298,7 @@ function addPoints(data) {
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
         if (simdValue == "-") { simdFilteredData = data;
-			slider.noUiSlider.set([1, 12]); //Resetea el slider
+			slider.noUiSlider.reset(); //Resetea el slider
 			//document.getElementById("claseX").style.color= "black"; 
 			}  //en origen data era window.data
         else { for (const d of data) { if (d.Clase == simdValue) { simdFilteredData.push(d); } }; 
