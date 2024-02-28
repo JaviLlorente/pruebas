@@ -167,33 +167,8 @@ function addPoints(data) {
 	var pointGroupLayer = L.layerGroup([]).addTo(map);
 	//console.log (data);
 	
-	//da string (Number para sacar numero): extrayendolo directamente
-	var mini = Number(data[0].minyear);
-	//console.log(mini);			
-
-	//calcula el array entre min y año en curso (funciona con entrada de número)
-	var maxi = new Date().getFullYear()
-	//const anios = []
-	//for (let i = mini; i <= maxi; i++) { anios.push(i) }
-	//console.log(anios);			
-	
 	var sliderver = document.getElementById("slider-ver");
 	noUiSlider.create(sliderver, {
-		tooltips: [true, true],
-		behaviour: 'drag', //snap, tap
-		start: [mini, maxi],
-		connect: true,
-		range: { 'min': mini, 'max': maxi },
-		orientation: 'vertical',
-		step: 1,
-		format: wNumb({	decimals: 0	}),
-		//pips: { mode: 'steps', density: (maxi-mini)+1  },
-	});
-	
-	//var pipFormats = {'1':'Ene', '2':'Feb', '3':'Mar', '4':'Abr', '5':'May', '6':'Jun', '7':'Jul', '8':'Ago', '9':'Sep', '10':'Oct', '11':'Nov', '12':'Dic'};
-	
-	/*var sliderhor = document.getElementById("slider-hor");
-	noUiSlider.create(sliderhor, {
 		tooltips: {
 			to: function(value) { return ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][Math.round(value) - 1]; }, 
 			//from: Number  //Math.round and -1, so 1.00 => 0, 2.00 => 2, etc.
@@ -207,12 +182,11 @@ function addPoints(data) {
 		//pips: { mode: 'range', density: 10,	format: { to: function(a){ return pipFormats[a]; } } },
 		pips: { mode: 'values', values: [], density: 9 },
 		format: wNumb({	decimals: 0	}),	
-	});*/
+	});
 	
-	//function slidersreset() { sliderver.noUiSlider.reset();	sliderhor.noUiSlider.reset(); };
+	//function slidersreset() { sliderver.noUiSlider.reset(); };
 
 	sliderver.noUiSlider.on('set', function( ) { filterData( ); });
-	//sliderhor.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
 	
@@ -298,31 +272,23 @@ function addPoints(data) {
 		
 		//console.log(data);
 		document.getElementById("Narray").value = data.length;	//nºregistros
-		map.spin(false);  // spinoff_1
-		//map.spin(false);  // spinoff_2
+		map.spin(false);  // spinoff_1		
 		
     } //Fin Render
 	
 	//FILTERING LOGIC
     function filterData () {
-		//map.spin(true, { lines: 12, length: 40, width: 10, radius: 25, speed: 0.7, className: 'spinner', zIndex: 2000000000, position: 'absolute', }); //on_spin2 //ya en inicio y aqui puede que retrase
 		//Pone la sidebar lateral a cero y la cierra
 		sidebar.close(panelID);
 		document.getElementById('sidebar-title').innerHTML = '';
 		document.getElementById('sidebar-content').innerHTML = ('');
 		
-		//Extrae los valores del slider de seleccion de año
-		var sliderver_values = sliderver.noUiSlider.get();
-		var staValue = sliderver_values[0];
-		var endValue = sliderver_values[1];
-		console.log(sliderver_values);	
-				
 		//Extrae los valores del slider de seleccion de mes
-		/*var sliderhor_values = sliderhor.noUiSlider.get();
+		var sliderver_values = sliderver.noUiSlider.get();
 		var mestarValue = sliderhor_values[0];
 		var mesendValue = sliderhor_values[1];
-		console.log(sliderhor_values);*/	
-		
+		console.log(sliderhor_values);	
+
 		//primer filtro_CLASE
 		let simdFilteredData = [];
         let simdValue = document.getElementById("claseX").value;  
@@ -340,20 +306,13 @@ function addPoints(data) {
 		//alert("simdValue= " + simdValue + " / prescValue= " + prescValue);
 		
 		//tercer filtro_MES
-		/*let filteredData2 = []; let filteredData3 = [];
-		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeHor").href = "css/noSeleccionadoHor.css"; } 
+		let filteredData2 = []; let filteredData3 = [];
+		if (mestarValue == 1 && mesendValue == 12) { filteredData3 = filteredData; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
 		else { for (const d of filteredData) { if (parseFloat(d.Mes) >= parseFloat(mestarValue)) { filteredData2.push(d); } }
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
-			document.getElementById("themeHor").href = "css/seleccionadoHor.css"; }*/
-			
-		//quinto filtro_AÑO
-		let filteredData4 = []; let filteredData5 = [];
-		if (staValue == mini && endValue == maxi) { filteredData5 = filteredData3; document.getElementById("themeVer").href = "css/noSeleccionadoVer.css"; } 
-		else { for (const d of filteredData3) { if (parseFloat(d.Anio) >= parseFloat(staValue)) { filteredData4.push(d); } }
-			for (const d of filteredData4) { if (parseFloat(d.Anio) <= parseFloat(endValue)) { filteredData5.push(d); } } 
 			document.getElementById("themeVer").href = "css/seleccionadoVer.css"; }
-		
-		renderMarkers(filteredData5); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
+				
+		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
