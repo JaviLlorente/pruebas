@@ -285,7 +285,7 @@ function addPoints(data) {
 		var slider_values = slider.noUiSlider.get();
 		var mestarValue = slider_values[0];
 		var mesendValue = slider_values[1];
-		console.log(slider_values);	
+		//console.log(slider_values);	
 		
 		//primer filtro_CLASE
 		let simdFilteredData = [];
