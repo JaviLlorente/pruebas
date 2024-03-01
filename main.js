@@ -14,6 +14,7 @@ window.addEventListener("DOMContentLoaded", init);
 let map;
 let sidebar;
 let panelID = "my-info-panel";
+var reinicio;
 
 /* FUNCIONINIT
  * init() is called when the page has loaded */
