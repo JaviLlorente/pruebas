@@ -187,7 +187,13 @@ function addPoints(data) {
 	});
 	
 	document.getElementById("boton").addEventListener("click", Reiniciar(reinicio) );
-	function Reiniciar(reinicio) { if (reinicio=1) {slider.noUiSlider.reset();} };
+	function Reiniciar(reinicio) { 
+		console.log("en reinicio");
+		if (reinicio=1) {
+			slider.noUiSlider.reset();
+			console.log("reinicio=1");
+		} 
+	};
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
