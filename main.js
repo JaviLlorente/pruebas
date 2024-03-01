@@ -79,7 +79,7 @@ window.onload = function () {
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 	// CargaEspecies
 	function cargarEspecies() {
-		var reinicio=0;
+		var reinicio=0;	console.log();
 		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
@@ -109,8 +109,8 @@ window.onload = function () {
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
 		} else{ 
-			var reinicio=1; 
-			addPoints();
+			var reinicio=1; console.log();
+			addPoints(data);
 			}
 	} // FinCargaEspecies	
 }
@@ -325,7 +325,7 @@ function addPoints(data) {
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
-	if (reinicio=1) {slider.noUiSlider.reset(); };
+	if (reinicio=1) {slider.noUiSlider.reset(); alert("reseteado") }; //reinicia el slider
 }; //FINADDPOINTS
    	
 //AñadirListaEspecies
