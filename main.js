@@ -321,11 +321,12 @@ function addPoints(data) {
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
 			document.getElementById("themeVer").href = "css/seleccionado.css"; }
 		
-		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
+		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)	
+		if (reinicio=1) {slider.noUiSlider.set([1, 12]); alert("reseteado") }; //reinicia el slider
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
-	if (reinicio=1) {slider.noUiSlider.set([1, 12]); alert("reseteado") }; //reinicia el slider
+	
 }; //FINADDPOINTS
    	
 //AñadirListaEspecies
