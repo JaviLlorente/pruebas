@@ -192,7 +192,7 @@ function addPoints(data) {
 			slider.noUiSlider.reset();
 			document.getElementById("claseX").value="-";
 			document.getElementById("especieX").value="-";
-			filterData;
+			filterData();
 			} 
 	};
 	
