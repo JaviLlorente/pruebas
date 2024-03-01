@@ -186,14 +186,13 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	document.getElementById("boton").addEventListener("click", Reiniciar(reinicio) );
-	function Reiniciar(reinicio) { 
+	boton.onclick =	function Reiniciar(reinicio) { 
 		console.log(reinicio);
 		if (reinicio=1) {
 			console.log(reinicio);
 			slider.noUiSlider.reset();
 			} 
-		};
+	};
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
