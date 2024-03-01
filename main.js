@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", init);
 let map;
 let sidebar;
 let panelID = "my-info-panel";
-var reinicio;
+var reinicio; //controla si se reinicia o no
 
 /* FUNCIONINIT
  * init() is called when the page has loaded */
@@ -108,7 +108,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else{ var reinicio=1; console.log(reinicio); }
+		} else{ var reinicio=1; console.log(reinicio); Reiniciar(reinicio) }
 	} // FinCargaEspecies	
 }
 	
@@ -187,6 +187,7 @@ function addPoints(data) {
 	});
 	
 	boton.onclick =	function Reiniciar(reinicio) { 
+		console.log(reinicio);
 		if (reinicio=1) {
 			slider.noUiSlider.reset();
 			document.getElementById("claseX").value="-";
