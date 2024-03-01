@@ -187,9 +187,7 @@ function addPoints(data) {
 		pips: { mode: 'values', values: [], density: 9 },
 		format: wNumb({	decimals: 0	}),	
 	});
-	
-	if (reinicio=1) { slider.noUiSlider.reset(); }
-	
+		
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -326,6 +324,7 @@ function addPoints(data) {
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
+	if (reinicio=1) {slider.noUiSlider.reset(); };
 }; //FINADDPOINTS
    	
 //AñadirListaEspecies
