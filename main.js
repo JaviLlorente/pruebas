@@ -188,7 +188,7 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
-	if (reinicio=1) {sliderver.noUiSlider.reset();};
+	if (reinicio=1) {slider.noUiSlider.reset();};
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
