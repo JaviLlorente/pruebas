@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", init);
 let map;
 let sidebar;
 let panelID = "my-info-panel";
-var reinicio; //controla si se reinicia o no
+//var reinicio; //controla si se reinicia o no
 
 /* FUNCIONINIT
  * init() is called when the page has loaded */
@@ -79,7 +79,7 @@ window.onload = function () {
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 	// CargaEspecies
 	function cargarEspecies() {
-		var reinicio = 0;
+		//var reinicio = 0;
 		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
@@ -108,7 +108,9 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else{ var reinicio=1; console.log(reinicio); Reiniciar(reinicio) }
+		} else{ 
+			//var reinicio=1; console.log(reinicio); Reiniciar(reinicio) 
+			}
 	} // FinCargaEspecies	
 }
 	
@@ -188,12 +190,12 @@ function addPoints(data) {
 	
 	boton.onclick =	function Reiniciar(reinicio) { 
 		console.log(reinicio);
-		if (reinicio=1) {
+		//if (reinicio=1) {
 			slider.noUiSlider.reset();
 			document.getElementById("claseX").value="-";
 			document.getElementById("especieX").value="-";
 			filterData();
-			} 
+		//	} 
 	};
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
