@@ -325,7 +325,7 @@ function addPoints(data) {
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
-	if (reinicio=1) {slider.noUiSlider.reset(); alert("reseteado") }; //reinicia el slider
+	if (reinicio=1) {slider.noUiSlider.set([1, 12]); alert("reseteado") }; //reinicia el slider
 }; //FINADDPOINTS
    	
 //AñadirListaEspecies
