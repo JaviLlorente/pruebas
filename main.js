@@ -186,6 +186,7 @@ function addPoints(data) {
 		format: wNumb({	decimals: 0	}),	
 	});
 	
+	document.getElementById("boton").addEventListener("onclick", Reiniciar(reinicio) );
 	function Reiniciar(reinicio) { if (reinicio=1) {slider.noUiSlider.reset();} };
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
