@@ -78,6 +78,7 @@ window.onload = function () {
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 	// CargaEspecies
 	function cargarEspecies() {
+		var reinicio=0;
 		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
@@ -106,7 +107,10 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		}
+		} else{ 
+			var reinicio=1; 
+			addPoints();
+			}
 	} // FinCargaEspecies	
 }
 	
@@ -183,6 +187,8 @@ function addPoints(data) {
 		pips: { mode: 'values', values: [], density: 9 },
 		format: wNumb({	decimals: 0	}),	
 	});
+	
+	if (reinicio=1) {sliderver.noUiSlider.reset();};
 	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
