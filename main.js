@@ -79,7 +79,7 @@ window.onload = function () {
 	document.getElementById("claseX").addEventListener("change", cargarEspecies); //mio
 	// CargaEspecies
 	function cargarEspecies() {
-		var reinicio=0;	console.log();
+		var reinicio = 0;
 		var listaEspecies = window.data; //recoge de addPoints_lista del window.data
 		var claseXs = document.getElementById('claseX')
 		var especieXs = document.getElementById('especieX')
@@ -108,10 +108,7 @@ window.onload = function () {
 				especieXs.add(opcion)
 				//document.getElementById("Narray3").value = filtrada.length; //nºespecies
 			});		
-		} else{ 
-			var reinicio=1; console.log();
-			addPoints(data);
-			}
+		} else{ var reinicio=1; console.log(reinicio); }
 	} // FinCargaEspecies	
 }
 	
@@ -188,7 +185,9 @@ function addPoints(data) {
 		pips: { mode: 'values', values: [], density: 9 },
 		format: wNumb({	decimals: 0	}),	
 	});
-		
+	
+	function Reiniciar(reinicio) { if (reinicio=1) {slider.noUiSlider.reset();} };
+	
 	slider.noUiSlider.on('set', function( ) { filterData( ); });
 	document.getElementById("claseX").addEventListener("change", filterData);
     document.getElementById("especieX").addEventListener("change", filterData);
@@ -321,12 +320,10 @@ function addPoints(data) {
 			for (const d of filteredData2) { if (parseFloat(d.Mes) <= parseFloat(mesendValue)) { filteredData3.push(d); } } 
 			document.getElementById("themeVer").href = "css/seleccionado.css"; }
 		
-		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)	
-		if (reinicio=1) {slider.noUiSlider.set([1, 12]); alert("reseteado") }; //reinicia el slider
+		renderMarkers(filteredData3); //Renderizado desde los datos filtrados (para cada vez que se filtra)		
     }; //FinFiltro
 
 	renderMarkers(data); //Renderizado desde el conjunto de datos (para primera carga)
-	
 }; //FINADDPOINTS
    	
 //AñadirListaEspecies
