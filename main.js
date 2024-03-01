@@ -187,10 +187,10 @@ function addPoints(data) {
 	});
 	
 	boton.onclick =	function Reiniciar(reinicio) { 
-		console.log(reinicio);
 		if (reinicio=1) {
-			console.log(reinicio);
 			slider.noUiSlider.reset();
+			document.getElementById("claseX").value="-";
+			document.getElementById("especieX").value="-";
 			} 
 	};
 	
